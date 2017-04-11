@@ -1,0 +1,20 @@
+Metadata-Version: 1.1
+Name: Prosim737 Updater
+Version: 1.0.0
+Summary: Prosim737 Updater
+Home-page: UNKNOWN
+Author: Olivier Henry
+Author-email: olivier.pascal.henry@gmail.com
+License: GNU General Public License v3
+Description: Prosim737 Updater is a tool dedicated to update Prosim737. It can install updated 
+        stored locally, or donwload and install updates from the official Prosim737 website. 
+        It can create backups of a full Prosim737 installation, and restore a backup. Its 
+        primary goal is to be used for Prosim737 beta testing. But it can be used to backup 
+        and manage updates of Prosim737.
+        
+Keywords: Prosim737,simulator,update
+Platform: UNKNOWN
+Requires: PyQt5 (>=5.7)
+Requires: beautifulsoup4 (>=4.5.3)
+Requires: requests (>=2.13.0)
+Requires: psutil (>=5.2.1)

@@ -1,0 +1,30 @@
+=========
+CHANGELOG
+=========
+
+
+April 11 2017, Release version 1.0.0
+====================================
+  ADDED:
+    - first version of the GUI.
+    - first version of the python code.
+    - added the possibility to download and store an update package.
+    - added a function to check if folders entered in GUI exist.
+    - added a function to check if Prosim modules are running.
+    - added a function to pass credentials if remote computers exist.
+    
+  FIXED:
+    - fixed several bugs during the first code generation.
+    - if an old update package is not removed from the temp folder before installing a new update, it can lead to a crash. It has been fixed.
+    - if an xml file is opened, the GUI is not cleared as it should be. It has been fixed.
+    - if a path in a tab is empty, it shouldn't be added to the list containing all Prosim folders.
+    - the temp update package in the temp folder wasn't cleared at the right time.
+    - if two folders have the same name, for creating a backup, Prosim737 Updater will add a different number to their name to differentiate them.
+    _ fixed a typo in the temp folder name.
+    
+  MODIFIED:
+    - the GUI has been modified to take care of different credentials.
+    - credentials to connect to remote computers are stored in the xml file.
+    - all functions to download, unpack, copy/past, store, backup and restore are now run by a different process to avoid freezing of the GUI.
+    - if no path is entered in one or more Prosim Updater section, the corresponding xml section is now empty.
+    - Prosim737 Updater will not backup .DEM files in ProsimServer folder (as it's an external and heavy package).

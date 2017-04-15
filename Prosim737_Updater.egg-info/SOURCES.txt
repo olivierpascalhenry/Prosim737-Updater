@@ -31,6 +31,7 @@ icons/left_arrow_icon.svg
 icons/none_icon.png
 icons/open_popup_icon.svg
 icons/plus_icon.svg
+icons/prosim_updater_icon.png
 icons/prosim_updater_icon.svg
 icons/right_arrow_icon.svg
 icons/save_popup_icon.svg

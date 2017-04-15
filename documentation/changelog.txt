@@ -3,7 +3,7 @@ CHANGELOG
 =========
 
 
-April 11 2017, Release version 1.0.0
+April 15 2017, Release version 1.0.0
 ====================================
   ADDED:
     - first version of the GUI.
@@ -21,6 +21,7 @@ April 11 2017, Release version 1.0.0
     - the temp update package in the temp folder wasn't cleared at the right time.
     - if two folders have the same name, for creating a backup, Prosim737 Updater will add a different number to their name to differentiate them.
     _ fixed a typo in the temp folder name.
+    _ if a file has to be copied/pasted in a folder which doesn't exist, Prosim737 Updater will create it.
     
   MODIFIED:
     - the GUI has been modified to take care of different credentials.

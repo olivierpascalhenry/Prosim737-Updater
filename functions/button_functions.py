@@ -739,7 +739,6 @@ class MyUnpack(QtWidgets.QDialog, Ui_unpackWindow):
         success = True
         for all_folders in self.prosim_path:
             for path in all_folders:
-            
                 if not os.path.isdir(path):
                     wrong_path.append(path)
         if wrong_path:
@@ -1212,6 +1211,8 @@ class InstallFile(QThread):
                     for file in filenames:
                         source_file = os.path.join(path, file)
                         destFile = os.path.join(path.replace(prosim_folder, prosim_directories[key]), file)
+                        if not os.path.isdir(os.path.dirname(destFile)):
+                            os.makedirs(os.path.dirname(destFile))
                         copy(source_file, destFile)
                     num_copied += 1
                     percentage = int(round((num_copied/float(num_files))*100))
@@ -1226,6 +1227,8 @@ class InstallFile(QThread):
                         source_file = os.path.join(path, file)
                         for dest in prosim_target:
                             destFile = os.path.join(path.replace(self.directory + folder, dest), file)
+                            if not os.path.isdir(os.path.dirname(destFile)):
+                                os.makedirs(os.path.dirname(destFile))
                             copy(source_file, destFile)
                         num_copied += 1
                         percentage = int(round((num_copied/float(num_files))*100))

@@ -438,6 +438,7 @@ def update_prosim(self):
     prosim_panel = load_prosim_path(self, self.tabWidgetPage6.findChildren(QLineEdit))
     prosim_audio = load_prosim_path(self, self.tabWidgetPage7.findChildren(QLineEdit))
     prosim_path = [prosim_server, prosim_mcp, prosim_cdu, prosim_display, prosim_panel, prosim_audio]
+    logging.debug('button_functions.py - update, prosim_path ' + str(prosim_path))
     prosim_credentials = load_prosim_credentials(self)
     remove_tmp_package(self)
     if self.selected_list_widget == 'online':
@@ -496,8 +497,9 @@ def load_prosim_credentials(self):
     logging.debug('button_functions.py - load_prosim_credentials invoked')
     credential_list = {}
     for i in range(0, len(self.cred_ln_1_list)):
-        credential_list[self.cred_ln_1_list[i].text()] = {'username' : self.cred_ln_2_list[i].text(),
-                                                          'password' : self.cred_ln_3_list[i].text()}
+        if self.cred_ln_1_list[i].text() and self.cred_ln_2_list[i].text():
+            credential_list[self.cred_ln_1_list[i].text()] = {'username' : self.cred_ln_2_list[i].text(),
+                                                              'password' : self.cred_ln_3_list[i].text()}
     return credential_list
 
 def remove_tmp_package(self):
@@ -635,6 +637,7 @@ class MyDownload(QtWidgets.QDialog, Ui_downloadWindow):
                     drive, _ = os.path.splitdrive(folder)
                     computer_list.append(drive[1:])
         computer_list = list(set(computer_list))
+        logging.debug('button_functions.py - MyDownload: check_prosim_processes, computer_list ' + str(computer_list))
         for computer in computer_list:
             if computer == ':':
                 for pid in psutil.pids():
@@ -644,16 +647,25 @@ class MyDownload(QtWidgets.QDialog, Ui_downloadWindow):
                     except psutil.NoSuchProcess:
                         pass
             else:
-                username = self.prosim_credentials[computer]['username']
-                password = self.prosim_credentials[computer]['password']
-                command = 'tasklist.exe /s ' + computer + ' /u ' + username + ' /p ' + password
-                remote_list = [line.split() for line in subprocess.check_output(command).splitlines()]
-                for process in remote_list[2:]:
+                if self.prosim_credentials:
                     try:
-                        if process[0].decode('ascii') in prosim_processes:
-                            running_processes.append(computer + ' - ' + process[0].decode('ascii'))
-                    except IndexError:
-                        pass   
+                        username = self.prosim_credentials[computer]['username']
+                        password = self.prosim_credentials[computer]['password']
+                        if password:
+                            command = 'tasklist.exe /s ' + computer + ' /u ' + username + ' /p ' + password
+                        else:
+                            command = 'tasklist.exe /s ' + computer + ' /u ' + username
+                        remote_list = [line.split() for line in subprocess.check_output(command).splitlines()]
+                        for process in remote_list[2:]:
+                            try:
+                                if process[0].decode('ascii') in prosim_processes:
+                                    running_processes.append(computer + ' - ' + process[0].decode('ascii'))
+                            except IndexError:
+                                pass
+                    except KeyError:
+                        logging.exception('button_functions.py - MyUnpack: check_prosim_processes')
+                else:
+                    logging.debug('button_functions.py - MyDonwload: check_prosim_processes, no credentials')
         if running_processes:
             text = ['The following processes are still running:',
                     'Please, make sure to stop them before installing Prosim737.']
@@ -771,6 +783,7 @@ class MyUnpack(QtWidgets.QDialog, Ui_unpackWindow):
                     drive, _ = os.path.splitdrive(folder)
                     computer_list.append(drive[1:])
         computer_list = list(set(computer_list))
+        logging.debug('button_functions.py - MyUnpack: check_prosim_processes, computer_list ' + str(computer_list))
         for computer in computer_list:
             if computer == ':':
                 for pid in psutil.pids():
@@ -780,16 +793,25 @@ class MyUnpack(QtWidgets.QDialog, Ui_unpackWindow):
                     except psutil.NoSuchProcess:
                         pass
             else:
-                username = self.prosim_credentials[computer]['username']
-                password = self.prosim_credentials[computer]['password']
-                command = 'tasklist.exe /s ' + computer + ' /u ' + username + ' /p ' + password
-                remote_list = [line.split() for line in subprocess.check_output(command).splitlines()]
-                for process in remote_list[2:]:
+                if self.prosim_credentials:
                     try:
-                        if process[0].decode('ascii') in prosim_processes:
-                            running_processes.append(computer + ' - ' + process[0].decode('ascii'))
-                    except IndexError:
-                        pass
+                        username = self.prosim_credentials[computer]['username']
+                        password = self.prosim_credentials[computer]['password']
+                        if password:
+                            command = 'tasklist.exe /s ' + computer + ' /u ' + username + ' /p ' + password
+                        else:
+                            command = 'tasklist.exe /s ' + computer + ' /u ' + username
+                        remote_list = [line.split() for line in subprocess.check_output(command).splitlines()]
+                        for process in remote_list[2:]:
+                            try:
+                                if process[0].decode('ascii') in prosim_processes:
+                                    running_processes.append(computer + ' - ' + process[0].decode('ascii'))
+                            except IndexError:
+                                pass
+                    except KeyError:
+                        logging.exception('button_functions.py - MyUnpack: check_prosim_processes')
+                else:
+                    logging.debug('button_functions.py - MyUnpack: check_prosim_processes, no credentials')
         if running_processes:
             text = ['The following processes are still running:',
                     'Please, make sure to stop them before installing Prosim737.']
@@ -839,7 +861,11 @@ class MyCompress(QtWidgets.QDialog, Ui_compressWindow):
         self.setupUi(self)
         self.backup_directory = backup_directory
         self.prosim_path = prosim_path
-        self.compress_directories()
+        success = self.check_prosim_paths()
+        if success is False:
+            self.closeWindow()
+        else:
+            self.compress_directories()
     
     def update_progress_bar(self, val):
         self.progressBar.setValue(val)
@@ -850,6 +876,27 @@ class MyCompress(QtWidgets.QDialog, Ui_compressWindow):
         self.thread.zip_update.connect(self.update_progress_bar)
         self.thread.zip_done.connect(self.closeWindow)
         self.thread.start()
+        
+    def check_prosim_paths(self):
+        logging.debug('button_functions.py - MyCompress: check_prosim_paths')
+        wrong_path = []
+        success = True
+        for path in self.prosim_path:
+            if not os.path.isdir(path):
+                wrong_path.append(path)
+        if wrong_path:
+            self.pathWindow = MyPath(wrong_path)
+            x1, y1, w1, h1 = self.geometry().getRect()
+            _, _, w2, h2 = self.pathWindow.geometry().getRect()
+            x2 = x1 + w1/2 - w2/2
+            y2 = y1 + h1/2 - h2/2
+            self.pathWindow.setMinimumSize(QtCore.QSize(600, self.pathWindow.sizeHint().height()))
+            self.pathWindow.setMaximumSize(QtCore.QSize(600, self.pathWindow.sizeHint().height()))
+            self.pathWindow.setGeometry(x2, y2, 600, self.pathWindow.sizeHint().height())
+            self.pathWindow.exec_()
+            success = False
+        logging.debug('button_functions.py - MyCompress: success ' + str(success))
+        return success
     
     def closeWindow(self):
         self.thread.zip_update.disconnect(self.update_progress_bar)
@@ -1019,6 +1066,7 @@ class MyRestore(QtWidgets.QDialog, Ui_restoreWindow):
                     drive, _ = os.path.splitdrive(value)
                     computer_list.append(drive[1:])
         computer_list = list(set(computer_list))
+        logging.debug('button_functions.py - MyRestore: check_prosim_processes, computer_list ' + str(computer_list))
         for computer in computer_list:
             if computer == ':':
                 for pid in psutil.pids():
@@ -1028,16 +1076,25 @@ class MyRestore(QtWidgets.QDialog, Ui_restoreWindow):
                     except psutil.NoSuchProcess:
                         pass
             else:
-                username = self.prosim_credentials[computer]['username']
-                password = self.prosim_credentials[computer]['password']
-                command = 'tasklist.exe /s ' + computer + ' /u ' + username + ' /p ' + password
-                remote_list = [line.split() for line in subprocess.check_output(command).splitlines()]
-                for process in remote_list[2:]:
+                if self.prosim_credentials:
                     try:
-                        if process[0].decode('ascii') in prosim_processes:
-                            running_processes.append(computer + ' - ' + process[0].decode('ascii'))
-                    except IndexError:
-                        pass
+                        username = self.prosim_credentials[computer]['username']
+                        password = self.prosim_credentials[computer]['password']
+                        if password:
+                            command = 'tasklist.exe /s ' + computer + ' /u ' + username + ' /p ' + password
+                        else:
+                            command = 'tasklist.exe /s ' + computer + ' /u ' + username
+                        remote_list = [line.split() for line in subprocess.check_output(command).splitlines()]
+                        for process in remote_list[2:]:
+                            try:
+                                if process[0].decode('ascii') in prosim_processes:
+                                    running_processes.append(computer + ' - ' + process[0].decode('ascii'))
+                            except IndexError:
+                                pass
+                    except KeyError:
+                        logging.exception('button_functions.py - MyUnpack: check_prosim_processes')
+                else:
+                    logging.debug('button_functions.py - MyRestore: check_prosim_processes, no credentials')
         if running_processes:
             text = ['The following processes are still running:',
                     'Please, make sure to stop them before installing Prosim737.']

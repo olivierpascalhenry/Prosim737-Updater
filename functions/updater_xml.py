@@ -96,7 +96,7 @@ def create_updater_xml(self, out_file_name):
             computer_name = self.cred_ln_1_list[i].text()
             username = self.cred_ln_2_list[i].text()
             password = self.cred_ln_3_list[i].text()
-            if computer_name and username and password:
+            if computer_name and username:
                 computer = add_element(doc, "RemoteComputer", server_element, computer_name)
                 computer.setAttribute('password', password)
                 computer.setAttribute('username', username)

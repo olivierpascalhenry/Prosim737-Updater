@@ -2,6 +2,19 @@
 CHANGELOG
 =========
 
+April 17 2017, Release version 1.0.1
+====================================
+  FIXED:
+    - the dictionary containing credentials was read even if it was empty, generating a KeyError exception. It has been fixed.
+    - if a file has to be copied/pasted in a folder which doesn't exist, Prosim737 Updater will create it.
+    - if a user creates a credential element and doesn't enter "Computer name" and "Username", the dictionary contains keys but not values, and leads to a crash. It has been fixed.
+    - if computername or username or password is not entered, nothing is saved for the credential section.
+    - an icon has been corrected (white rectangle still visible).
+    
+  ADDED:
+    - few logging events have been added to log the list of Prosim folders and the name of local and remote computers during update.
+    - before launching a backup, Prosim737 Updater will check if paths entered by the user exist.
+
 
 April 15 2017, Release version 1.0.0
 ====================================
@@ -20,8 +33,7 @@ April 15 2017, Release version 1.0.0
     - if a path in a tab is empty, it shouldn't be added to the list containing all Prosim folders.
     - the temp update package in the temp folder wasn't cleared at the right time.
     - if two folders have the same name, for creating a backup, Prosim737 Updater will add a different number to their name to differentiate them.
-    _ fixed a typo in the temp folder name.
-    _ if a file has to be copied/pasted in a folder which doesn't exist, Prosim737 Updater will create it.
+    - fixed a typo in the temp folder name.
     
   MODIFIED:
     - the GUI has been modified to take care of different credentials.

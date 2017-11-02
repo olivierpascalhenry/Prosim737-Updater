@@ -2,42 +2,109 @@
 CHANGELOG
 =========
 
+October 25 2017, Release version 1.1.0
+======================================
+  To allow the restore system to check processes on remote computers if necessary, the credentials, if they exist, are now saved in the xml file created with the backup file.
+  
+  FIXED:
+	- if a user wants to backup all Prosim directories and one of the directories doesn't exist, the warning window appears at the wrong place.
+	- the checking of Prosim737 processes has been moved after paths check to avoid a critical exception if a path doesn't exist.
+	- the title of one window has been fixed.
+	- corrected scrollbar stylesheet in the Restore window.
+	- style has been fixed in the Changelog window.
+	- few typos have been corrected.
+	- few dummy buttons were intercepted by the 'tool_button_clicked' function.
+	- fixed an issue during the checking of Prosim737 processes.
+	- fixed an issue when selecting '-----------' in both QListWidget.
+	- Prosim737 Updater is know checking the right paths when restoring a backup.
+	- if the path to store Prosim737 updates doesn't exist, the Store button is now disabled.
+	- if the path to store backup is not valid, the buttons "Create a backup" and "Store a backup" are now disabled.
+	- if the path to store backup is not valid, and if the buttons are enabled, a warning message will ask the user to check the path.
+	- fixed the size of the window when warning that paths are not valid.
+	- if path for a Prosim737 module is empty, it won't be integrated into a backup.
+	- if no path has been entered for each Prosim737 module, it's still possible to launch an update installation, but it will generate an error. It has been fixed.
+	- fixed an error when no item is selected in the local and online QListWidget, and if the path to store updates is not valid.
+	- fixed an error when no connexion is available and Prosim737 Updater is trying to sort updates.
+	- if a user select an item in the online QListWidget and change the path or the update storing folder to a non valid path, the "Store" button is still active. It has been fixed.
+	- and inversaly, if the "Store" button was not active and no item is selected on the QlistWidget, if the path is modified to a non valid path, the state of the "Store" button remains unchanged. It has been fixed.
+	- if no path has been entered for each Prosim737 module, it's still possible to create a backup, but it will generate an error. It has been fixed.
+	- when downloading an update from the download and install window, if the download is canceled, the progress bar and text are not reseted.
+	- when unzipping an update from the download and install window, if the unpacking is canceled, the progress bar and text are not reseted.
+	- if during the installation something goes wrong (access denied error caused by a process or something else) the installation will be stopped and a message will be displayed.
+    
+  ADDED:
+	- new logging messages have been added.
+	- new exceptions have been added to handle connexion issues.
+	- if an internet connexion is available, Prosim737 Updater will check if a new version exists in its Release directory on GitHub.
+	- the name of files and directories has been added to the Store, Download, Install and Backup windows.
+	- the downloaded update package is now deleted at the end of the update process.
+	- the temp directory created to unzip the update and backup package is now deleted at the end of the process.
+	- a new window for Prosim737 Updater options has been added.
+	- the handling of a '.ini' file has been added with options for log (level and path), online update check, and process handling.
+	- if the '.ini' file doesn't exist, it is automatically created by Prosim737 Updater with default options.
+	- few new info buttons and messages have been added to the option window.
+	- the user can now cancel the download and the unpacking of a Prosim737 update.
+	- now if a download fails or is canceled, Prosim737 Updater will delete the file.
+	- an automatic update system has been added based on the github json api: it just warns the user about an existing update, and if the user click on the icon, it will download the new installer, close the Prosim737 Updater window and execute the installer.
+	- a new button to display the Prosim737 changelog.txt has been added.
+	- now Prosim737 Updater is capable of checking, killing, and relaunching Prosim737 processes if they are running during the updating process (the relaunching of processes has been disabled for now, until an elegant and robust solution is found)
+	- if the computer(s) in the credentials and the computer(s) in the different installation paths don't match, a warning window is now raised to ask for correction.
+	- the download speed is know displayed during download.
+	- it is now possible to cancel the unpacking of a backup before the installation.
+	- credentials are now saved in the xml file created with the backup file.
+	- if the credentials to connect to a remote computer are incorrect, a warning message is now displayed.
+	
+  MODIFIED:
+	- both lists presenting Prosim packages online and locally are now sorted and a separator has been introduced between beta and stable versions.
+	- '/' in all paths are automatically replaced by '\' when necessary for compatibility reasons.
+	- logging messages have been modified for a better understanding.
+	- the 'make_window_title' function has been modified for better consistency.
+	- the code to download Prosim737 updates has been modified to give the program the possibility to delete canceled or failed downloads.
+	- the code to unpack Prosim737 updates has been modified to allow the user to cancel unpacking.
+	- the retrieving of Prosim737 updates list has been moved in a QThread. This way, the UI won't freeze if the retrieving takes some time.
+	- the process to check for Prosim737 Updater update has been moved in a QThread. This way, the UI won't freeze if the retrieving takes some time.
+	- the process to check for Prosim737 Updater update has been modified to allow the user, once he has clicked on the icon, to download directly the new installer.
+	- the different windows and threads have been moved to different files, window_functions.py and thread_functions.py, for better understanding.
+	- few functions have been moved to utilities.py.
+	- during restore, credentials are now read from the backup xml file.
+
+
 April 17 2017, Release version 1.0.1
 ====================================
   FIXED:
-    - the dictionary containing credentials was read even if it was empty, generating a KeyError exception. It has been fixed.
-    - if a file has to be copied/pasted in a folder which doesn't exist, Prosim737 Updater will create it.
-    - if a user creates a credential element and doesn't enter "Computer name" and "Username", the dictionary contains keys but not values, and leads to a crash. It has been fixed.
-    - if computername or username or password is not entered, nothing is saved for the credential section.
-    - an icon has been corrected (white rectangle still visible).
+	- the dictionary containing credentials was read even if it was empty, generating a KeyError exception. It has been fixed.
+	- if a file has to be copied/pasted in a folder which doesn't exist, Prosim737 Updater will create it.
+	- if a user creates a credential element and doesn't enter "Computer name" and "Username", the dictionary contains keys but not values, and leads to a crash. It has been fixed.
+	- if computername or username or password is not entered, nothing is saved for the credential section.
+	- an icon has been corrected (white rectangle still visible).
     
   ADDED:
-    - few logging events have been added to log the list of Prosim folders and the name of local and remote computers during update.
-    - before launching a backup, Prosim737 Updater will check if paths entered by the user exist.
+	- few logging events have been added to log the list of Prosim folders and the name of local and remote computers during update.
+	- before launching a backup, Prosim737 Updater will check if paths entered by the user exist.
 
 
 April 15 2017, Release version 1.0.0
 ====================================
   ADDED:
-    - first version of the GUI.
-    - first version of the python code.
-    - added the possibility to download and store an update package.
-    - added a function to check if folders entered in GUI exist.
-    - added a function to check if Prosim modules are running.
-    - added a function to pass credentials if remote computers exist.
+	- first version of the GUI.
+	- first version of the python code.
+	- added the possibility to download and store an update package.
+	- added a function to check if folders entered in GUI exist.
+	- added a function to check if Prosim modules are running.
+	- added a function to pass credentials if remote computers exist.
     
   FIXED:
-    - fixed several bugs during the first code generation.
-    - if an old update package is not removed from the temp folder before installing a new update, it can lead to a crash. It has been fixed.
-    - if an xml file is opened, the GUI is not cleared as it should be. It has been fixed.
-    - if a path in a tab is empty, it shouldn't be added to the list containing all Prosim folders.
-    - the temp update package in the temp folder wasn't cleared at the right time.
-    - if two folders have the same name, for creating a backup, Prosim737 Updater will add a different number to their name to differentiate them.
-    - fixed a typo in the temp folder name.
+	- fixed several bugs during the first code generation.
+	- if an old update package is not removed from the temp folder before installing a new update, it can lead to a crash. It has been fixed.
+	- if an xml file is opened, the GUI is not cleared as it should be. It has been fixed.
+	- if a path in a tab is empty, it shouldn't be added to the list containing all Prosim folders.
+	- the temp update package in the temp folder wasn't cleared at the right time.
+	- if two folders have the same name, for creating a backup, Prosim737 Updater will add a different number to their name to differentiate them.
+	- fixed a typo in the temp folder name.
     
   MODIFIED:
-    - the GUI has been modified to take care of different credentials.
-    - credentials to connect to remote computers are stored in the xml file.
-    - all functions to download, unpack, copy/past, store, backup and restore are now run by a different process to avoid freezing of the GUI.
-    - if no path is entered in one or more Prosim Updater section, the corresponding xml section is now empty.
-    - Prosim737 Updater will not backup .DEM files in ProsimServer folder (as it's an external and heavy package).
+	- the GUI has been modified to take care of different credentials.
+	- credentials to connect to remote computers are stored in the xml file.
+	- all functions to download, unpack, copy/past, store, backup and restore are now run by a different process to avoid freezing of the GUI.
+	- if no path is entered in one or more Prosim Updater section, the corresponding xml section is now empty.
+	- Prosim737 Updater will not backup .DEM files in ProsimServer folder (as it's an external and heavy package).

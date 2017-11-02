@@ -146,7 +146,7 @@
             <number>0</number>
            </property>
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clic on the &lt;span style=&quot; font-weight:600; font-style:italic; color:#0000c8;&quot;&gt;Download and Install&lt;/span&gt; button to start downloading the package. Installation process will start automatically once the package is downloaded.&lt;/p&gt;&lt;p&gt;A Prosim737 package is around 45 MB. Depending on your connection, it can take some time and the GUI may appear to be unresponsive.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-style:italic; color:#c80000;&quot;&gt;Warning ! Once the download is started, the process can't be stoped until install is complete.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click on the &lt;span style=&quot; font-weight:600; font-style:italic; color:#000000;&quot;&gt;Download and Install&lt;/span&gt; button to start downloading the package. Installation process will start automatically once the package is downloaded.&lt;/p&gt;&lt;p&gt;A Prosim737 package is around 45 MB. Depending on your connection, it can take some time and the GUI may appear to be unresponsive.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-style:italic; color:#c80000;&quot;&gt;The download and unzipping can be canceled, but once the installation is started, the process can't be stopped until installation is complete.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="textFormat">
             <enum>Qt::AutoText</enum>
@@ -410,6 +410,73 @@ QToolButton:pressed {
          </property>
          <property name="text">
           <string>Cancel</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QToolButton" name="dw_quitButton">
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>27</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>27</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>FreeSans</family>
+           <pointsize>10</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+           <stylestrategy>PreferDefault</stylestrategy>
+           <kerning>true</kerning>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QToolButton {
+	border: 1px solid #acacac;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #f0f0f0, stop:1 #e5e5e5);
+}
+
+QToolButton:hover {
+	border: 1px solid #7eb4ea;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #ecf4fc, stop:1 #dcecfc);
+}
+
+QToolButton:pressed {
+	border: 1px solid #579de5;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #daecfc, stop:1 #c4e0fc);
+}</string>
+         </property>
+         <property name="text">
+          <string>Quit</string>
          </property>
         </widget>
        </item>

@@ -242,9 +242,6 @@ QScrollBar::down-arrow:vertical:pressed {
   bottom: -1px;
 }
 
-
-
-
 QScrollBar::add-line:horizontal {
   border-top: 1px solid white;
   border-left: 1px solid rgb(240,240,240);
@@ -308,8 +305,8 @@ QScrollBar::right-arrow:horizontal:pressed {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>1069</width>
-             <height>515</height>
+             <width>1064</width>
+             <height>549</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_3">
@@ -329,22 +326,6 @@ QScrollBar::right-arrow:horizontal:pressed {
               </property>
              </spacer>
             </item>
-            <item row="1" column="0">
-             <spacer name="horizontalSpacer_3">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Fixed</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
             <item row="1" column="1" rowspan="2" colspan="2">
              <layout class="QVBoxLayout" name="verticalLayout_4">
               <item>
@@ -352,8 +333,101 @@ QScrollBar::right-arrow:horizontal:pressed {
                 <property name="verticalSpacing">
                  <number>20</number>
                 </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="home_lb_1">
+                <item row="0" column="4">
+                 <widget class="QToolButton" name="info_bt_1">
+                  <property name="minimumSize">
+                   <size>
+                    <width>27</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>27</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>icons/info_icon.svg</normaloff>icons/info_icon.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>23</width>
+                    <height>23</height>
+                   </size>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLineEdit" name="home_ln_1">
+                  <property name="minimumSize">
+                   <size>
+                    <width>600</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>600</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>FreeSans</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                    <stylestrategy>PreferAntialias</stylestrategy>
+                    <kerning>true</kerning>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit {
+	border-radius: 3px;
+   padding: 1px 4px 1px 4px;
+	background-color:  rgb(240, 240, 240);
+}</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="5">
+                 <spacer name="horizontalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="home_lb_2">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -377,12 +451,174 @@ QScrollBar::right-arrow:horizontal:pressed {
                    </font>
                   </property>
                   <property name="text">
-                   <string>Prosim737 update package location:</string>
+                   <string>Prosim737 backups location:</string>
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="1">
-                 <widget class="QLineEdit" name="home_ln_1">
+                <item row="2" column="2">
+                 <widget class="QToolButton" name="home_bt_2">
+                  <property name="maximumSize">
+                   <size>
+                    <width>27</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>icons/open_popup_icon.svg</normaloff>icons/open_popup_icon.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>23</width>
+                    <height>23</height>
+                   </size>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QToolButton" name="none_bt_2">
+                  <property name="maximumSize">
+                   <size>
+                    <width>27</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>icons/none_icon.png</normaloff>icons/none_icon.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>23</width>
+                    <height>23</height>
+                   </size>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0" colspan="2">
+                 <widget class="QCheckBox" name="home_ck_1">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>FreeSans</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                    <stylestrategy>PreferAntialias</stylestrategy>
+                    <kerning>true</kerning>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Check for Prosim737 updates online ?</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="5">
+                 <spacer name="horizontalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="2" column="4">
+                 <widget class="QToolButton" name="info_bt_2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>27</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>27</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>icons/info_icon.svg</normaloff>icons/info_icon.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>23</width>
+                    <height>23</height>
+                   </size>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QLineEdit" name="home_ln_2">
                   <property name="minimumSize">
                    <size>
                     <width>600</width>
@@ -493,59 +729,8 @@ QToolButton:flat {
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="4">
-                 <widget class="QToolButton" name="info_bt_1">
-                  <property name="maximumSize">
-                   <size>
-                    <width>27</width>
-                    <height>27</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QToolButton {
-	border: 1px solid transparent;
-	background-color: transparent;
-	width: 27px;
-	height: 27px;
-}
-
-QToolButton:flat {
-	border: none;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>icons/info_icon.svg</normaloff>icons/info_icon.svg</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>23</width>
-                    <height>23</height>
-                   </size>
-                  </property>
-                  <property name="autoRaise">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="5">
-                 <spacer name="horizontalSpacer">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item row="1" column="0" colspan="2">
-                 <widget class="QCheckBox" name="home_ck_1">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="home_lb_1">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -569,201 +754,9 @@ QToolButton:flat {
                    </font>
                   </property>
                   <property name="text">
-                   <string>Check Prosim737 update availability online ?</string>
+                   <string>Prosim737 updates location:</string>
                   </property>
                  </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QLabel" name="home_lb_2">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>27</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>27</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>FreeSans</family>
-                    <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                    <stylestrategy>PreferAntialias</stylestrategy>
-                    <kerning>true</kerning>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Prosim737 backup location:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="1">
-                 <widget class="QLineEdit" name="home_ln_2">
-                  <property name="minimumSize">
-                   <size>
-                    <width>600</width>
-                    <height>27</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>600</width>
-                    <height>27</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>FreeSans</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                    <stylestrategy>PreferAntialias</stylestrategy>
-                    <kerning>true</kerning>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QLineEdit {
-	border-radius: 3px;
-   padding: 1px 4px 1px 4px;
-	background-color:  rgb(240, 240, 240);
-}</string>
-                  </property>
-                  <property name="frame">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="2">
-                 <widget class="QToolButton" name="home_bt_2">
-                  <property name="maximumSize">
-                   <size>
-                    <width>27</width>
-                    <height>27</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QToolButton {
-	border: 1px solid transparent;
-	background-color: transparent;
-	width: 27px;
-	height: 27px;
-}
-
-QToolButton:flat {
-	border: none;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>icons/open_popup_icon.svg</normaloff>icons/open_popup_icon.svg</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>23</width>
-                    <height>23</height>
-                   </size>
-                  </property>
-                  <property name="autoRaise">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="3">
-                 <widget class="QToolButton" name="none_bt_2">
-                  <property name="maximumSize">
-                   <size>
-                    <width>27</width>
-                    <height>27</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QToolButton {
-	border: 1px solid transparent;
-	background-color: transparent;
-	width: 27px;
-	height: 27px;
-}
-
-QToolButton:flat {
-	border: none;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>icons/none_icon.png</normaloff>icons/none_icon.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>23</width>
-                    <height>23</height>
-                   </size>
-                  </property>
-                  <property name="autoRaise">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="4">
-                 <widget class="QToolButton" name="info_bt_2">
-                  <property name="maximumSize">
-                   <size>
-                    <width>27</width>
-                    <height>27</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QToolButton {
-	border: 1px solid transparent;
-	background-color: transparent;
-	width: 27px;
-	height: 27px;
-}
-
-QToolButton:flat {
-	border: none;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>icons/info_icon.svg</normaloff>icons/info_icon.svg</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>23</width>
-                    <height>23</height>
-                   </size>
-                  </property>
-                  <property name="autoRaise">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="5">
-                 <spacer name="horizontalSpacer_2">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
                 </item>
                </layout>
               </item>
@@ -778,7 +771,7 @@ QToolButton:flat {
                 <property name="sizeHint" stdset="0">
                  <size>
                   <width>20</width>
-                  <height>10</height>
+                  <height>13</height>
                  </size>
                 </property>
                </spacer>
@@ -800,6 +793,9 @@ QToolButton:flat {
                 </item>
                 <item>
                  <widget class="QToolButton" name="home_create_backup">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="minimumSize">
                    <size>
                     <width>150</width>
@@ -808,7 +804,7 @@ QToolButton:flat {
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>16777215</width>
+                    <width>150</width>
                     <height>35</height>
                    </size>
                   </property>
@@ -828,6 +824,10 @@ QToolButton:flat {
 	border-radius: 1px;
 	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
 									stop:0 #f0f0f0, stop:1 #e5e5e5);
+}
+
+QToolButton:disabled {
+	background-color:  rgb(200,200,200);
 }
 
 QToolButton:hover {
@@ -867,6 +867,9 @@ QToolButton:pressed {
                 </item>
                 <item>
                  <widget class="QToolButton" name="home_restore_backup">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="minimumSize">
                    <size>
                     <width>150</width>
@@ -875,7 +878,7 @@ QToolButton:pressed {
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>16777215</width>
+                    <width>150</width>
                     <height>35</height>
                    </size>
                   </property>
@@ -895,6 +898,10 @@ QToolButton:pressed {
 	border-radius: 1px;
 	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
 									stop:0 #f0f0f0, stop:1 #e5e5e5);
+}
+
+QToolButton:disabled {
+	background-color:  rgb(200,200,200);
 }
 
 QToolButton:hover {
@@ -934,6 +941,12 @@ QToolButton:pressed {
                 </item>
                 <item>
                  <widget class="QToolButton" name="info_bt_3">
+                  <property name="minimumSize">
+                   <size>
+                    <width>27</width>
+                    <height>27</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
                     <width>27</width>
@@ -996,7 +1009,7 @@ QToolButton:flat {
                 <property name="sizeHint" stdset="0">
                  <size>
                   <width>20</width>
-                  <height>10</height>
+                  <height>13</height>
                  </size>
                 </property>
                </spacer>
@@ -1019,7 +1032,7 @@ QToolButton:flat {
                 <property name="sizeHint" stdset="0">
                  <size>
                   <width>20</width>
-                  <height>10</height>
+                  <height>13</height>
                  </size>
                 </property>
                </spacer>
@@ -1030,6 +1043,9 @@ QToolButton:flat {
                  <layout class="QVBoxLayout" name="verticalLayout">
                   <item>
                    <widget class="QLabel" name="home_lb_3">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -1053,12 +1069,15 @@ QToolButton:flat {
                      </font>
                     </property>
                     <property name="text">
-                     <string>List of Prosim737 update package, available localy:</string>
+                     <string>List of Prosim737 updates, available locally:</string>
                     </property>
                    </widget>
                   </item>
                   <item>
                    <widget class="QListWidget" name="listWidget">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="minimumSize">
                      <size>
                       <width>400</width>
@@ -1076,6 +1095,11 @@ QToolButton:flat {
 	border-radius: 3px;
 	padding: 1px 4px 1px 4px;
 	background-color:  rgb(240, 240, 240);
+    outline: 0;
+}
+
+QListWidget:disabled {
+	background-color:  rgb(200,200,200);
 }
 
 QListView::item:selected {
@@ -1121,163 +1145,6 @@ QListView::item:hover {
                 <item>
                  <layout class="QVBoxLayout" name="verticalLayout_3">
                   <item>
-                   <spacer name="verticalSpacer_5">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QToolButton" name="home_update">
-                    <property name="minimumSize">
-                     <size>
-                      <width>150</width>
-                      <height>35</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>27</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>FreeSans</family>
-                      <pointsize>10</pointsize>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                      <stylestrategy>PreferAntialias</stylestrategy>
-                      <kerning>true</kerning>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QToolButton {
-	border: 1px solid #acacac;
-	border-radius: 1px;
-	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-									stop:0 #f0f0f0, stop:1 #e5e5e5);
-}
-
-QToolButton:hover {
-	border: 1px solid #7eb4ea;
-	border-radius: 1px;
-	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-									stop:0 #ecf4fc, stop:1 #dcecfc);
-}
-
-QToolButton:pressed {
-	border: 1px solid #579de5;
-	border-radius: 1px;
-	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-									stop:0 #daecfc, stop:1 #c4e0fc);
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Update</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="verticalSpacer_27">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeType">
-                     <enum>QSizePolicy::Fixed</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QToolButton" name="home_store">
-                    <property name="minimumSize">
-                     <size>
-                      <width>150</width>
-                      <height>35</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>27</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>FreeSans</family>
-                      <pointsize>10</pointsize>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                      <stylestrategy>PreferAntialias</stylestrategy>
-                      <kerning>true</kerning>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QToolButton {
-	border: 1px solid #acacac;
-	border-radius: 1px;
-	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-									stop:0 #f0f0f0, stop:1 #e5e5e5);
-}
-
-QToolButton:hover {
-	border: 1px solid #7eb4ea;
-	border-radius: 1px;
-	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-									stop:0 #ecf4fc, stop:1 #dcecfc);
-}
-
-QToolButton:pressed {
-	border: 1px solid #579de5;
-	border-radius: 1px;
-	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-									stop:0 #daecfc, stop:1 #c4e0fc);
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Store</string>
-                    </property>
-                    <property name="icon">
-                     <iconset>
-                      <normaloff>icons/double-left-chevron.svg</normaloff>icons/double-left-chevron.svg</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>20</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="verticalSpacer_4">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeType">
-                     <enum>QSizePolicy::Fixed</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>10</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
                    <layout class="QHBoxLayout" name="horizontalLayout_2">
                     <item>
                      <spacer name="horizontalSpacer_8">
@@ -1294,6 +1161,12 @@ QToolButton:pressed {
                     </item>
                     <item>
                      <widget class="QToolButton" name="info_bt_4">
+                      <property name="minimumSize">
+                       <size>
+                        <width>27</width>
+                        <height>27</height>
+                       </size>
+                      </property>
                       <property name="maximumSize">
                        <size>
                         <width>27</width>
@@ -1344,6 +1217,235 @@ QToolButton:flat {
                      </spacer>
                     </item>
                    </layout>
+                  </item>
+                  <item>
+                   <spacer name="verticalSpacer_5">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QToolButton" name="home_update">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>150</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>FreeSans</family>
+                      <pointsize>10</pointsize>
+                      <weight>50</weight>
+                      <bold>false</bold>
+                      <stylestrategy>PreferAntialias</stylestrategy>
+                      <kerning>true</kerning>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QToolButton {
+	border: 1px solid #acacac;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #f0f0f0, stop:1 #e5e5e5);
+}
+
+QToolButton:disabled {
+	background-color:  rgb(200,200,200);
+}
+
+QToolButton:hover {
+	border: 1px solid #7eb4ea;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #ecf4fc, stop:1 #dcecfc);
+}
+
+QToolButton:pressed {
+	border: 1px solid #579de5;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #daecfc, stop:1 #c4e0fc);
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>Update</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="verticalSpacer_27">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Fixed</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QToolButton" name="home_store">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>150</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>FreeSans</family>
+                      <pointsize>10</pointsize>
+                      <weight>50</weight>
+                      <bold>false</bold>
+                      <stylestrategy>PreferAntialias</stylestrategy>
+                      <kerning>true</kerning>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QToolButton {
+	border: 1px solid #acacac;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #f0f0f0, stop:1 #e5e5e5);
+}
+
+QToolButton:disabled {
+	background-color:  rgb(200,200,200);
+}
+
+QToolButton:hover {
+	border: 1px solid #7eb4ea;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #ecf4fc, stop:1 #dcecfc);
+}
+
+QToolButton:pressed {
+	border: 1px solid #579de5;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #daecfc, stop:1 #c4e0fc);
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>Store</string>
+                    </property>
+                    <property name="icon">
+                     <iconset>
+                      <normaloff>icons/double-left-chevron.svg</normaloff>icons/double-left-chevron.svg</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>20</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="verticalSpacer_4">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Fixed</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QToolButton" name="home_changelog">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>150</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>35</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>FreeSans</family>
+                      <pointsize>10</pointsize>
+                      <weight>50</weight>
+                      <bold>false</bold>
+                      <stylestrategy>PreferAntialias</stylestrategy>
+                      <kerning>true</kerning>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QToolButton {
+	border: 1px solid #acacac;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #f0f0f0, stop:1 #e5e5e5);
+}
+
+QToolButton:disabled {
+	background-color:  rgb(200,200,200);
+}
+
+QToolButton:hover {
+	border: 1px solid #7eb4ea;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #ecf4fc, stop:1 #dcecfc);
+}
+
+QToolButton:pressed {
+	border: 1px solid #579de5;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #daecfc, stop:1 #c4e0fc);
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>Changelog</string>
+                    </property>
+                   </widget>
                   </item>
                   <item>
                    <spacer name="verticalSpacer_6">
@@ -1403,7 +1505,7 @@ QToolButton:flat {
                      </font>
                     </property>
                     <property name="text">
-                     <string>List of Prosim737 update package, available online:</string>
+                     <string>List of Prosim737 updates, available online:</string>
                     </property>
                    </widget>
                   </item>
@@ -1429,6 +1531,7 @@ QToolButton:flat {
 	border-radius: 3px;
 	padding: 1px 4px 1px 4px;
 	background-color:  rgb(240, 240, 240);
+    outline: 0;
 }
 
 QListWidget:disabled {
@@ -1486,6 +1589,22 @@ QListView::item:hover {
              <spacer name="verticalSpacer_26">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="1" column="0">
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
               <property name="sizeType">
                <enum>QSizePolicy::Fixed</enum>
@@ -4714,7 +4833,7 @@ QToolButton:pressed {
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="tabWidgetPage8">
        <attribute name="title">
         <string>Credentials</string>
        </attribute>
@@ -4943,7 +5062,7 @@ QScrollBar::right-arrow:horizontal:pressed {
                  </font>
                 </property>
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;Before installing an update or restoring a backup, Prosim737 Updater can check if an instance of a Prosim737 module is currently running on a remote computer. It is intended to avoid the update of a file if a process is still running and use it. To access the processes list on a remote computer, Prosim737 Updater needs to pass the credentials corresponding to the user logged in the remote computer. You can enter here the remote &lt;span style=&quot; font-weight:600; color:#0000c8;&quot;&gt;full computer name&lt;/span&gt; or the remote &lt;span style=&quot; font-weight:600; color:#0000c8;&quot;&gt;local IP address&lt;/span&gt; (the one which is used in a module update path), the &lt;span style=&quot; font-weight:600; color:#0000c8;&quot;&gt;username&lt;/span&gt; and &lt;span style=&quot; font-weight:600; color:#0000c8;&quot;&gt;password&lt;/span&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#c80000;&quot;&gt;All credentials are stored in the xml file dedicated to options, and can be read by someone who have access to the xml file. &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;The use of that function is not mandatory and if no credentials are entered, Prosim737 Updater will not check processes.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;Before installing an update or restoring a backup, Prosim737 Updater can check if an instance of a Prosim737 module is currently running on the local or a remote computer. It is intended to avoid the update of a file if a process is still running and using it. To access the processes list on a remote computer, Prosim737 Updater needs to pass the credentials corresponding to the user logged in the remote computer. You can enter here the remote &lt;span style=&quot; font-weight:600; color:#0000c8;&quot;&gt;full computer name&lt;/span&gt; or the remote &lt;span style=&quot; font-weight:600; color:#0000c8;&quot;&gt;local IP address&lt;/span&gt; (the one which is used in a module update path), the &lt;span style=&quot; font-weight:600; color:#0000c8;&quot;&gt;username&lt;/span&gt; and &lt;span style=&quot; font-weight:600; color:#0000c8;&quot;&gt;password&lt;/span&gt;.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#c80000;&quot;&gt;All credentials are stored in the xml file dedicated to options and in the backup files. They can be read by someone who has access to the xml file and/or to the backups. No credentials are stored in the log file.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;The use of that function is not mandatory and if no credentials are entered, Prosim737 Updater will not check processes.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="wordWrap">
                  <bool>true</bool>
@@ -5198,6 +5317,9 @@ QToolButton:flat {
    <addaction name="actionSeparator2"/>
    <addaction name="actionAbout"/>
    <addaction name="actionChangelog"/>
+   <addaction name="actionSeparator3"/>
+   <addaction name="actionOptions"/>
+   <addaction name="actionUpdate"/>
   </widget>
   <action name="actionSave">
    <property name="icon">
@@ -5331,6 +5453,48 @@ QToolButton:flat {
    </property>
    <property name="toolTip">
     <string>separator2</string>
+   </property>
+  </action>
+  <action name="actionSeparator3">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/separator_icon.png</normaloff>icons/separator_icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>separator3</string>
+   </property>
+   <property name="toolTip">
+    <string>separator3</string>
+   </property>
+  </action>
+  <action name="actionUpdate">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/prosim_update_off_icon.svg</normaloff>icons/prosim_update_off_icon.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Update</string>
+   </property>
+   <property name="toolTip">
+    <string>No update available !</string>
+   </property>
+  </action>
+  <action name="actionOptions">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/option_icon.svg</normaloff>icons/option_icon.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Options...</string>
+   </property>
+   <property name="toolTip">
+    <string>Click to modify Prosim737 Updater options</string>
    </property>
   </action>
  </widget>

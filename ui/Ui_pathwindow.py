@@ -58,7 +58,7 @@ class Ui_pathWindow(object):
         sizePolicy.setHeightForWidth(self.iw_label_1.sizePolicy().hasHeightForWidth())
         self.iw_label_1.setSizePolicy(sizePolicy)
         self.iw_label_1.setMinimumSize(QtCore.QSize(0, 27))
-        self.iw_label_1.setMaximumSize(QtCore.QSize(16777215, 27))
+        self.iw_label_1.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
@@ -96,7 +96,7 @@ class Ui_pathWindow(object):
         sizePolicy.setHeightForWidth(self.iw_label_3.sizePolicy().hasHeightForWidth())
         self.iw_label_3.setSizePolicy(sizePolicy)
         self.iw_label_3.setMinimumSize(QtCore.QSize(0, 27))
-        self.iw_label_3.setMaximumSize(QtCore.QSize(16777215, 27))
+        self.iw_label_3.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
@@ -116,7 +116,7 @@ class Ui_pathWindow(object):
         self.verticalLayout_3.addWidget(self.iw_label_3)
         self.horizontalLayout_3.addLayout(self.verticalLayout_3)
         self.verticalLayout_4.addLayout(self.horizontalLayout_3)
-        spacerItem5 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        spacerItem5 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_4.addItem(spacerItem5)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
@@ -166,7 +166,7 @@ class Ui_pathWindow(object):
     def retranslateUi(self, pathWindow):
         _translate = QtCore.QCoreApplication.translate
         pathWindow.setWindowTitle(_translate("pathWindow", "Warning"))
-        self.iw_label_1.setText(_translate("pathWindow", "Prosim Updater can\'t find the following folders:"))
+        self.iw_label_1.setText(_translate("pathWindow", "Prosim737 Updater can\'t find the following folders:"))
         self.iw_label_3.setText(_translate("pathWindow", "Please, make sure that they exist before installing Prosim737."))
         self.iw_okButton.setText(_translate("pathWindow", "Ok"))
 

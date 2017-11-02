@@ -68,6 +68,6 @@ class Ui_compressWindow(object):
 
     def retranslateUi(self, compressWindow):
         _translate = QtCore.QCoreApplication.translate
-        compressWindow.setWindowTitle(_translate("compressWindow", "Compress"))
+        compressWindow.setWindowTitle(_translate("compressWindow", "Compress Prosim737 Installation"))
         self.label.setText(_translate("compressWindow", "Compressing..."))
 

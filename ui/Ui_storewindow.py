@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_storeWindow(object):
     def setupUi(self, storeWindow):
         storeWindow.setObjectName("storeWindow")
-        storeWindow.resize(500, 95)
+        storeWindow.resize(500, 140)
         storeWindow.setMinimumSize(QtCore.QSize(500, 95))
         storeWindow.setMaximumSize(QtCore.QSize(500, 16777215))
         font = QtGui.QFont()
@@ -61,6 +61,48 @@ class Ui_storeWindow(object):
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem1)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout.addItem(spacerItem2)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem3)
+        self.button = QtWidgets.QToolButton(storeWindow)
+        self.button.setMinimumSize(QtCore.QSize(90, 27))
+        self.button.setMaximumSize(QtCore.QSize(90, 27))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setKerning(True)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.button.setFont(font)
+        self.button.setStyleSheet("QToolButton {\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #f0f0f0, stop:1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QToolButton:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #ecf4fc, stop:1 #dcecfc);\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    border: 1px solid #579de5;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #daecfc, stop:1 #c4e0fc);\n"
+"}")
+        self.button.setObjectName("button")
+        self.horizontalLayout.addWidget(self.button)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem4)
+        self.verticalLayout.addLayout(self.horizontalLayout)
         self.gridLayout.addLayout(self.verticalLayout, 0, 0, 1, 1)
 
         self.retranslateUi(storeWindow)
@@ -70,4 +112,5 @@ class Ui_storeWindow(object):
         _translate = QtCore.QCoreApplication.translate
         storeWindow.setWindowTitle(_translate("storeWindow", "Download"))
         self.label.setText(_translate("storeWindow", "Downloading..."))
+        self.button.setText(_translate("storeWindow", "Cancel"))
 

@@ -1,5 +1,0 @@
-documentation
-fonts
-functions
-icons
-ui

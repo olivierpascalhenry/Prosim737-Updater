@@ -1,4 +1,4 @@
-Version: Prosim737 Updater 1.0.1
+Version: Prosim737 Updater 1.1.0
 
 Project Overview:
 

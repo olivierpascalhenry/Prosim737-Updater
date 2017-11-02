@@ -188,7 +188,7 @@ class Ui_presaveWindow(object):
 
     def retranslateUi(self, presaveWindow):
         _translate = QtCore.QCoreApplication.translate
-        presaveWindow.setWindowTitle(_translate("presaveWindow", "EUFAR Metadata Creator"))
+        presaveWindow.setWindowTitle(_translate("presaveWindow", "Prosim737 Updater"))
         self.iw_label_1.setText(_translate("presaveWindow", "<html><head/><body><p align=\"justify\">The actual document has been modified. Changes will be lost if the document is not saved.<br/></p><p><span style=\" font-weight:600;\">Do you want to save your changes ?</span></p></body></html>"))
         self.iw_nosaveButton.setText(_translate("presaveWindow", "Close without saving"))
         self.iw_cancelButton.setText(_translate("presaveWindow", "Cancel"))

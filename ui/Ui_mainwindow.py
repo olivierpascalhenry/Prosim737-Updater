@@ -210,9 +210,6 @@ class Ui_MainWindow(object):
 "  bottom: -1px;\n"
 "}\n"
 "\n"
-"\n"
-"\n"
-"\n"
 "QScrollBar::add-line:horizontal {\n"
 "  border-top: 1px solid white;\n"
 "  border-left: 1px solid rgb(240,240,240);\n"
@@ -268,33 +265,39 @@ class Ui_MainWindow(object):
         self.home_scroll_area.setWidgetResizable(True)
         self.home_scroll_area.setObjectName("home_scroll_area")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1069, 515))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1064, 549))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_3.setObjectName("gridLayout_3")
         spacerItem = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         self.gridLayout_3.addItem(spacerItem, 0, 1, 1, 1)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_3.addItem(spacerItem1, 1, 0, 1, 1)
         self.verticalLayout_4 = QtWidgets.QVBoxLayout()
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.gridLayout = QtWidgets.QGridLayout()
         self.gridLayout.setVerticalSpacing(20)
         self.gridLayout.setObjectName("gridLayout")
-        self.home_lb_1 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.home_lb_1.setMinimumSize(QtCore.QSize(0, 27))
-        self.home_lb_1.setMaximumSize(QtCore.QSize(16777215, 27))
-        font = QtGui.QFont()
-        font.setFamily("fonts/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setKerning(True)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.home_lb_1.setFont(font)
-        self.home_lb_1.setObjectName("home_lb_1")
-        self.gridLayout.addWidget(self.home_lb_1, 0, 0, 1, 1)
+        self.info_bt_1 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.info_bt_1.setMinimumSize(QtCore.QSize(27, 27))
+        self.info_bt_1.setMaximumSize(QtCore.QSize(27, 27))
+        self.info_bt_1.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
+        self.info_bt_1.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("icons/info_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.info_bt_1.setIcon(icon1)
+        self.info_bt_1.setIconSize(QtCore.QSize(23, 23))
+        self.info_bt_1.setAutoRaise(False)
+        self.info_bt_1.setObjectName("info_bt_1")
+        self.gridLayout.addWidget(self.info_bt_1, 0, 4, 1, 1)
         self.home_ln_1 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.home_ln_1.setMinimumSize(QtCore.QSize(600, 27))
         self.home_ln_1.setMaximumSize(QtCore.QSize(600, 27))
@@ -314,81 +317,8 @@ class Ui_MainWindow(object):
         self.home_ln_1.setFrame(False)
         self.home_ln_1.setObjectName("home_ln_1")
         self.gridLayout.addWidget(self.home_ln_1, 0, 1, 1, 1)
-        self.home_bt_1 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
-        self.home_bt_1.setMaximumSize(QtCore.QSize(27, 27))
-        self.home_bt_1.setStyleSheet("QToolButton {\n"
-"    border: 1px solid transparent;\n"
-"    background-color: transparent;\n"
-"    width: 27px;\n"
-"    height: 27px;\n"
-"}\n"
-"\n"
-"QToolButton:flat {\n"
-"    border: none;\n"
-"}")
-        self.home_bt_1.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("icons/open_popup_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.home_bt_1.setIcon(icon1)
-        self.home_bt_1.setIconSize(QtCore.QSize(23, 23))
-        self.home_bt_1.setAutoRaise(False)
-        self.home_bt_1.setObjectName("home_bt_1")
-        self.gridLayout.addWidget(self.home_bt_1, 0, 2, 1, 1)
-        self.none_bt_1 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
-        self.none_bt_1.setMaximumSize(QtCore.QSize(27, 27))
-        self.none_bt_1.setStyleSheet("QToolButton {\n"
-"    border: 1px solid transparent;\n"
-"    background-color: transparent;\n"
-"    width: 27px;\n"
-"    height: 27px;\n"
-"}\n"
-"\n"
-"QToolButton:flat {\n"
-"    border: none;\n"
-"}")
-        self.none_bt_1.setText("")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("icons/none_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.none_bt_1.setIcon(icon2)
-        self.none_bt_1.setIconSize(QtCore.QSize(23, 23))
-        self.none_bt_1.setAutoRaise(False)
-        self.none_bt_1.setObjectName("none_bt_1")
-        self.gridLayout.addWidget(self.none_bt_1, 0, 3, 1, 1)
-        self.info_bt_1 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
-        self.info_bt_1.setMaximumSize(QtCore.QSize(27, 27))
-        self.info_bt_1.setStyleSheet("QToolButton {\n"
-"    border: 1px solid transparent;\n"
-"    background-color: transparent;\n"
-"    width: 27px;\n"
-"    height: 27px;\n"
-"}\n"
-"\n"
-"QToolButton:flat {\n"
-"    border: none;\n"
-"}")
-        self.info_bt_1.setText("")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("icons/info_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.info_bt_1.setIcon(icon3)
-        self.info_bt_1.setIconSize(QtCore.QSize(23, 23))
-        self.info_bt_1.setAutoRaise(False)
-        self.info_bt_1.setObjectName("info_bt_1")
-        self.gridLayout.addWidget(self.info_bt_1, 0, 4, 1, 1)
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem2, 0, 5, 1, 1)
-        self.home_ck_1 = QtWidgets.QCheckBox(self.scrollAreaWidgetContents)
-        self.home_ck_1.setMinimumSize(QtCore.QSize(0, 27))
-        self.home_ck_1.setMaximumSize(QtCore.QSize(16777215, 27))
-        font = QtGui.QFont()
-        font.setFamily("fonts/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setKerning(True)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.home_ck_1.setFont(font)
-        self.home_ck_1.setObjectName("home_ck_1")
-        self.gridLayout.addWidget(self.home_ck_1, 1, 0, 1, 2)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem1, 0, 5, 1, 1)
         self.home_lb_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.home_lb_2.setMinimumSize(QtCore.QSize(0, 27))
         self.home_lb_2.setMaximumSize(QtCore.QSize(16777215, 27))
@@ -402,6 +332,80 @@ class Ui_MainWindow(object):
         self.home_lb_2.setFont(font)
         self.home_lb_2.setObjectName("home_lb_2")
         self.gridLayout.addWidget(self.home_lb_2, 2, 0, 1, 1)
+        self.home_bt_2 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.home_bt_2.setMaximumSize(QtCore.QSize(27, 27))
+        self.home_bt_2.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
+        self.home_bt_2.setText("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("icons/open_popup_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.home_bt_2.setIcon(icon2)
+        self.home_bt_2.setIconSize(QtCore.QSize(23, 23))
+        self.home_bt_2.setAutoRaise(False)
+        self.home_bt_2.setObjectName("home_bt_2")
+        self.gridLayout.addWidget(self.home_bt_2, 2, 2, 1, 1)
+        self.none_bt_2 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.none_bt_2.setMaximumSize(QtCore.QSize(27, 27))
+        self.none_bt_2.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
+        self.none_bt_2.setText("")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("icons/none_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.none_bt_2.setIcon(icon3)
+        self.none_bt_2.setIconSize(QtCore.QSize(23, 23))
+        self.none_bt_2.setAutoRaise(False)
+        self.none_bt_2.setObjectName("none_bt_2")
+        self.gridLayout.addWidget(self.none_bt_2, 2, 3, 1, 1)
+        self.home_ck_1 = QtWidgets.QCheckBox(self.scrollAreaWidgetContents)
+        self.home_ck_1.setMinimumSize(QtCore.QSize(0, 27))
+        self.home_ck_1.setMaximumSize(QtCore.QSize(16777215, 27))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setKerning(True)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.home_ck_1.setFont(font)
+        self.home_ck_1.setObjectName("home_ck_1")
+        self.gridLayout.addWidget(self.home_ck_1, 1, 0, 1, 2)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem2, 2, 5, 1, 1)
+        self.info_bt_2 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.info_bt_2.setMinimumSize(QtCore.QSize(27, 27))
+        self.info_bt_2.setMaximumSize(QtCore.QSize(27, 27))
+        self.info_bt_2.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
+        self.info_bt_2.setText("")
+        self.info_bt_2.setIcon(icon1)
+        self.info_bt_2.setIconSize(QtCore.QSize(23, 23))
+        self.info_bt_2.setAutoRaise(False)
+        self.info_bt_2.setObjectName("info_bt_2")
+        self.gridLayout.addWidget(self.info_bt_2, 2, 4, 1, 1)
         self.home_ln_2 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.home_ln_2.setMinimumSize(QtCore.QSize(600, 27))
         self.home_ln_2.setMaximumSize(QtCore.QSize(600, 27))
@@ -421,9 +425,9 @@ class Ui_MainWindow(object):
         self.home_ln_2.setFrame(False)
         self.home_ln_2.setObjectName("home_ln_2")
         self.gridLayout.addWidget(self.home_ln_2, 2, 1, 1, 1)
-        self.home_bt_2 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
-        self.home_bt_2.setMaximumSize(QtCore.QSize(27, 27))
-        self.home_bt_2.setStyleSheet("QToolButton {\n"
+        self.home_bt_1 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.home_bt_1.setMaximumSize(QtCore.QSize(27, 27))
+        self.home_bt_1.setStyleSheet("QToolButton {\n"
 "    border: 1px solid transparent;\n"
 "    background-color: transparent;\n"
 "    width: 27px;\n"
@@ -433,15 +437,15 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.home_bt_2.setText("")
-        self.home_bt_2.setIcon(icon1)
-        self.home_bt_2.setIconSize(QtCore.QSize(23, 23))
-        self.home_bt_2.setAutoRaise(False)
-        self.home_bt_2.setObjectName("home_bt_2")
-        self.gridLayout.addWidget(self.home_bt_2, 2, 2, 1, 1)
-        self.none_bt_2 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
-        self.none_bt_2.setMaximumSize(QtCore.QSize(27, 27))
-        self.none_bt_2.setStyleSheet("QToolButton {\n"
+        self.home_bt_1.setText("")
+        self.home_bt_1.setIcon(icon2)
+        self.home_bt_1.setIconSize(QtCore.QSize(23, 23))
+        self.home_bt_1.setAutoRaise(False)
+        self.home_bt_1.setObjectName("home_bt_1")
+        self.gridLayout.addWidget(self.home_bt_1, 0, 2, 1, 1)
+        self.none_bt_1 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.none_bt_1.setMaximumSize(QtCore.QSize(27, 27))
+        self.none_bt_1.setStyleSheet("QToolButton {\n"
 "    border: 1px solid transparent;\n"
 "    background-color: transparent;\n"
 "    width: 27px;\n"
@@ -451,42 +455,36 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.none_bt_2.setText("")
-        self.none_bt_2.setIcon(icon2)
-        self.none_bt_2.setIconSize(QtCore.QSize(23, 23))
-        self.none_bt_2.setAutoRaise(False)
-        self.none_bt_2.setObjectName("none_bt_2")
-        self.gridLayout.addWidget(self.none_bt_2, 2, 3, 1, 1)
-        self.info_bt_2 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
-        self.info_bt_2.setMaximumSize(QtCore.QSize(27, 27))
-        self.info_bt_2.setStyleSheet("QToolButton {\n"
-"    border: 1px solid transparent;\n"
-"    background-color: transparent;\n"
-"    width: 27px;\n"
-"    height: 27px;\n"
-"}\n"
-"\n"
-"QToolButton:flat {\n"
-"    border: none;\n"
-"}")
-        self.info_bt_2.setText("")
-        self.info_bt_2.setIcon(icon3)
-        self.info_bt_2.setIconSize(QtCore.QSize(23, 23))
-        self.info_bt_2.setAutoRaise(False)
-        self.info_bt_2.setObjectName("info_bt_2")
-        self.gridLayout.addWidget(self.info_bt_2, 2, 4, 1, 1)
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem3, 2, 5, 1, 1)
+        self.none_bt_1.setText("")
+        self.none_bt_1.setIcon(icon3)
+        self.none_bt_1.setIconSize(QtCore.QSize(23, 23))
+        self.none_bt_1.setAutoRaise(False)
+        self.none_bt_1.setObjectName("none_bt_1")
+        self.gridLayout.addWidget(self.none_bt_1, 0, 3, 1, 1)
+        self.home_lb_1 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.home_lb_1.setMinimumSize(QtCore.QSize(0, 27))
+        self.home_lb_1.setMaximumSize(QtCore.QSize(16777215, 27))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setKerning(True)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.home_lb_1.setFont(font)
+        self.home_lb_1.setObjectName("home_lb_1")
+        self.gridLayout.addWidget(self.home_lb_1, 0, 0, 1, 1)
         self.verticalLayout_4.addLayout(self.gridLayout)
-        spacerItem4 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_4.addItem(spacerItem4)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_4.addItem(spacerItem3)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem5)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem4)
         self.home_create_backup = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.home_create_backup.setEnabled(False)
         self.home_create_backup.setMinimumSize(QtCore.QSize(150, 35))
-        self.home_create_backup.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.home_create_backup.setMaximumSize(QtCore.QSize(150, 35))
         font = QtGui.QFont()
         font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
@@ -500,6 +498,10 @@ class Ui_MainWindow(object):
 "    border-radius: 1px;\n"
 "    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
 "                                    stop:0 #f0f0f0, stop:1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QToolButton:disabled {\n"
+"    background-color:  rgb(200,200,200);\n"
 "}\n"
 "\n"
 "QToolButton:hover {\n"
@@ -517,11 +519,12 @@ class Ui_MainWindow(object):
 "}")
         self.home_create_backup.setObjectName("home_create_backup")
         self.horizontalLayout.addWidget(self.home_create_backup)
-        spacerItem6 = QtWidgets.QSpacerItem(80, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem6)
+        spacerItem5 = QtWidgets.QSpacerItem(80, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem5)
         self.home_restore_backup = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.home_restore_backup.setEnabled(False)
         self.home_restore_backup.setMinimumSize(QtCore.QSize(150, 35))
-        self.home_restore_backup.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.home_restore_backup.setMaximumSize(QtCore.QSize(150, 35))
         font = QtGui.QFont()
         font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
@@ -535,6 +538,10 @@ class Ui_MainWindow(object):
 "    border-radius: 1px;\n"
 "    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
 "                                    stop:0 #f0f0f0, stop:1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QToolButton:disabled {\n"
+"    background-color:  rgb(200,200,200);\n"
 "}\n"
 "\n"
 "QToolButton:hover {\n"
@@ -552,9 +559,10 @@ class Ui_MainWindow(object):
 "}")
         self.home_restore_backup.setObjectName("home_restore_backup")
         self.horizontalLayout.addWidget(self.home_restore_backup)
-        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem7)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem6)
         self.info_bt_3 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.info_bt_3.setMinimumSize(QtCore.QSize(27, 27))
         self.info_bt_3.setMaximumSize(QtCore.QSize(27, 27))
         self.info_bt_3.setStyleSheet("QToolButton {\n"
 "    border: 1px solid transparent;\n"
@@ -567,28 +575,29 @@ class Ui_MainWindow(object):
 "    border: none;\n"
 "}")
         self.info_bt_3.setText("")
-        self.info_bt_3.setIcon(icon3)
+        self.info_bt_3.setIcon(icon1)
         self.info_bt_3.setIconSize(QtCore.QSize(23, 23))
         self.info_bt_3.setAutoRaise(False)
         self.info_bt_3.setObjectName("info_bt_3")
         self.horizontalLayout.addWidget(self.info_bt_3)
-        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem8)
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem7)
         self.verticalLayout_4.addLayout(self.horizontalLayout)
-        spacerItem9 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_4.addItem(spacerItem9)
+        spacerItem8 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_4.addItem(spacerItem8)
         self.home_li_1 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
         self.home_li_1.setFrameShape(QtWidgets.QFrame.HLine)
         self.home_li_1.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.home_li_1.setObjectName("home_li_1")
         self.verticalLayout_4.addWidget(self.home_li_1)
-        spacerItem10 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_4.addItem(spacerItem10)
+        spacerItem9 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_4.addItem(spacerItem9)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.home_lb_3 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.home_lb_3.setEnabled(False)
         self.home_lb_3.setMinimumSize(QtCore.QSize(0, 27))
         self.home_lb_3.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
@@ -602,12 +611,18 @@ class Ui_MainWindow(object):
         self.home_lb_3.setObjectName("home_lb_3")
         self.verticalLayout.addWidget(self.home_lb_3)
         self.listWidget = QtWidgets.QListWidget(self.scrollAreaWidgetContents)
+        self.listWidget.setEnabled(False)
         self.listWidget.setMinimumSize(QtCore.QSize(400, 120))
         self.listWidget.setMaximumSize(QtCore.QSize(400, 16777215))
         self.listWidget.setStyleSheet("QListWidget {\n"
 "    border-radius: 3px;\n"
 "    padding: 1px 4px 1px 4px;\n"
 "    background-color:  rgb(240, 240, 240);\n"
+"    outline: 0;\n"
+"}\n"
+"\n"
+"QListWidget:disabled {\n"
+"    background-color:  rgb(200,200,200);\n"
 "}\n"
 "\n"
 "QListView::item:selected {\n"
@@ -633,15 +648,42 @@ class Ui_MainWindow(object):
         self.listWidget.setObjectName("listWidget")
         self.verticalLayout.addWidget(self.listWidget)
         self.horizontalLayout_3.addLayout(self.verticalLayout)
-        spacerItem11 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem11)
+        spacerItem10 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem10)
         self.verticalLayout_3 = QtWidgets.QVBoxLayout()
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        spacerItem12 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_3.addItem(spacerItem12)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem11)
+        self.info_bt_4 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.info_bt_4.setMinimumSize(QtCore.QSize(27, 27))
+        self.info_bt_4.setMaximumSize(QtCore.QSize(27, 27))
+        self.info_bt_4.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
+        self.info_bt_4.setText("")
+        self.info_bt_4.setIcon(icon1)
+        self.info_bt_4.setIconSize(QtCore.QSize(23, 23))
+        self.info_bt_4.setAutoRaise(False)
+        self.info_bt_4.setObjectName("info_bt_4")
+        self.horizontalLayout_2.addWidget(self.info_bt_4)
+        spacerItem12 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem12)
+        self.verticalLayout_3.addLayout(self.horizontalLayout_2)
+        spacerItem13 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_3.addItem(spacerItem13)
         self.home_update = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.home_update.setEnabled(False)
         self.home_update.setMinimumSize(QtCore.QSize(150, 35))
-        self.home_update.setMaximumSize(QtCore.QSize(16777215, 27))
+        self.home_update.setMaximumSize(QtCore.QSize(150, 35))
         font = QtGui.QFont()
         font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
@@ -655,6 +697,10 @@ class Ui_MainWindow(object):
 "    border-radius: 1px;\n"
 "    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
 "                                    stop:0 #f0f0f0, stop:1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QToolButton:disabled {\n"
+"    background-color:  rgb(200,200,200);\n"
 "}\n"
 "\n"
 "QToolButton:hover {\n"
@@ -672,11 +718,12 @@ class Ui_MainWindow(object):
 "}")
         self.home_update.setObjectName("home_update")
         self.verticalLayout_3.addWidget(self.home_update)
-        spacerItem13 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_3.addItem(spacerItem13)
+        spacerItem14 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_3.addItem(spacerItem14)
         self.home_store = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.home_store.setEnabled(False)
         self.home_store.setMinimumSize(QtCore.QSize(150, 35))
-        self.home_store.setMaximumSize(QtCore.QSize(16777215, 27))
+        self.home_store.setMaximumSize(QtCore.QSize(150, 35))
         font = QtGui.QFont()
         font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
@@ -690,6 +737,10 @@ class Ui_MainWindow(object):
 "    border-radius: 1px;\n"
 "    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
 "                                    stop:0 #f0f0f0, stop:1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QToolButton:disabled {\n"
+"    background-color:  rgb(200,200,200);\n"
 "}\n"
 "\n"
 "QToolButton:hover {\n"
@@ -711,38 +762,51 @@ class Ui_MainWindow(object):
         self.home_store.setIconSize(QtCore.QSize(20, 20))
         self.home_store.setObjectName("home_store")
         self.verticalLayout_3.addWidget(self.home_store)
-        spacerItem14 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_3.addItem(spacerItem14)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        spacerItem15 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem15)
-        self.info_bt_4 = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
-        self.info_bt_4.setMaximumSize(QtCore.QSize(27, 27))
-        self.info_bt_4.setStyleSheet("QToolButton {\n"
-"    border: 1px solid transparent;\n"
-"    background-color: transparent;\n"
-"    width: 27px;\n"
-"    height: 27px;\n"
+        spacerItem15 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_3.addItem(spacerItem15)
+        self.home_changelog = QtWidgets.QToolButton(self.scrollAreaWidgetContents)
+        self.home_changelog.setEnabled(False)
+        self.home_changelog.setMinimumSize(QtCore.QSize(150, 35))
+        self.home_changelog.setMaximumSize(QtCore.QSize(150, 35))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setKerning(True)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.home_changelog.setFont(font)
+        self.home_changelog.setStyleSheet("QToolButton {\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #f0f0f0, stop:1 #e5e5e5);\n"
 "}\n"
 "\n"
-"QToolButton:flat {\n"
-"    border: none;\n"
+"QToolButton:disabled {\n"
+"    background-color:  rgb(200,200,200);\n"
+"}\n"
+"\n"
+"QToolButton:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #ecf4fc, stop:1 #dcecfc);\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    border: 1px solid #579de5;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #daecfc, stop:1 #c4e0fc);\n"
 "}")
-        self.info_bt_4.setText("")
-        self.info_bt_4.setIcon(icon3)
-        self.info_bt_4.setIconSize(QtCore.QSize(23, 23))
-        self.info_bt_4.setAutoRaise(False)
-        self.info_bt_4.setObjectName("info_bt_4")
-        self.horizontalLayout_2.addWidget(self.info_bt_4)
-        spacerItem16 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem16)
-        self.verticalLayout_3.addLayout(self.horizontalLayout_2)
-        spacerItem17 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_3.addItem(spacerItem17)
+        self.home_changelog.setObjectName("home_changelog")
+        self.verticalLayout_3.addWidget(self.home_changelog)
+        spacerItem16 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_3.addItem(spacerItem16)
         self.horizontalLayout_3.addLayout(self.verticalLayout_3)
-        spacerItem18 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem18)
+        spacerItem17 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem17)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.home_lb_4 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
@@ -767,6 +831,7 @@ class Ui_MainWindow(object):
 "    border-radius: 3px;\n"
 "    padding: 1px 4px 1px 4px;\n"
 "    background-color:  rgb(240, 240, 240);\n"
+"    outline: 0;\n"
 "}\n"
 "\n"
 "QListWidget:disabled {\n"
@@ -798,10 +863,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addLayout(self.verticalLayout_2)
         self.verticalLayout_4.addLayout(self.horizontalLayout_3)
         self.gridLayout_3.addLayout(self.verticalLayout_4, 1, 1, 2, 2)
-        spacerItem19 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_3.addItem(spacerItem19, 2, 3, 1, 1)
-        spacerItem20 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_3.addItem(spacerItem20, 3, 2, 1, 1)
+        spacerItem18 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_3.addItem(spacerItem18, 2, 3, 1, 1)
+        spacerItem19 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_3.addItem(spacerItem19, 3, 2, 1, 1)
+        spacerItem20 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_3.addItem(spacerItem20, 1, 0, 1, 1)
         self.home_scroll_area.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout_26.addWidget(self.home_scroll_area, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage1, "")
@@ -1017,7 +1084,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.server_bt_1.setIcon(icon1)
+        self.server_bt_1.setIcon(icon2)
         self.server_bt_1.setIconSize(QtCore.QSize(23, 23))
         self.server_bt_1.setAutoRaise(False)
         self.server_bt_1.setObjectName("server_bt_1")
@@ -1034,7 +1101,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.none_bt_3.setIcon(icon2)
+        self.none_bt_3.setIcon(icon3)
         self.none_bt_3.setIconSize(QtCore.QSize(23, 23))
         self.none_bt_3.setAutoRaise(False)
         self.none_bt_3.setObjectName("none_bt_3")
@@ -1051,7 +1118,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.info_bt_5.setIcon(icon3)
+        self.info_bt_5.setIcon(icon1)
         self.info_bt_5.setIconSize(QtCore.QSize(23, 23))
         self.info_bt_5.setAutoRaise(False)
         self.info_bt_5.setObjectName("info_bt_5")
@@ -1322,7 +1389,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.mcp_bt_1.setIcon(icon1)
+        self.mcp_bt_1.setIcon(icon2)
         self.mcp_bt_1.setIconSize(QtCore.QSize(23, 23))
         self.mcp_bt_1.setAutoRaise(False)
         self.mcp_bt_1.setObjectName("mcp_bt_1")
@@ -1339,7 +1406,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.none_bt_4.setIcon(icon2)
+        self.none_bt_4.setIcon(icon3)
         self.none_bt_4.setIconSize(QtCore.QSize(23, 23))
         self.none_bt_4.setAutoRaise(False)
         self.none_bt_4.setObjectName("none_bt_4")
@@ -1356,7 +1423,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.info_bt_6.setIcon(icon3)
+        self.info_bt_6.setIcon(icon1)
         self.info_bt_6.setIconSize(QtCore.QSize(23, 23))
         self.info_bt_6.setAutoRaise(False)
         self.info_bt_6.setObjectName("info_bt_6")
@@ -1627,7 +1694,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.cdu_bt_1.setIcon(icon1)
+        self.cdu_bt_1.setIcon(icon2)
         self.cdu_bt_1.setIconSize(QtCore.QSize(23, 23))
         self.cdu_bt_1.setAutoRaise(False)
         self.cdu_bt_1.setObjectName("cdu_bt_1")
@@ -1644,7 +1711,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.none_bt_5.setIcon(icon2)
+        self.none_bt_5.setIcon(icon3)
         self.none_bt_5.setIconSize(QtCore.QSize(23, 23))
         self.none_bt_5.setAutoRaise(False)
         self.none_bt_5.setObjectName("none_bt_5")
@@ -1661,7 +1728,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.info_bt_7.setIcon(icon3)
+        self.info_bt_7.setIcon(icon1)
         self.info_bt_7.setIconSize(QtCore.QSize(23, 23))
         self.info_bt_7.setAutoRaise(False)
         self.info_bt_7.setObjectName("info_bt_7")
@@ -1932,7 +1999,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.display_bt_1.setIcon(icon1)
+        self.display_bt_1.setIcon(icon2)
         self.display_bt_1.setIconSize(QtCore.QSize(23, 23))
         self.display_bt_1.setAutoRaise(False)
         self.display_bt_1.setObjectName("display_bt_1")
@@ -1949,7 +2016,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.none_bt_6.setIcon(icon2)
+        self.none_bt_6.setIcon(icon3)
         self.none_bt_6.setIconSize(QtCore.QSize(23, 23))
         self.none_bt_6.setAutoRaise(False)
         self.none_bt_6.setObjectName("none_bt_6")
@@ -1966,7 +2033,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.info_bt_8.setIcon(icon3)
+        self.info_bt_8.setIcon(icon1)
         self.info_bt_8.setIconSize(QtCore.QSize(23, 23))
         self.info_bt_8.setAutoRaise(False)
         self.info_bt_8.setObjectName("info_bt_8")
@@ -2237,7 +2304,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.panel_bt_1.setIcon(icon1)
+        self.panel_bt_1.setIcon(icon2)
         self.panel_bt_1.setIconSize(QtCore.QSize(23, 23))
         self.panel_bt_1.setAutoRaise(False)
         self.panel_bt_1.setObjectName("panel_bt_1")
@@ -2254,7 +2321,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.none_bt_7.setIcon(icon2)
+        self.none_bt_7.setIcon(icon3)
         self.none_bt_7.setIconSize(QtCore.QSize(23, 23))
         self.none_bt_7.setAutoRaise(False)
         self.none_bt_7.setObjectName("none_bt_7")
@@ -2271,7 +2338,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.info_bt_9.setIcon(icon3)
+        self.info_bt_9.setIcon(icon1)
         self.info_bt_9.setIconSize(QtCore.QSize(23, 23))
         self.info_bt_9.setAutoRaise(False)
         self.info_bt_9.setObjectName("info_bt_9")
@@ -2542,7 +2609,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.audio_bt_1.setIcon(icon1)
+        self.audio_bt_1.setIcon(icon2)
         self.audio_bt_1.setIconSize(QtCore.QSize(23, 23))
         self.audio_bt_1.setAutoRaise(False)
         self.audio_bt_1.setObjectName("audio_bt_1")
@@ -2559,7 +2626,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.none_bt_8.setIcon(icon2)
+        self.none_bt_8.setIcon(icon3)
         self.none_bt_8.setIconSize(QtCore.QSize(23, 23))
         self.none_bt_8.setAutoRaise(False)
         self.none_bt_8.setObjectName("none_bt_8")
@@ -2576,7 +2643,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.info_bt_10.setIcon(icon3)
+        self.info_bt_10.setIcon(icon1)
         self.info_bt_10.setIconSize(QtCore.QSize(23, 23))
         self.info_bt_10.setAutoRaise(False)
         self.info_bt_10.setObjectName("info_bt_10")
@@ -2635,12 +2702,12 @@ class Ui_MainWindow(object):
         self.audio_scroll_area.setWidget(self.scrollAreaWidgetContents_8)
         self.gridLayout_20.addWidget(self.audio_scroll_area, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage7, "")
-        self.tab = QtWidgets.QWidget()
-        self.tab.setObjectName("tab")
-        self.gridLayout_10 = QtWidgets.QGridLayout(self.tab)
+        self.tabWidgetPage8 = QtWidgets.QWidget()
+        self.tabWidgetPage8.setObjectName("tabWidgetPage8")
+        self.gridLayout_10 = QtWidgets.QGridLayout(self.tabWidgetPage8)
         self.gridLayout_10.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_10.setObjectName("gridLayout_10")
-        self.credentials_scroll_area = QtWidgets.QScrollArea(self.tab)
+        self.credentials_scroll_area = QtWidgets.QScrollArea(self.tabWidgetPage8)
         self.credentials_scroll_area.setStyleSheet("QScrollArea { background: transparent; }\n"
 "\n"
 "QScrollArea > QWidget > QWidget { background: transparent; }\n"
@@ -2876,7 +2943,7 @@ class Ui_MainWindow(object):
 "QToolButton:flat {\n"
 "    border: none;\n"
 "}")
-        self.info_bt_11.setIcon(icon3)
+        self.info_bt_11.setIcon(icon1)
         self.info_bt_11.setIconSize(QtCore.QSize(23, 23))
         self.info_bt_11.setAutoRaise(False)
         self.info_bt_11.setObjectName("info_bt_11")
@@ -2891,7 +2958,7 @@ class Ui_MainWindow(object):
         self.gridLayout_11.addItem(spacerItem78, 1, 3, 1, 1)
         self.credentials_scroll_area.setWidget(self.scrollAreaWidgetContents_9)
         self.gridLayout_10.addWidget(self.credentials_scroll_area, 0, 0, 1, 1)
-        self.tabWidget.addTab(self.tab, "")
+        self.tabWidget.addTab(self.tabWidgetPage8, "")
         self.gridLayout_2.addWidget(self.tabWidget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.toolBar = QtWidgets.QToolBar(MainWindow)
@@ -2912,7 +2979,7 @@ class Ui_MainWindow(object):
         self.actionSave.setFont(font)
         self.actionSave.setObjectName("actionSave")
         self.actionOpen = QtWidgets.QAction(MainWindow)
-        self.actionOpen.setIcon(icon1)
+        self.actionOpen.setIcon(icon2)
         font = QtGui.QFont()
         font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
@@ -2971,6 +3038,21 @@ class Ui_MainWindow(object):
         self.actionSeparator2.setEnabled(False)
         self.actionSeparator2.setIcon(icon9)
         self.actionSeparator2.setObjectName("actionSeparator2")
+        self.actionSeparator3 = QtWidgets.QAction(MainWindow)
+        self.actionSeparator3.setEnabled(False)
+        self.actionSeparator3.setIcon(icon9)
+        self.actionSeparator3.setObjectName("actionSeparator3")
+        self.actionUpdate = QtWidgets.QAction(MainWindow)
+        self.actionUpdate.setEnabled(False)
+        icon10 = QtGui.QIcon()
+        icon10.addPixmap(QtGui.QPixmap("icons/prosim_update_off_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionUpdate.setIcon(icon10)
+        self.actionUpdate.setObjectName("actionUpdate")
+        self.actionOptions = QtWidgets.QAction(MainWindow)
+        icon11 = QtGui.QIcon()
+        icon11.addPixmap(QtGui.QPixmap("icons/option_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionOptions.setIcon(icon11)
+        self.actionOptions.setObjectName("actionOptions")
         self.toolBar.addAction(self.actionExit)
         self.toolBar.addAction(self.actionSeparator1)
         self.toolBar.addAction(self.actionSave)
@@ -2978,6 +3060,9 @@ class Ui_MainWindow(object):
         self.toolBar.addAction(self.actionSeparator2)
         self.toolBar.addAction(self.actionAbout)
         self.toolBar.addAction(self.actionChangelog)
+        self.toolBar.addAction(self.actionSeparator3)
+        self.toolBar.addAction(self.actionOptions)
+        self.toolBar.addAction(self.actionUpdate)
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
@@ -2986,15 +3071,16 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Prosim737 Updater"))
-        self.home_lb_1.setText(_translate("MainWindow", "Prosim737 update package location:"))
-        self.home_ck_1.setText(_translate("MainWindow", "Check Prosim737 update availability online ?"))
-        self.home_lb_2.setText(_translate("MainWindow", "Prosim737 backup location:"))
+        self.home_lb_2.setText(_translate("MainWindow", "Prosim737 backups location:"))
+        self.home_ck_1.setText(_translate("MainWindow", "Check for Prosim737 updates online ?"))
+        self.home_lb_1.setText(_translate("MainWindow", "Prosim737 updates location:"))
         self.home_create_backup.setText(_translate("MainWindow", "Create a backup"))
         self.home_restore_backup.setText(_translate("MainWindow", "Restore a backup"))
-        self.home_lb_3.setText(_translate("MainWindow", "List of Prosim737 update package, available localy:"))
+        self.home_lb_3.setText(_translate("MainWindow", "List of Prosim737 updates, available locally:"))
         self.home_update.setText(_translate("MainWindow", "Update"))
         self.home_store.setText(_translate("MainWindow", "Store"))
-        self.home_lb_4.setText(_translate("MainWindow", "List of Prosim737 update package, available online:"))
+        self.home_changelog.setText(_translate("MainWindow", "Changelog"))
+        self.home_lb_4.setText(_translate("MainWindow", "List of Prosim737 updates, available online:"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabWidgetPage1), _translate("MainWindow", "Home"))
         self.server_lb_1.setText(_translate("MainWindow", "Prosim737 Server location:"))
         self.server_bt_1.setText(_translate("MainWindow", "Prosim737 Server location:"))
@@ -3032,10 +3118,10 @@ class Ui_MainWindow(object):
         self.info_bt_10.setText(_translate("MainWindow", "Prosim737 Server location:"))
         self.audio_new_location.setText(_translate("MainWindow", "Add a new location"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabWidgetPage7), _translate("MainWindow", "Prosim737 Audio"))
-        self.credentials_lb_1.setText(_translate("MainWindow", "<html><head/><body><p align=\"justify\">Before installing an update or restoring a backup, Prosim737 Updater can check if an instance of a Prosim737 module is currently running on a remote computer. It is intended to avoid the update of a file if a process is still running and use it. To access the processes list on a remote computer, Prosim737 Updater needs to pass the credentials corresponding to the user logged in the remote computer. You can enter here the remote <span style=\" font-weight:600; color:#0000c8;\">full computer name</span> or the remote <span style=\" font-weight:600; color:#0000c8;\">local IP address</span> (the one which is used in a module update path), the <span style=\" font-weight:600; color:#0000c8;\">username</span> and <span style=\" font-weight:600; color:#0000c8;\">password</span>.</p><p align=\"center\"><span style=\" font-weight:600; color:#c80000;\">All credentials are stored in the xml file dedicated to options, and can be read by someone who have access to the xml file. </span></p><p align=\"justify\">The use of that function is not mandatory and if no credentials are entered, Prosim737 Updater will not check processes.</p></body></html>"))
+        self.credentials_lb_1.setText(_translate("MainWindow", "<html><head/><body><p align=\"justify\">Before installing an update or restoring a backup, Prosim737 Updater can check if an instance of a Prosim737 module is currently running on the local or a remote computer. It is intended to avoid the update of a file if a process is still running and using it. To access the processes list on a remote computer, Prosim737 Updater needs to pass the credentials corresponding to the user logged in the remote computer. You can enter here the remote <span style=\" font-weight:600; color:#0000c8;\">full computer name</span> or the remote <span style=\" font-weight:600; color:#0000c8;\">local IP address</span> (the one which is used in a module update path), the <span style=\" font-weight:600; color:#0000c8;\">username</span> and <span style=\" font-weight:600; color:#0000c8;\">password</span>.</p><p align=\"center\"><span style=\" font-weight:600; color:#c80000;\">All credentials are stored in the xml file dedicated to options and in the backup files. They can be read by someone who has access to the xml file and/or to the backups. No credentials are stored in the log file.</span></p><p align=\"justify\">The use of that function is not mandatory and if no credentials are entered, Prosim737 Updater will not check processes.</p></body></html>"))
         self.credentials.setText(_translate("MainWindow", "Add new credentials"))
         self.info_bt_11.setText(_translate("MainWindow", "Prosim737 Server location:"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Credentials"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabWidgetPage8), _translate("MainWindow", "Credentials"))
         self.toolBar.setWindowTitle(_translate("MainWindow", "toolBar"))
         self.actionSave.setText(_translate("MainWindow", "Save..."))
         self.actionSave.setToolTip(_translate("MainWindow", "Save Prosim Updater options in default xml file"))
@@ -3049,4 +3135,10 @@ class Ui_MainWindow(object):
         self.actionSeparator1.setText(_translate("MainWindow", "separator1"))
         self.actionSeparator2.setText(_translate("MainWindow", "separator2"))
         self.actionSeparator2.setToolTip(_translate("MainWindow", "separator2"))
+        self.actionSeparator3.setText(_translate("MainWindow", "separator3"))
+        self.actionSeparator3.setToolTip(_translate("MainWindow", "separator3"))
+        self.actionUpdate.setText(_translate("MainWindow", "Update"))
+        self.actionUpdate.setToolTip(_translate("MainWindow", "No update available !"))
+        self.actionOptions.setText(_translate("MainWindow", "Options..."))
+        self.actionOptions.setToolTip(_translate("MainWindow", "Click to modify Prosim737 Updater options"))
 

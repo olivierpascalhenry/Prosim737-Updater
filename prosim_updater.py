@@ -31,9 +31,9 @@ def launch_prosim_updater(path):
         with open(os.path.join(path, 'prosim_updater.ini'), 'w') as configfile:
             config_dict.write(configfile)
     if not config_dict.get('LOG', 'path'):
-        log_filename = os.path.join(path, 'emc_creator_log.out')
+        log_filename = os.path.join(path, 'prosim_creator_log.out')
     else:
-        log_filename = os.path.join(config_dict.get('LOG', 'path'),'emc_creator_log.out')
+        log_filename = os.path.join(config_dict.get('LOG', 'path'),'prosim_creator_log.out')
     logging.getLogger('').handlers = []
     logging.basicConfig(filename = log_filename,
                         level = getattr(logging, config_dict.get('LOG', 'level')),

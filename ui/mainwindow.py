@@ -459,9 +459,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap("icons/prosim_update_off_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             self.actionUpdate.setIcon(icon)
-            
             self.text_translations['Path-missing'][self.config_dict['OPTIONS'].get('language')]
-            
             self.actionUpdate.setToolTip('No update available !')
         elif 'http' in val:
             self.actionUpdate.setEnabled(True)
@@ -475,8 +473,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         logging.debug('mainwindow.py - download_and_install_prosim737updater_update - link_latest_version ' + str(self.link_latest_version))
         if self.link_latest_version:
             temp_folder = tempfile.gettempdir()
-            self.downloadWindow = MyUpdate(self.link_latest_version, temp_folder)
-            self.downloadWindow.label.setText('Downloading ' + self.link_latest_version[self.link_latest_version.rfind('/')+1:] + '...')
+            self.downloadWindow = MyUpdate(self.link_latest_version, temp_folder, self.config_dict, self.text_translations)
             x1, y1, w1, h1 = self.geometry().getRect()
             _, _, w2, h2 = self.downloadWindow.geometry().getRect()
             x2 = x1 + w1/2 - w2/2

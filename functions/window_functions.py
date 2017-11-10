@@ -938,23 +938,23 @@ class MyUpdate(QtWidgets.QDialog, Ui_storeWindow):
         self.temp_folder = folder
         self.url = url
         self.update_file = self.temp_folder + '\\' + self.url[self.url.rfind('/')+1:]
-        self.button.clicked.connect(self.cancel_download)
+        self.sw_button.clicked.connect(self.cancel_download)
         self.cancel = False
         self.download_update()
     
     def update_progress_bar(self, val):
         if isinstance(val, list):
             self.progressBar.setValue(val[0])
-            self.label.setText(val[1])
+            self.sw_label.setText(val[1])
         else:
             self.progressBar.setValue(val)
     
     def download_update(self):
         logging.debug('window_functions.py - MyStore - download_update')
-        self.thread = DownloadFile(self.url, self.update_file)
+        self.thread = DownloadFile(self.url, self.config_dict, self.text_translations, self.update_file)
         self.thread.download_update.connect(self.update_progress_bar)
         self.thread.download_done.connect(self.close)
-        self.thrad.download_failed(self.download_failed)
+        self.thread.download_failed.connect(self.download_failed)
         self.thread.start()
     
     def cancel_download(self):
@@ -967,7 +967,7 @@ class MyUpdate(QtWidgets.QDialog, Ui_storeWindow):
     def download_failed(self):
         logging.debug('window_functions.py - MyStore - download_failed')
         self.update_progress_bar(0)
-        self.label.setText(self.text_translations['Download-failed'][self.config_dict.get('OPTIONS', 'language')])
+        self.sw_label.setText(self.text_translations['Download-failed'][self.config_dict.get('OPTIONS', 'language')])
         self.cancel_download()
         
     def closeEvent(self, event):

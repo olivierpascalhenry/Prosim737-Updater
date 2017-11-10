@@ -305,7 +305,7 @@
          </property>
          <property name="maximumSize">
           <size>
-           <width>190</width>
+           <width>250</width>
            <height>27</height>
           </size>
          </property>
@@ -372,7 +372,7 @@ QToolButton:pressed {
          </property>
          <property name="maximumSize">
           <size>
-           <width>90</width>
+           <width>110</width>
            <height>27</height>
           </size>
          </property>
@@ -439,7 +439,7 @@ QToolButton:pressed {
          </property>
          <property name="maximumSize">
           <size>
-           <width>90</width>
+           <width>110</width>
            <height>27</height>
           </size>
          </property>

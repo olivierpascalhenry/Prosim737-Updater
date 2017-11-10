@@ -1,0 +1,2168 @@
+﻿November 6 2017 Release version 1.53b3
+======================================
+- Fix for Poldragonet ethernet hardware
+
+November 6 2017 Release version 1.53b2
+======================================
+- Fixed hang when changing IOS server port in configuration screen
+- Fixed Poldragonet CDU N1/Fix reversal
+
+November 1 2017 Release version 1.53b1
+===================================
+- Fixed manual update config option not working correctly
+
+October 29 2017 Release version 1.52
+===================================
+Note: The package Visual Studio C++ Redistributable packages for Visual Studio 2013 must be installed https://www.microsoft.com/en-us/download/details.aspx?id=40784
+- Fixed issue with database retrieval
+
+October 28 2017 Release version 1.51
+===================================
+- Fixed VRInsight Overhead not working
+- added UNABLE REQD NAV PERF-RNP message
+- fixed RNP/ANP values not amber when ANP greater than RNP
+- fixed RNP/ANP vertical deviation band not following the pointer
+- Fixed VRInsight OH not working.
+- INDEX LSK (return to MAINT INDEX) added to TUNING page
+- pololu power control moved to a different thread
+- Buffer added to pololu driver and output processing is now done by a separate thread
+- [SW-57] Fixed Radial lines visible when navaid is DME only.
+- [SW-57] Fixed EFIS MODE/NAV FREQ DISAGREE showing only when the VOR/ILS signal is valid
+- [SW-29] BARO and MINS switch handling more realistic in Simworld driver.
+- GPWS Mode 6 - Bank Angle should also play if bank greater than 10 degrees when altitude is between 30ft and 130 ft.
+- GPWS Mode 6 - Radio Altitude Callouts should not play with gear up.
+- [SW-54] GPWS Mode 6 - Radio Altitude Callouts should only play during descent.
+- [SW-57] Fixed VOR CDI visible if navaid is DME only
+- [SW-57] Fixed EFIS MODE/NAV FREQ DISAGREE message not showing if EFIS APP mode selected and VOR tuned.
+- [SW-57] Fixed VOR needles visible if navaid is DME only.
+- Support added for latest FDS MCP/EFIS
+- [CDU] FIX page layout corrected
+- [CDU] SELECT DESIRED XXX page layout corrected
+- Generic Driver is now available for Display config elements.
+- Fixed wxr radar returning nothing if ASN is in use
+- Fixed updater not retrying if a file is still in use.
+- Runways added to XML FMS query
+- Fixed some issues where not all approach fixes are shown when a transition is selected. 
+- Fixed Sismo driver not enabling servos when calibrating.
+- improvements to ProSimDisplay to prevent a crash related to the weather radar image
+- Fixed take-off config warning during repositioning. 
+- [SIM-2] Fixed REF NAVDATA not requiring EXEC to save temporary waypoint.
+- [PSDB-286] Fixed FMS reset when slewing in air, and FMS reset on ground option is enabled 
+- [SW-29] Simworld EFIS BARO and MINS acceleration improved
+- IOCP output buffer added
+- Barometric pressure values have now upper and lower limits
+- Fixed Below G/S indicators not illuminating during GPWS test
+- transitionAltitudes.xml file updated
+- Fixed Place/Bearing/Distance crashing ProSim if previous leg type is CI (PBD entry will validate leg type sequence)
+- fixed EHID XPDR not handling leading 0 correctly
+- Fixed FDS XPDR panel not handling leading 0 correctly
+- MCP HDG rate increased on ND and PFD.
+- Fixed ProSimCDU not working as F/O role
+- Fixed ProSimAudio consuming too much CPU time
+- Fixed ASP not in sync with FS radios.
+- Added FMC message: GPS-L/R INVALID
+- Fixed ASP not allowing reception on both COM1 and COM2 at the same time.
+- TR indicator logic improved.
+- Mixed mode added to Generic Com driver (This will allow manual calibration of analog elements when using generic names)
+- Fixed autobrake not disarming when using a switch as brake input
+Note: FS brake assignment should be deleted and brake switch must be assigned in ProSim
+- Fixed along track fix name when is runway
+- Hyd pressure values improved
+- Fixed Update with zip
+- Fixed ProSim restarting
+- Fixed ProSim skipping IF legs
+- Fixed ProSim Display crash when WX is selected and wx resolution is less than 20
+- Fixed missing buttons on MCP Config window.
+- Fixed ICS/CPflight overhead not showing negative DC AMP values
+- Yoke IC/RT switches added to SimWorld driver
+- improved EMDP overheat logic
+- Added gate for Pass oxy deployed
+
+June 20 2017  Release version 1.50
+======================================
+Release Notes:
+- Due to some changes to the Sismo Native Driver, IO re-assignement may be required.
+
+- Option to detect FS added to the database window
+- Sim path is now saved in ProSim Config
+- Option added to cockpit setup to slave the ISFD baro setting to the Captain EFIS if no ISFD hardware is available.
+- [PSDB-112] Sound not playing when fasten Belts Sign is turned off then back on again
+- Fixed VD leg types not handled correctly
+- Added switches for the new weather radar panel (left side WXR, WXR+T).
+- Fixed pax signs chime when the aircraft is not powered.
+- Fixed the ISFD backup power working for 1 min only
+- option added to cockpit config to supress the EXCESS DATA message
+- Fixed AF leg types. (Star effect in DME ARC) 
+- CDU minimum brightness changed to barely visible
+- Fixed ABEAM PTS LSK not available
+- Fixed VI and CI legs transitions before IF fixes
+- Fixed turn anticipation before ARC approaches
+- Added option for Poldragonet Overhead panel to use automatic configuration
+- [PSDB-285] Fixed STAR loaded after a missed approach when only approach is selected
+- Added option to enable sound in ProSimCDU
+- Fixed CPFlight/Engravity Overhead gauges not matching the software (Firmware 408 or later should be installed)
+- Fixed some CPFlight/Engravity Overhead indicators ON after performing a light test (Firmware 410 or later should be installed)
+- Fixed CPFlight MCP PRO2 issues when using any other daisy chained module (Firmware 202 or later should be installed)
+- Fixed weather radar not showing data when CPT and FO NDs are displayed in the same ProSimDisplay instance and EFIS ranges are different
+- CDU ENG OUT page implemented
+- Fixed FC leg types
+- [SW-24] Fixed random wind speed of 359 on ND
+- [PSDB-184] Fixed waypoints order when more then one is returned
+- [PSDB-328] Fixed CPFlight/ICS retractable landing lights with 3 positions
+
+April 17 2017  Release version 1.49
+======================================
+- Added support for indicators on CPFlight ASP v2
+- Added switches and indicators for currently unused ASP inputs/outputs
+- Gates added for chrono indications
+- Fixed CPFlight/ICS retractable landing lights reversed.
+- Fixed slow rudder trim speed 
+- XPDR/TCAS moved to the navigation domain
+- XPDR selector and ALT source switches added
+- 1 and 2 indicators added to transponder
+- ADF/ANT indicators added to ADF
+- Tone switch added to ADF
+- Auto restart option added to ProSim config (to avoid prosim from restarting if a crash occurs)
+- ATC 1 and 2 indicators and ATC selector switch added to EHID driver
+- XPDR FAIL indicator added 
+- Fixed WHEEL WELL fire indicator not working during fire test
+- ADF/ANT switch added to EHID driver
+- [PSDB-235] AP disconnect sound should play continuously until cancelled by the pilot.
+- New AP disconnect sound
+- APU should provide less electrical power ( 66KVA ) above 32000 ft
+- Reversed CPFlight ASP mic 1 and 2 indicators
+- [PSDB-277] fixed TOO LOW GEAR GPWS during go-around.
+- [PSDB-271] APU start cycle timings corrected
+- Stand By rudder indicator moved to Hydraulic domain.
+- Fixed ASP filter selector not working
+- Better implementation of the auxiliary battery
+- Fixed TRs providing only 24V 
+- Fixed thrust reduction to CLB not occuring in raw data
+- [SW-39] ISFD should continue to work for 150 min even if there is a failure with the battery power.
+- Yokes PTT IC/RT switches added
+- [PSDB-174] PROGRESS page now shows destination at LSK4 even if no arrival is selected
+- [PSDB-327] Changing destination should not clear the route
+- [PSDB-327] Changing destination should clear any arrival data if entered
+- [PSDB-327] Changing origin should clear the route
+- [PSDB-357] fixed EFIS mode radio altimeter showing barometric altitude
+- [PSDB-354] When in plan mode, the Capt's MCDU should only move the Capt's ND and the F/O's should only move the F/O's ND
+- [SIM-23] fixed POS REF showing radio position on ground
+- [PSDB-351] Fixed CPFlight DU Dimmers not working
+- [PSDB-248] When 'OFF SCHED DES' light is on, if Pressurisation mode selector is moved to MAN, the light should extinguish.
+- Fixed Take Off warning horn active without battery bus powered.
+- CPFlight MCP data is now compacted
+- Added option to ProSimMCP to log IO for CPFlight devices
+- Fixed mode selection and added XPDR left/right switch to FDS ethernet XPDR
+- Better handling of the IAS/MACH conversion when using MCP's Change Over (C/O) button.
+- Fixed wrapping of active waypoint in ND if name is too long.
+- [SW-35] Added support for Simworld fire panel
+- Pressing GND CALL with GND PWR connected will request a disconnection within the next 30 seconds.
+- V-Speeds should be deleted if runway wind changed in TAKE OFF page 2 
+- Failures ordered by name and group name
+- Fixed STEP when pushing the PREV PAG in plan mode.
+- Command line parameter added to start ProSim without the splash screen. 
+- [DEV-130] SYS Brake temperature indication now correct for overheat condition.
+- [DEV-129] Dual Bleed indicator should not illuminate if APU not running.
+- [DEV-128] AUTO-FAIL indicator logic corrected.
+- [PSDB-297] RNAV/RNP approaches sometimes not showing GP on LEGS
+
+February 2 2017  Release version 1.48
+======================================
+- Generic Com/TCP driver values rounded to the 3rd decimal place
+- Dome light switch support added to ICS overhead
+- ProSimDisplay: new option to add the folder name to the title bar
+- fix to prevent brake pressure to be negative
+- Fixed RED indicators handled as YELLOW
+- [SW-33] added Simworld Flight Controls module support 
+- [SW-34] ILS-DME(Navigraph navaid type 8) navaids now correctly handled if entered in CDU FIX page
+- Sismo: Fixed servo daughter board not working
+- Sismo: Fixed displays outputs(Display daughter board 2)
+- new cockpit option to select alignment time (normal - quick)
+- Master Dim gate added
+- IOS Failures now organized by ATA chapter
+- Fixed FDS JetMax radio assignments
+- added cache control meta tags to IOS page
+- added option to cockpit setup to remove the fading from weather radar sweep
+- added option to cockpit setup to remove the interpolation(antialias) from the weather image
+- [PSDB-310] Engine trend vector disapearing when target N1 value reached.
+- [PSDB-326] Speedbrake stow not working below 10kts.
+- [PSDB-328] Retractable landing lights switch not working correctly with CPFlight overhead.
+- [SW-30] Simworld ATC panel delay fixed
+- Added advanced option to CPFlight driver to disable the gauge data
+- [PSDB-323] Fixed fuel filter failure to trigger an oil filter warning on EICAS
+- Scavenge oil filter failure added
+- [PSDB-335] Wiper switches and gates added.
+- Wiper switch support added to CPFlight(ICS) and Simworld overhead and ProSim panel.
+- Fixed Side-by-side EICAS showing FF as KG even when unit is LBS
+- Fixed Brake accumulator pressure to lock if pressure reaches 0
+- Hydraulic system B should be the only pressure supplier to the brake accumulator.
+- Fixed Pokeys Ethernet not working with poller disabled
+- CPFlight advanced option added to reverse the rudder trim gauge
+- Added support for FDS CDU v2 alternate layout
+- [PSDB-182] EFIS POS now shows ADIRS and GPS positions on ND
+
+December 13 2016  Release version 1.47
+======================================
+Starting from 1.47b57, all ProSim737 modules now require dot net runtime version 4.6!
+
+- Added fuel freeze
+- Corrected ordering of approaches in DEP/ARR page
+- Fixed unwanted autoconfig inputs from PoKeys cards when led matrix function enabled
+- Fixed fire handle lights not working when CPFlight MIP V2 is used
+- [PSDB-153] Fixed VNAV should command selected VREF speed + wind when on landing flap setting
+- [PSDB-156] INIT REF Transition altitude now follows standard altitude format rules
+- F/D vertical speed mode stability during turns improved
+- [PSDB-98] Alt hold stability during turns improved
+- [PSDB-132] Route page now shows route discontinuities and allows more editing
+- [PSDB-162] Fixed CPFlight MIP v2 take config and cabin alt indicators interchanged
+- [PSDB-171] Fixed CRZ CLB speed sometimes shows as MACH 0.06
+- [PSDB-172] Fixed CDU CRZ TGT speed incorrect
+- CPFlight MIP V2 gauge output re-enabled for firmware 1.22 testing
+- Cockpit configuration from IOS now also available from SDK as system.config.xxxx
+- [PSDB-113] SPD REST on CDU CLB and DES pages should require EXEC
+- [PSDB-174] Route should calculate T/D even when no arrival is entered, using airport as destination
+- BGL scanner should only scan under "scenery" directory of scenery.cfg directories
+- Improved BGL scanning of ILS data
+- [PSDB-121] Climb and Descend phase should have separate default speed restrictions
+- [PSDB-113] Fixed modified speed restriction not visible until EXEC
+- [PSDB-216] FMS will clear route and legs when new destination ICAO is entered
+- [PSDB-135] Minimum N2 speed for generator operation increased to 50%
+- Fixed approach names without suffixes
+- Door logic can now be completelly disabled
+- ProSimAudio and ProSim737 moved from DirectX to SlimDX
+- [PSDB-177] Manually entered VNAV speeds should show only entered speed and not speed/mach combination
+- [DEV-71] Incorrect text on fwd Overhead
+- [DEV-83] Incorrect text on lower DU
+- Improved N1 calculations
+- Connected spar valves to hot battery bus instead of dc bus
+- Fixed engine valve and spar valve not reponding to fire handle
+- [PSDB-195] IDENT page 2 added
+- [PSDB-197] IDENT page shows SUPP DATA as FS time
+- Refined starter logic to check starter air pressure during start
+- Fixed F/D and FMA should be on when the associated F/D switch is off and any CMD is on
+- Fire test inhibited during flight
+- [PSDB-221] N1 LIMIT page accepts SEL TEMP if entered with the slash at the end. ie: 55/
+- [PSDB-186] TGT SPD in DES page shows mach value first if speed is commanding mach
+- [PSDB-207] Title 'ACT RTE' should be to left hand side of screen
+- [PSDB-205] FMC CRZ page, TURB N1 should show '%' symbol
+- [PSDB-110] ND N1 data not flushed
+- N1 LIMIT page now accepts manually entered OAT.
+- VNAV fixes
+- [PSDB-190] TAKEOFF REF page 2 corrected
+- [PSDB-194] LEGS RTE page fixed
+- [PSDB-196] Once in active cruise inflight, the FMC CLB page should be flushed.
+- [PSDB-199] All pages that only have one page should still have page number "1/1".
+- New cockpit setup group added: FMS/CDU
+- [PSDB-200] POS REF page 2 fixed
+- [PSDB-202] EFC time should show 'Z' symbol and BEST SPEED should show 'KT' symbol in HOLD page
+- [PSDB-204] The next waypoint on Progress Page 1 should be coloured magenta. 
+- [PSDB-228] TRIP ALT added to PERF INIT page
+- [PSDB-181] [LEGS] RTE DATA empty wind shows ---/--
+- [PSDB-180] [PROGRESS] page corrected. XTK and GPS-L added.
+- [PSDB-279] Range value position now adjusts its position if range rings are not visible
+- Fixed Poldragonet overhead panel configuration not saving correctly
+- HTTP ACARS downlinks will trigger an ACARS COMM ERROR after a time out of 2 min.
+- During raw data go-around, keep FMS phase at CLB until cruise alt
+- Engine should not auto-restart when engine failure cleared on IOS while fire handle is still pulled
+- fixed FMS reset if using SLEW (if FMS resets after landing option is enabled)
+- Added support for Simworld pedestal modules
+- TAS only available on ND if greater than 100Kts
+- Dual GPS added with individual failures.
+- Dual Radio Altimeters added with individual failures.
+- Fixed FDS MCOM radio's resetting when elevator trim is used
+- Fixed GLOBAL weather not generating weather radar image
+- Magenta color shown on WXR+T mode.
+- [PSDB-317] Improved F/D behavior in manual flight when in alt hold or V/S mode
+- ProSimAudio fadeOut fixed
+- ProSimAudio high CPU load fixed
+- Option added to set the weather radar image resolution (px/nm)
+- [PSDB-231] Speed trend vector disapearing.
+- Decimal data entry fixed
+- VSI fixed on EFIS display mode
+- Fixed ProSimDisplay crash at startup if WX enabled on EFIS
+- Throttles with fixed speedbrake down detents will now still deploy speedbrakes during RTO when speedbrake is physically moved
+  to the armed position during takeoff
+- Strobe & Steady light switch support added to Simworld P&P Overhead
+- Airstair indicator support added to Simworld P&P Overhead
+- RUNWAY INOP indicator and RUNWAY INHIBT swicth support added to Simworld P&P MIP 
+- Added support for Simworld ACP's
+- Fixed fire test not working in flight.
+- PoKeys libraries updated to new beta build to prevent thread abort exceptions that crash ProSim
+- Dome light switch functional for Simworld AFT overhead
+- 2 new gates added for dome light (Domelight dim & Domelight bright)
+- Remote shutdown fixed
+- Fixed IDG Drive light going out too late.
+- Fixed CDU page going to CLIMB when pressing TOGA during takeoff.
+- START VALVE OPEN indication should remain ON for about 3 seconds after starter cutout 
+- mach speed now shows with 3 decimal places on the PFD
+- dual elevator trim switches option added to the cockpit config
+- 2nd elevator trim switch added to the F/O and CPT yokes
+- Added support for FSC Stick Shaker
+- Null exception fixed when using random failures.
+- Fixed custom sound gates assignments mixed.
+- Generic TCP driver now handles incoming encoder updates better by accumulating input.
+- Display source label typo fixed on the overhead (ALL ON 1)
+- FDS MCOM devices now use proper MCOM logic
+- Fixed BRIGHT/DIM light indicator modes
+- Pokeys library dll code imported into ProSim.
+- Poldragonet driver now allows multiple instances
+- Fixed brake accumulator will not properly pressurize on initial startup
+- Weather radar image now resets when changing the range
+- Fixed CPFlight rudder trim gauge value not the same as ProSim rudder trim value
+- Fixed 100% WX radar return when no clouds are present and gain is max
+
+Release Note: 
+- Due to the change from DirectX to SlimDX, it is required to verify all custom sound call outs if they are still assigned to the correct gate.
+This verification should be done only once when moving from a DirectX release to a SlimDX one.
+- Pokeys libary dll file was deleted and replaced with its code directly in ProSim.
+- ProSimAudio has now all sounds ON by default(NAV audio remains disabled)
+
+April 16 2016  Release version 1.46
+===================================
+- Fixed squawkbox transponder reporting incorrectly checking the XPDR operation switch
+- Fixed CDU '+/-' key support for Engravity V2 CDU
+- Changed range and labels of trimwheel sensitivity in ProSim MCP configuration screen
+- TCAS "Traffic" callout should only active once for each conflict
+- Adjusted PFD TCAS RA Trapezoid to match required pitch for RA
+- Adjusted autopilot to prevent lateral oscillations in 4x speed
+- PoKeys libraries updated to v3.1.17. If PoKeys ethernet cards are not detected, please make sure their firmware is up to date with the PoKeys tool.
+- Added FMS SDK datarefs
+- Added aircraft.fms.route dataref to SDK
+- Added "Load from FMS" button in the Company Route tab of the IOS
+- Improved autothrottle speed control during turns
+- Changed PFD speed trend vector from inertial to IAS based
+- Progress page line 3 should show distance to second waypoint from current position
+- Fixed autopilot failed to enter ARINC "HM" type holdings
+- Fixed EHID fire handle rotation switches
+- TO/GA goaround now remains active until MCP altitude (was 1500 feet RA max)
+- Fixed an issue where (VECTOR) legs mess up VNAV restriction calculations
+- Fixed FMS sometimes does not load STAR legs when STAR selected before runway in arrival page
+- Added support for Flight Illusion standby alt/speed combined instrument
+- Fixed crash in Simworld driver
+- Added new option to ProSim737 to set a required set of hardware so the IO Modules list can show a warning when hardware is missing
+- EFIS TFC now defaults to on
+- VOR course lines now extend to 400 NM
+- LNAV drawing fixes
+- Changes in VNAV pages now require EXEC and can be erased
+- Added option to inhibit IP address of network PoKeys devices so they won't be opened by ProSim737 System
+- Changed Poldragonet overhead support to allow differently wired panels. This requires switches and indicators to be manually configured.
+- Added Poldragonet AFT overhead support
+- Added warning on startup when ProSim737 system is in debug mode
+- Added suppor for Prepar3d v3 for database building
+
+
+September 26 2015  Release version 1.45
+=======================================
+- Fixed reversed elec panel and pneumatic indicators om CPFlight overhead
+- Retuned cabin alt gauge in CPFlight overhead
+- Added nullzone calibration to speedbrake armed position
+- Fixed EHID ground power switch
+- Fixed parking brake won't engage when prake pedals held down
+- Fixed improper handling of company route errors in XML gateway
+
+September 8 2015  Release version 1.44
+======================================
+- Fixed PoKeys matrix led/keyboard IO causing the autoconfig to show inputs
+- PoKeys matrix outputs can now be assigned to gates
+- Added option to poldragonet driver to inverse gear switch
+- Added option to FDS CDU driver to disable display dimming
+- Fixed typo in "TERR INHIBIT" ND flag
+- Added Dome light switch
+- Fixed PoKeys assignments to Led matrix interfering with autoconfiguration of regular outputs
+- Added "Mandatory" attribute to ACARS XML specification
+- Fixed issue where altitude conditional waypoints where placed too far out causing circular paths
+  after takeoff
+- Fixed holding coded in SID/STAR not corrrectly processed
+- Fixed CDU is always on max brightness after startup
+- Standby Localiser and glideslope outputs now require DC power
+- Added Led current limit option to advanced configuration of Phidgets driver
+- Added standby altimeter gauge
+- Added '0' as a calibration point to the standby speed indicator
+- Added 'resetFms' as xml query to reset the FMS
+- Fixed ACARS chime not working on messages with embedded response element
+- Fixed LSK6L header text not working in ACARS pages
+- LNAV drawing fixes
+- Fixed power transients during relay switching causes CPFlight radios to reset frequencies
+- Weather radar should clear up clouds much faster after weather has improved
+- Fixed an issue where some MCP's reverted back to V/S 0 when rotating the V/S wheel after engaging V/S mode
+
+
+May 27 2015  Release version 1.43
+=================================
+- Fixed ProSim MCP IOCP throttle driver not to restow speedbrake when throttle is increased
+- Fixed JetMax MCP Alt Hold indicator wrongly mapped
+- ProSim no longer reads weather data from FS when ASN integration is active
+- Fixed CDU message not clearable with CLR key on FSC CDU
+- Added PoKeys Matrix leds to indicator autoconfig. This will work after one matrix led has been configured manually.
+- Fixed ACARS response attibute not working
+- Fixed destination land alt not showing correctly when arrival procedure was entered
+- Added fuel flow numerical outputs
+- Rudder trim reversed in CPFlight rudder trim panel
+- Max MCP altitude in ProSim737 system MCP input handler corrected to 50000
+
+Release notes:
+Due to internal changes in the identification of simulated elements, ProSim Display may not be able to update correctly from
+previous releases to this release. To update ProSim Display, please manually unzip ProSimDisplay.zip and place the files in
+all of your ProSim Display folders. This manual action is required only for this release. In future releases, the automatic
+updating will be working as usual again.
+
+
+March 5 2015  Release version 1.42
+==================================
+- Updated FSUIPC dll to newest version
+- New strategy (experimental) for getting data to ProSim737 Display
+- Moved reverser switches into the new reverer lever configuration
+- Changed control of aircraft lighting to match ProSim737 flightmodel
+- Added encoder support for SimIO boards
+- Changed rudder and aileron processing for compatibility with x-plane
+- Tuned aileron output deflection on lower EICAS for new ProSim737 aircraft model
+- Added Above transition altitude gate
+- Parsing companyroutes will now resolve waypoint ambiguities by selection closest waypoint in the route
+- Added approach data to XML gateway airport query
+- PFD land alt will now revert to global airport altitude when no runway data available
+- Fixed LNAV never reaching DF flyover waypoints
+- Added igniter power source
+- APP mode localiser intercept will now use FMS database to start the intercept earlier for better capture
+- Repositioning improved
+- Fixed descend now mode resetting back to vnav cruise
+- LNAV armed on ground now captures at 50 feet AGL
+- Added accel height and eo accel height to takeoff ref 2/2 page
+- Improved VNAV logic for holdings
+- Improvements in LNAV
+- Pitch controller for MCP_SPD pitch mode tuned
+- LNAV MCP indicator on during takeoff instead of HDG SEL when LNAV armed before takeoff
+- Parallel and Teardrop holding entries tuned
+- Fixed holding not exiting after passing fix when exit was armed during entry in parallel and teardrop entry
+- Reworked missed approach
+- CockpitSonic EHID: Improved pushbutton support, make sure "BrakeEvent=yes" is set in b737_ehid.ini!
+
+
+January 25 2015  Release version 1.41
+=====================================
+- Fixed FDS CDU CLEAR key always clearing entire line
+- Fixed crash on attaching FDS radio
+- Added blanking of FDS radios when there is no power
+- Improved ASN weather radar processing
+- Added support for contacting multiple subsystems in the CDU
+- Added configuration options in ProSim737 system to change print margins for the ACARS printer
+- Improved IAN FAC capture reliablity
+- Fixed a problem where wind direction was handled as true, while it was actually magnetic
+- Added an option to choose whether or not to allow -1 as a frequency for inactive radios
+- Fixed crash in Pololu JRK driver
+- Added options to acars.xml for title alignment and forcing numbered pages
+- Added option to reverse ICS crossfeed switch
+- Improved uplink advisories and added EICAS advisories
+- Fix for CPFlight BlackBox devices and added blanking of radios connected through BlackBox devices
+- Fix communication erros with CPFlight overhead panels leading to indicator issues
+- Improved TO/GA mode pitch commands for one engine flight
+- Fixed throttle hanging above 0 when pulled closed rapidly when configured through directinput
+  with reverser analog input enabled
+
+Release notes:
+This is mostly a service release with a lot of fixes and improvements for issues that were reported. 
+
+
+December 25 2014  Release vesion 1.40
+=====================================
+- Added option to reverse phidget DC motors
+- IAN should only be enabled when the option is on in the instructor station
+
+This is a hotfix for IAN that could not be disabled in 1.39
+
+December 24 2014  Release version 1.39
+======================================
+- Added support to display indicators to ProSim737 Display
+- Fixed a crash related to GoFlight GF46 radios
+- Fixed APP mode in track up has incorrect display of the course
+- FSUIPC mixture control is now kept synchronized with engine fuel valve control to prevent automatic engine start
+- IRS display numerical outputs now include data that was entered on the keypad
+- Fixed FSUIPC bit offsets triggering incorrectly
+- Added support for FSUIPC to read and clear bits
+- Added standby attitude mode control
+- Added brightness control inputs for the CDU's
+- Added an option to ProSim CDU to inhibit movement of the application window when the border is disabled and the mouse is dragged
+- Added support for encoder input to FSUIPC driver
+- Fixed Matrix Orbital IRS display missing two characters left and right
+- Added support for Flight Illusion RDMI gauge (130)
+- Redone all holding code
+- Numerical outputs for radio frequencies will now output -1 when the radio frequency display should be blank
+- Added native support for FDS NAV/COM Radio, FDS transponder panel and FDS MCOM panel
+- Added native support for FDS CDU, please disable FDS-CDU software
+- Added native support for FDS MCP's
+- Fixed crash on IRS keypad when heading is entered without content
+- Added option to show an indicator in the upper EICAS for current throttle position for non motorized throttles
+- Added gauge outputs for standby Localiser and Glideslope needles
+- Added option to load company route to XML gateway
+- Added A/T hold solenoid gate
+- Fixed bearing output in FMS XML data showing speed instead of bearing
+- Fixed FMS selecting airport only when airport and navaid has same identifier
+- Added weather radar gain control
+- New weather radar now turned on by default
+- Fixed WP Bearing/WP Bearing entry resulting in wrong intersection calculation
+- Updated CPFlight overhead panel driver for performance enhacements in firmware version 400
+- Improved duct air pressure calculations
+- Added autoconfiguration support for analog axes
+- Added Integrated Approach Navigation
+
+Release notes:
+--------------
+FDS hardware native support: We are adding more native support for FDS hardware. In this release, FDS CDU's will no longer require FDS-CDU software.
+ProSim CDU will no longer accept input from the FDS-CDU software and will instead communicate directly with the CDU. 
+FDS MCP's are also supported natively. To enable FDS native support for MCP's, go to the "Drivers" tab of the ProSim737 system configuration screen, click
+"Advanced" next to "FDS Hardware support" and enable support for FDS G3 MCP/EFIS. Do not forget to display the FDS-Glare software.
+Other natively supported FDS hardware in this release: Multi COM panel, Generic radio and XPDR
+
+For non motorized throttles, we've added an option to show the current physical position of the throttles on the upper EICAS. This will aid in
+positioning the physical throttles correctly prior to disengaging the autothrottle. The option can be enabled in the instructor station, on the
+Cockpit Setup menu and you can find it under the Display tab as "Show manual throttle position in EICAS".
+
+We've added support for Active Sky Next. To enable Active Sky Next integration, you will need to make sure that FSUIPC writes its radar data in
+a file called 'radar.bin' in the ProSim737.exe folder. This is done by adding the following parameter to the [General] section of fsuipc4.ini:
+ASNwxRadarPath=<path of prosim737.exe>\radar.bin
+
+We have added the Integrated Approach Navigation option (IAN), which allows you fly any precision or non precision approach using the same methodology.
+The option also enables the Navigation Performance Scales in the PFD, which show you lateral and vertical deviation from the path as well as 
+RNP and ANP values (Required and Actual Navigation Performance). The option is not enabled by default and can be found in the
+instructor station in the Cockpit Setup menu.
+
+
+October 6 2014  Release version 1.38
+====================================
+- Added reverse trim wheel option for FSC throttles
+- Reworked ISIS and added switch inputs. New instrument is now called ISFD. Renaming is automatic.
+- Added TO T/D to VNAV cruise page
+- Added support for GoFlight GF-LGT2, GF-166 and GF-46
+- Fixed reverser switches no longer working after first use
+- Fixed Fuel Used not showing on upper EICAS when Fuel Flow data not available
+- Changed MCP Numerical outputs to show "-1" when MCP power is off
+- Level change thrust mode reverses when MCP alt moves past aircraft alt
+- Fixed ISFD re-initializing on power supply change
+- Fixed packs indicating on when too little airflow available
+- Speedbrake armed indicator should stay lit when speedbrakes deploy
+- Speedbrake autorestow disabled while aircraft is in the air
+- Deployment of speedbrake from the "Down" position is now supported (RTO & on reverser application when speedbrake was not armed)
+  This deployment must be manually enabled in the speedbrake calibration screen. It is available for CockpitSonic and FSC throttles in
+  ProSim737 MCP and for the speedbrake level output in ProSim737 System.
+- FSC throttle speedbrake calibration now allows reverse calibration
+- Added Speedbrake do not arm logic
+- Fixed an issue where not more than 10 clients could connect to ProSim737 system
+- Fixed FDS G3 MCP/EFIS having incorrect backlight control in EFIS
+- New weather radar is available as an option in ProSim737 Display configuration screen
+- Database building in ProSim737 System will now use the scenery.cfg file from FSX/Prepar3d to read scenery
+  files from any location that was configured in the scenery library
+
+Release notes:
+--------------
+ProSim737 Display:
+We have implemented a major change in ProSim737 Display. We are migrating ProSim737 Display to allow user interaction with onscreen
+instruments and for this to work, we need mouse interaction. In previous releases, all mouse interaction was used to move 
+screens around in ProSim737 Display. Since 1.38, ProSim737 Display will have two operation modes that differ in the way the mouse is handled:
+- Normal operation mode
+  This mode is the default operation mode. All mouse interaction controls the onscreen instruments. No resizing or moving of screens is
+  possible.
+- Setup mode
+  This mode uses the mouse for manipulating the screen positions. This is how ProSim737 Display used to work by default. The whole background
+  of ProSim737 Display will now be blue when you ae in Setup mode. This allows you to better view the workarea of the ProSim737 Display
+  instance in case you have it span multiple area behind your MIP.
+Saving of the display configuration is no longer done when exiting ProSim737 Display. Instead, ProSim737 Display will save its configuration
+when you move it from setup mode to normal operation mode. When you stay in setup mode, ProSim737 Display will also save the configuration
+when exiting the application. 
+
+ProSim737 System:
+Scenery extraction now uses the scenery.cfg file. In previous releases, all *.bgl files where scanned that where in any subfolders 
+of path that was specified in the database dialog window. In this release, ProSim737 will try to locate the scenery.cfg file and it will
+use this file to find any path configured there. This will allow ProSim737 to find files on multiple disks.
+
+
+August 5 2014  Release version 1.37
+===================================
+- Fixed VNAV climb speed restriction altitude did not process flight levels correctly
+- Fixed reverser input without configured throttle input not working
+- Added encoder acceleration for FDS G3 MCP
+- Added Sixpack displays to ProSim Display
+- Improved fuel flow on ground
+- Fixed high PoKeys Matrix input ports crashing ProSim
+- Added support for PoKeys fast interface
+- [DEV-176] Bank angle callout restored
+- [DEV-175] Stabilization period for IDG power availibility reduced from 5 to 2 seconds
+- [DEV-174] IDG requires power for disconnect to work
+- Fixed Altimeter in EFIS layout captain side not working
+- Fixed entering V/B calculator entries not working
+- Added missing MCP_SPD pitch mode gate
+- FLARE mode removed when A/P disconnects during dual channel approach
+- V/S armed should only appear during ALT_HOLD when MCP ALT changes
+- Fixed CDU Page FIX 6/6 could not be entered
+- Fixed SIMIO 32/32 board providing incorrect results when autoconfigure indicator finder is used
+- Audio selector panel now only uses the BOTH audio mode (bit 5) in FSX when both VHF receivers are switched on
+- Added "Close display" to context menu of ProSim Display to close the currently selected display
+! For FDS G3 users: Please enable "Switch acceleration" in the FDS-Glare software. ProSim now has full support for accelerated 
+  rotary encoders in both the MCP and EFIS modules.
+- Added Standby altimeter QNH encoder
+- Added TERR INHIBIT ND message
+- Fixed ProSim737 configuration screen missing "F" find buttons on additional outputs for indicators
+- Added observer ASP panel switches/volume controls to ProSim737 System and audio processing to ProSim Audio
+- ProSim MCP now waits 3 seconds to switch autothrottle mode from RETARD to ARM to allow hardware throttles to keep up
+- N1 light on MCP should also illuminate during VNAV
+- Added <flightplan> element to FMS XML query, containing the entire flightplan
+- Added pressure low high/pressure loss low gates
+- Fixed a problem in IOS when bottom activation bar obscures content of tab
+- Added sim rate control in CDU Maint
+- Fixed speedbrake being deployed to full up by FSX when it is placed in the ARM position on the ground
+- Fixed MCP V/S encoder in ProSim737 System did not use a delta of 50 feet below 1000 feet
+- Changed Matrix Orbital degree character to a double quote (") character because new revisions of the display different character mapping
+
+Changes for X-Plane:
+- Added TCAS
+- X-Plane plugin changed to allow repositioning, please update the plugin in X-Plane
+- Added repositioning. This is still a work in progress and does not work reliably when positioning to a ground position yet.
+
+
+June 5 2014  Release version 1.36
+=================================
+- Added XML query "acars" for uplinking ACARS messages
+- Fixed input debugger
+- Improvements in VNAV speed selection during takeoff and descend
+- Improvements in VNAV path calculation
+- SPD INTV during VNAV descend on idle descent leg now causes transition from VNAV_PTH to VNAV_SPD
+- Fuel "config" warning should only appear when engines are running
+- MIP LE Flap Ext light should only be lit when not in transit
+- Improved internal webserver error reporting
+- Fixed control of indicator intensity for CockpitSonic hardware and added configuration option for
+  indicator intensity
+- Fixed standby RMI getting heading information from IRS
+- Added gates for IRS state
+- Autopilot roll control has been reduced to be smoother
+- Pitch/Roll FMA modes blanks when F/D off
+- EICAS EGT/Fuel Flow data not available when engine not running
+- Starter switch should be held in GRD position even when bleed air is insufficient
+- Autopilot disconnects on power interruption
+- Added IRS fault for position failure and fixed PFD/ND not responding to IRS faults
+- Improved calculations for cross bleed start criteria
+- Fixed electric hydraulic pumps low pressure lights are not inhibited by fire handle pull
+- Reselecting an active SID/STAR will now reload the SID/STAR into the FMS
+- Yellow band for maximum speed in speedtape should not be visible during takeoff
+- Reconnect logic for CPFlight MCP improved. The MCP sometimes closes the port and this caused communications between ProSim MCP 
+  and the hardware to stop. This is now fixed gracefully.
+- Upgraded FMS math for great circle intercepts and distance calculations
+- Improved FIX page intersect calculations
+- Added "Round" chronograph type to ProSim Display
+- Updated PoKeys library to latest version
+- Added additional TO/GA and A/T disconnect switches for throttles with two discrete buttons
+- MCP Level change should not override armed vertical mode
+- Lots of improvements for holdings
+- Fixed a problem in the pololu driver which caused ProSim to crash
+
+Changes for X-Plane (using ProSim Xplane plugin)
+- Xplane plugin changed to fat plugin with 32 and 64 bit support
+- Flight control deflection is now read
+- Thrust prediction improved
+- Autopilot thrust control improved
+- Fixed flap control
+- Fixed track readout on ground
+- Improved aileron response
+- Fixed a bug in X-Plane plugin that could prevent data from being available on startup
+- Fixed incorrect groundspeed readout causing autopilot turn calculations to be incorrect
+
+Release notes:
+--------------
+The roll commands of the autopilot system have been improved. The autopilot will use a lower rollrate, which is much
+more realistic. The mathematics of the bank calculations have been significantly improved to allow better track to track
+intercepts. These changes caused lots of modifications in all areas of the autopilot like intercepts, holdings, etc. More
+improvements in the spherical trigonometry math of the FMS allows more reliable LNAV and intersection calculations.
+
+A lot of work has been done on X-Plane integration. We are currently focusing on having correct autopilot operation and
+basic functionality. In the current state, regular flight with lnav/vnav/autolands should be working. There are still a lot
+of subsystems (weather/repositioning/TCAS) that are not yet working with X-Plane. More focus on X-Plane is planned this year.
+
+
+March 25 2014  Release version 1.35
+======================================
+! Please rebuild the scenery database
+- Added support for Cockpit Sonic clocks
+- Added support for Cockpit Sonic MCP/EFIS panels
+- Added Cockpit Sonic brightness control
+- Updated Cockpit Sonic initialisation
+- Added System driver with "always on" and "always off" configuration items for switches
+- Added flap analog input lever
+- Added support for matrix keyboard and matrix leds for PoKeys cards
+- Fixed incorrect time label on incoming ACARS messages
+- Fixed new ACARS messages not showing LSK5R prompt
+- Cruise CG can now be changed in PERF INIT page
+- Improved switching ground altitude in PFD Alt tape between origin and destination airport
+- VNAV Path descend now reverts to speed descend when speed hits upper or lower limit
+- Added display of intercept route when LNAV is engaged while intercepting route
+- Added option in ProSim MCP for non motorized throttles
+- Added gate outputs for all FMS modes
+- Added a workaround for a bug in Chrome causing the map to display incorrectly in the instructor station
+
+
+February 11 2014  Release version 1.34
+======================================
+New features:
+- Added MIP CLOCK switches
+- Added master volume control to NAV audio in ProSimAudio
+- Added Cockpit Setup option to switch the call indicator between blink and steady
+- Added Cockpit Setup option to switch acquisition alert altitude between 750 and 900 feet
+- Added configuration menu option in ProSim737 System to add additional sources for company routes
+- Added option to switch off RW/APP CRS ERROR message in CDU
+- [DEV-141] Added ground pneumatic options
+- [DEV-144] Added extra elevator trim gauge
+
+Display:
+- Fuel indication in old style indicator rounded to 10s of KGs
+- Fixed N1 mode in side by side EFIS layout overlapping TAT
+- Added option to remove fuel flow indication from upper EICAS
+
+Aicraft systems:
+- Wing Anti Ice trips back to OFF when no battery power is off
+- Added extra load on AC and DC standby system
+- Elec panel now indicates battery discharge with negative amps
+- Reworked pressurization controller logic
+- Indicators are now connected to the proper power source
+- LE Devices ext lights not on while LE devices are moving
+- Fixed F/D commanding a pitch higher than stall pitch
+
+ACARS:
+- Added "subpages=auto" to acars to allow uplinks to span across pages
+- Added defaults to acars input variables
+- Added readonly acars variables to read data from FMS
+
+Misc:
+- Configuration import display changed to allow more space for import items
+- Altitudes in weather interface of instructor station all converted to feet and relabled to MSL
+- Fixed "Delete preset" button in position page of new instructor station not working
+- Memory optimisation in ProSim737 system
+- New IS2 instructor station is now the default
+- [DEV-143] Companyroute list in IOS is now sorted
+- Added support for CockpitSonic Aft Overhead panel
+- Fixed rudder trim gauge calibration to ranges between -10 and 10 degrees
+
+
+December 25 2013  Release version 1.33
+======================================
+- Fix for ProSim737 startup crash when simconnect.dll is missing
+- Added weather system in IOS2
+
+Release notes:
+--------------
+In this release we are including the first version of our weather system. The weather system
+is located in the new instructor station. The weather engine of FSX and Prepar3d are based
+on METAR reports and since this is also a widely accepted weather format, ProSim737 will also
+be based on these reports. The new ProSim737 weather system allows you to create METAR reports
+for global weather or for station based weather. Identically to positions, you can store weather
+presets in slots and call them up quickly.
+
+Please note that:
+- There are still various bugs in the METAR processing of FSX/prepar3d.
+- Not all weather functions may work. We are investigating how to improve this.
+- More weather feature will appear in other parts of the IOS.
+- METAR weather processing requires simconnect, so it is only available on FSX and prepar3d at the moment.
+
+
+December 13 2013  Release version 1.32
+======================================
+- Max MCP altitude increased to 50000
+- Added brake temp indicator
+- Vspeeds are now removed when takeoff derate is changed
+- Added config configuration item to switch reposition mode between quick and full
+- Fixed ProSim Display stay on top feature not working after startup
+- Internal changes in PoKeys driver
+- PoKeys ethernet devices can now be handled with UDP. This should reduce latency
+- Fixed ADF tuners not updating correctly
+- Yaw damper switches off when IRS mode selector changed from NAV to OFF
+- LNAV drawing fixes
+- Upper EICAS thrust mode now shows derate temperature
+- ASP mic buttons can only have one active at a time
+- Fixed incorrect input and output pin readouts in Sismo ethernet board
+- Fixed ND drawing errors when tuned VOR/ADF stations share the same ID
+- Added thrust reverser input switches
+- Added simulator connection state to "Software" Box of the main tab of ProSim737 system
+- Reworked pressurisation schedule
+- Tuned VOR capture to occur closer to actual radial
+- Added "Autobrake reset" gate
+- Added support for Poldragonet MIP panel
+- Added lever support for homebuilt throttles
+- Fixed ASA AP F/O blinking light not always operating
+
+
+Release notes:
+--------------
+This release contains the new Virtual Wave feature that calculates the reception of radio waves based on various conditions. The
+Audio selector panel has been extended to include volume and filter controls and a second first offer ASP is included.
+
+September 27 2013  Release version 1.31
+=======================================
+- [DEV-75] T/D VNAV is now more smooth
+- Fixed LNAV route display incorrectly showing a turn before a waypoint that is marked 'fly over'
+- Added aft overhead gear lights
+- APP mode only selectable after NAV tuned
+- Fixed back course autopilot flight
+- Fix for renamed airport FAJS to FAOR
+- Instructor Station v2
+
+Release notes:
+--------------
+This release contains the first public version of the new Instructor Operating Station. For now, it will not replase the old
+instructor station, but will be available separately at the URL http://<ProSimMachine>:8080/is2
+
+
+
+September 13 2013  Release version 1.30
+=======================================
+! Fixed extra incorrect runways appearing in position setup. Please rebuild the scenery database for this fix to take effect
+- [DEV-110] Fixed ProSim System not exiting correctly when PoKeys devices are connected
+- Restored missing CDU EXEC light 
+- Added CDU MSG indicator to ProSim737 System
+- Added POS SHIFT page to CDU
+- Positioning system is refined to allow more accurate map shift
+- Fixed LNAV route showing incorrect waypoints connecting airways in the RTE page. This was also apparent in the 
+  "load route from FMS" function of the company routes tab.
+- Added "Pause" to PFD if simulator is paused and added the "Sim state in PFD" configuration item to enable/disable all
+  PFD simulator state flags
+- Added support for SimIO boards
+- Gates now have ID's, so their output can be read by the generic driver
+- Fixed GPWS warnings not checking locked state of gear
+- Added the ability to filter output from the generic driver
+- Fixed EICAS side by side display showing "fuel used" label when fuel selector is set to "used". It only shows fuel flow.
+- [DEV-67] Target cabin altitude rate for auto controller changed from 770 to 750
+- [DEV-73] Minimums reset button can now remove minimums display when below minimums
+- [DEV-98] Added "Stay on top" options to ProSim Display and ProSim Panel
+- [DEV-82] Packs bleed output is now dependant on pneumatic requirements
+- Added ground call sound
+- Added windshear
+
+Release notes:
+--------------
+The core navigation system of ProSim has been updated. The position of the aircraft as determined by the FMS is based on
+many sources. Individual sources will now have more accurately modeled individual positions. The radio position for instance
+is based upon the DME stations best suited for location fixing. The new POS SHIFT CDU page will show the relative position
+if the various sources. From here it is also possible to bias the FMS towards a source. This can be seen by the ND's switching
+position and the autopilot flying back towards the LNAV course.
+
+Windshears have been added. They will appear randomly based on the weather settings. In FSX/Prepar3d ProSim is able to introduce
+the windshear into the flightmodel. Be sure to stay out of the windshear area.
+
+
+July 25 2013  Release version 1.29
+==================================
+- [DEV-96] Added option to show ProSim Panel withoud border
+- Fixed VNAV resets original descend angle into point after passing a waypoint, causing it to fly level
+- Fixed ProSim Panel guard caps open while switch is in default position
+- Fixed gear lock failures left/right interchanged
+- Momentary input of encoders now have acceleration
+- ND shows dashes for next waypoint zulu time and distance when no data available
+- Fixed ProSim MCP FDS G3 checkbox not showing checked when driver is on
+- Thrust prediction arcs are now vastly improved
+- Added Failures to CDU Maint page
+- Added "monitor" element to ACARS xml to monitor FSUIPC offsets
+- Updated Phidgets libraries
+- Updated PoKeys libraries and added stability fixes
+- Fixed generic driver TCP mode should only output configured element if mode is set to "manually configure elements"
+- Fixed naming error in Fuel center switches/indicators:
+  "Fuel Center Aft" => "Fuel Center Left"
+  "Fuel Center Fwd" => "Fuel Center Right"
+  Configuration file will be automatically updated
+- Memory optimizations in ProSim737 System
+- SOURCE OFF now occurs if source is engine generator and fuel cutoff is placed in CUTOFF
+- Engine hydraulic pumps now procedure power as long as N2 is running
+- Generic element names renamed for consistency:
+  I_MCP_LVLCHANGE => I_MCP_LEVEL_CHANGE
+  I_MCP_ALTHOLD => I_MCP_ALT_HOLD
+  I_MCP_CMDA => I_MCP_CMD_A
+  I_MCP_CMDB => I_MCP_CMD_B
+  I_MCP_CWSA => I_MCP_CWS_A
+  I_MCP_CMDB => I_MCP_CWS_B
+- Added numeric outputs for chrono 7 segment displays
+
+Release notes:
+--------------
+ProSim737 System can now parse the .AIR files that contain flight model parameters. It now uses this data to produce an
+accurate mapping between throttle settings and engine N1.
+
+
+June 28 2013  Release version 1.28
+==================================
+- [DEV-16] Added stab trim override switch
+- [DEV-62] Added support for flap calibration to FDS throttle for non motorized versions
+- [DEV-64] Added About dialog box with version number to each module
+- [DEV-76] Added support for Pololu devices
+- [DEV-78] ND image fix
+- [DEV-81] Fixed ProSim Audio volume control was not at 100% volume when 100% was selected
+- [DEV-86] Added 12 seconds delay to gear warning sound when gear is raised during go around
+- Added parking brake release gate
+- Fixed parking brake sometimes not engaging when TQ parking brake switch turned on
+- Improved cabin VSI calculation
+- Added lower MIP to ProSim Panel
+- Added gear locking failures
+- Added radial NM in text to  the dashed Fix arc in ND
+- CDU now autoswitches from TAKEOFF REF to CLB page after takeoff
+- Added ID's to radio frequency numerical outputs
+- Changes in the PoKeys library for stability
+- Fixed problem where FMC stayed in CLB mode after reaching cruise altitude because T/C was not yet passed
+- Fixed ProSim system crashing upon restart after a driver change in the configuration screen
+- Fixed dashed V/S line in VSD drawn outside of VSD box
+- Added Flight number to FMS XML query
+- LNAV route display fix to prevent strange angles in routes
+
+May 17 2013  Release version 1.27
+=================================
+- Added debug window
+- Improved size of VSD display in ND
+- Added extra slider in Phidgets Advanced configuration to set motor speed of 2nd motor
+- MCP numerical outputs will now show "-1" when MCP display is blank
+- Incorporated R. v.d. Wiele's starterreset in the engine code
+- Gauge smoothing disabled for spoiler
+- New ProSim Audio interface with volume control
+- Fixed switch caps displayed incorrectly in ProSim Panel
+- Stability improvement in PoKeys driver
+- Added ProSim module list to Software box of ProSim737 main program
+- Pressurisation controllers now reset when placed in AUTO mode
+- Added Wing Anti Ice hold actuator gate, which is the inverse of the off actuator gate
+- Added Yaw damper hold actuator gate, which is the inverse of the off actuator gate
+- ND graphics update
+- Spoiler "Armed" range increased 50%
+- Added support for FSC throttle
+- Simulation rate is now shown in PFD when higher than 1
+
+Release notes:
+--------------
+In the ND, an option is now available to draw text with a black outline. This improves readability.
+This option is called "High quality text" and can be found in the ProSim Display configuration screen.
+
+
+
+April 17 2013  Release version 1.26
+===================================
+- Hotfix for ProSim not starting correctly with FS9
+- Fixed MCP resetting to default mode when hardware connects or disconnects
+- Fixed trim wheel activation when stab cutout switch is off
+- Fixed fuel cutoff cuts out both engines initially
+
+
+April 11 2013  Release version 1.25
+===================================
+- Fixed Standby RMI ADF2 needle not working
+- Improved gear handling. Hydraulics A is required for extending, A or B is required for retracting
+- TOGA mode changed: After takeoff, F/D commands V2 + 20, but speed bug remains at selected speed until CMD is pressed
+- Fixed recirculation fans run without power
+- Alt intervention can now starts an early VNAV descend even if a leg constraint was removed
+- Fixed incorrect VNAV speed after modifying CDU VNAV pages
+- Fixed incorrect VNAV intermediate altitudes at waypoints in some situations
+- Added "Advanced" configuration for generic COM port driver to set COM parameters
+- Added workaround to fix crashes with new Navigraph cycles
+- N1 limit is now GA below 2000 feet during approach
+- Decel leg slope tuned to 1 degree to prevent the aircraft from flying level
+- Fixed LSKL2 key header in CDU Takeoff page showing incorrect eng rating when derate selected
+- Updated PoKeys libraries and improved scanning of PoKeys input
+- Fixed numbers not showing negative sign with PoKeys 7 segments display extention
+!! - Removed old "INC" and "DEC" switches for the MCP values. These are replaced by the new "encoder pulse up/down" switches. Please reconfigure to these
+- Added new mode to the generic driver to work without additional configuration of IO elements
+- Arrivals in DEP/ARR page now shows full unabbreviated names
+- Elevator trim switches added to ProSim737 and trim logic changed
+- Reworked autopilot controllers
+- Takeoff climbout speed is now configurable as v2 + 15 or v2 + 20
+- Takeoff lateral mode can be changed between Blank or HSG SEL
+- Gear horn now has 20 seconds delay if gear handle is down
+- Alt box in altitude-tape is now bold when approaching MCP altitude
+- Added up fast/down fast options for SPD REF and N1 SET switches
+- Added flap load relief indicator 
+- Added throttle Stab trim cutout switches
+- NAV1/2 and COM1/2 standby frequencies are now synced with FS
+
+
+Release notes:
+--------------
+In release 1.25 has some improvements in the autopilot system, including retuned flight director behaviour and autopilot controllers.
+The result should be smoother flight director movement and smoother autopilot response. This is important for the upcoming
+controlloading systems.
+All trimming is now done by ProSim and elevator trim inputs have been added in the ProSim configuration. Using these new inputs
+provides variable speed trimming which is more refined that the default trimming input of FS. Additionally the elevator trim speed
+can be further tuned in the ProSim MCP configuration screen.
+
+
+February 15 2013  Release version 1.24
+======================================
+- Fixed a crash in the generic driver
+- Box around "ARM" mode in PFD FMA is now green
+- ASA A/T does not flash when A/T disconnects after landing
+- PoKeys driver now supports using a 7segment expansion board as IRS display
+- AC AMP readout on elec panel is inhibited when AC switch is in INV position
+- Flight alt encoder now uses 500 feet increments
+- Added Gear Wind gate for wind noise
+- TFC label in ND now remains visible if TA ONLY is on
+- Changes to Flight Illusion driver to prevent ProSim from hanging when the application is closed
+- Added numerical outputs to generated SIOC script
+- Improved update process
+- Reduced CPU load of ProSim737
+- "NO VSPEEDS" in PFD removed above 60 KTS groundspeed
+- Fixed missing command arcs in N1 gauge of EFIS layout
+- Rotary encoders now have additional pulse up and pulse down switch in
+- GPWS "Don't sink" message inhibited when gear is down
+- Internal database restructured and improved. All files are now under the database/ folder
+- IO Elements in the configuration page are now better organised, see release notes
+- Fixed MIP "SPD REF" switch VREF position to work while aircraft is in the air
+- Added standby RMI switches to control the standby RMI
+- Added "Door logic" option to Cockpit Setup tab to enable/disable automatic door opening
+- Improved LNAV tracking and drawing
+- Updated Phidgets libraries
+- Fixed Throttle and Speedbrake gauges (servo's) not powered during calibration
+- Improved fuel calculation and ETA times
+- Matrix orbital display now keeps 2 columns empty on the left and the right for spacing
+
+Release notes:
+--------------
+This releases focuses on restructuring data to improve the user interface and the folder structure.
+First of all, all databaserelated files are now moved to the "Database" folder under the main ProSim737 folder. This is done
+automatically when you start this release. The new Database folder stores everything, so you can easily copy it to a remote machine.
+
+Also, we are restructuring the position of elements in the configuration screen.
+* Old approach: The configuration screen consists of tabs. One tab for every type of element. All switches are under switches, all
+  indicators under indicators.
+* New approach: We are still grouping items per item type, but we keep related items together. A rotary encoder may have several switch
+  inputs that can be used. These will now appear in the "Encoders" tab next to the encoder. Also, addon sounds have switches for controlling
+  the sound. These will now also appear in the Sounds tab.
+
+We are also adding a new way to configure rotary encoders. Rotary encoders need fast hardware access and are often handled internally by IO cards.
+For example, bodnar cards offer the option to handle encoders internally and convert them to pulse up/pulse down inputs. ProSim now allows you
+to configure these pulse up/pulse down inputs instead of the rotary encoder itself. All additional switches for configuring the encoders are now
+in the "Encoders" tab of the configuration screen. Always choose one and only one way to configure your encoder. Either choose direct encoder
+support by configuring the encoder, OR use pulse up/pulse down inputs, OR use momentary up/momentary down switches (if applicable)
+  
+
+
+
+January 18 2013  Release version 1.23
+=====================================
+- Fixed a crash when bleedair is off above 7000 feet
+- ProSim Panel pedestal radio's blank when no power available
+- ILS data no longer shown in lower right corners of ND
+- Added flap load relief
+- F/D operation is now independant during takeoff and go around
+- Added rotary acceleration for FDS G3 MCP
+- Digital chronometer blanks when no power available
+- Added option to ProSim CDU to change default font size
+- Added support for Flight Illusion dual needle flap gauge
+
+January 10 2013  Release version 1.22
+=====================================
+- N1 command arcs not visible when engine is not running
+- Using the CONTROL PANEL overhead switch will now also copy soft EFIS modes
+- AC source switches won't accept a source that has no power
+- Fixed missing dashed heading line in MAP CTR mode
+- No boxes drawn around PFD FMA modes that become empty
+- PFD FMA text 'FD' only shows on the side that has the F/D turned on
+- Decreased F/D roll bar movement speed
+- Improved LNAV active track interception
+- Refined LNAV tracking
+- Autothrottle ARM mode now keeps N1's in sync
+- Added automatic download of terrain data
+- Fixed ProSim Display crashing with detailed terrain
+- Fixed early termination of DME arcs
+- Added gear warning horn
+- Added option for 24k or 26k engines in Cockpit Setup tab of instructor station
+- Improved N1 takeoff and climb calculations
+- Fixed ProSim CDU complaining about FDS driver not being registered
+- Fixed FDS driver installer not installing CDU driver
+- Fixed FDS driver only accessing a single CDU
+
+December 20 2012  Release version 1.21
+======================================
+- 140 and 160 added as calibration point to standby speed and barberpole
+- Allowed DELETE on ACARS page items
+- SINGLE CH now takes 10 seconds to become CMD after descending below 1500 feet RA
+- Fixed COM radio rotaries should move in frequency steps of 0.025 instead of 0.05
+- Approach flap markers now show current flap setting + previous flap setting
+- Flap markers are now shown based on the flap handle position and not the actual flap position
+- EGT startup table updated
+- Fixed XPDR to have 4 encoder inputs
+- PoKeys 7 segment displays now show a numerical output of -1 as a blank display
+- Fixed "ENTER IRS POSITION" not showing in CDU when IRS ALIGN light is flashing
+- Fixed an issue where VNAV passed an MCP altitude constraint when the MCP altitude was changed during level off
+- Increased throttle retard speed to make sure it is at idle at touchdown
+- Improved database creation process
+- Changed stick shaker test logic
+- Fixed an issue with IRS alignment duration
+- Added support for trim indicator in newer Cockpit Sonic throttles
+- Improved Cockpit Sonic throttle behavior
+- Added support for Cockpit Sonic throttle trim indicator and backlight
+- Improved response time of flight alt/land alt numerical outputs
+- Added gate "Pressurisation display dashed out"
+- Added gate "Pressurisation display power"
+- Added gate "Emergency exit lights"
+- Electric panel does not show Amps for STDY PWR, BAT BUS or GRD PWR positions
+- "Braking" gate is now only on when brake is active and groundspeed > 1
+- Refuelling fields in CDU are now copyable
+- Fixed FMS calculating wrong waypoint when using direct-to function to VOR based waypoints
+- Transponder state "Alt rptg off" no longer switches transponder to active in IVAO clients
+- Gear extention speed changed from 235 to 270 kts
+- Manual N1 setting is now limited between 70% and 100%
+- Fixed a bug that caused the ProSim Display connection to fail repeatedly
+- Fixed no DME shown for localiser only stations
+
+November 22 2012  Release version 1.20
+======================================
+- Added IRS keypad
+- Added outputs for IRS display dots
+- reworked IRS display in aft overhead in ProSim Panel
+- Yaw damper unavailable when IRS switch is not in normal position and autopilot is CMD
+- Added VHF NAV switch
+- Fixed an issue where HSI bar was displayed even though VOR signal was not received
+- Added a latch variant of the EEC alternate switch
+- Added a latch variant of the cargo fire panel arm switches
+- Fixed numbers not showing negative sign with PoKeys 7 segments display extention
+- Flap gates now usable to control sounds
+- VNAV now commands flap maneuvre speed during descend when flaps are extended
+- SPEED RES in CDU DES page now shows flap limit when the flap limit VNAV speed
+- QRH Vspeeds on TAKEOFF REF page are now first copied to scratchpad
+- Tuned dash pattern for runway center line and inactive route
+- Added support for DELETE in RTE page
+- Fixed LNAV sometimes not capturing DME arc
+- Renamed the flap gates (outputs) to fix a configuration conflict with the flap switch (inputs). Old name was "Flap xx", new name is "Flap gate xx"
+- Fixed hanging nose gear down light
+- Added encoders for radios
+- Fixed autobrake disarming due to throttle position on landing while throttles were still retarding
+- Increased deceleration of autobrake
+- Fixed a problem where VNAV altitudes and T/D point were incorrectly calculated after doing a LEGS page update
+- Added ProSim MCP driver for FDS G3 MCP/EFIS
+- Moved TekWorx CDU driver into the new generic FDS driver installer
+- Added native support for SISMO ethernet boards
+- Added support for GoFlight GF-MESM
+- Added support for GoFlight GF-WP6
+- Added generic TCP driver to ProSim CDU
+- Fixed HOLD not showing fix name when fix is not a waypoint
+- Fixed Fuel Used showing Fuel rate in EICAS compact mode
+- CDU POS INIT page shows "SET IRS POS" only when IRS is aligning
+- Added "SET IRS HDG" to CDU POS INIT page
+- Reworked IRS ATT mode
+
+October 24 2012  Release version 1.19
+=====================================
+- Added alternate destinations pages in CDU
+- Fix for phidgets analog card not enabled when in use
+- Fixed IOCP output for MCP speed missing MACH/IAS mode when re-enabled through SPD INTV
+- Added support for the PoKeys 7 segment expansion board
+- Improved handling of PoKeys inputs
+- Improved PoKeys net discovery
+- Tuned AC voltage
+- Direct-to in modified route will continue to calculate route from present position until EXEC is pressed
+- Stallspeed is now adjusted by wingload
+- Low speed maneuvering margin indicator in PFD improved
+- Added gates for recirculation fan
+- Added gates for hydraulics availability
+- Fixed some instabilities in ProSim CDU
+- Added Mach airspeed warning test switches
+- Added TAT TEST switch
+- Repositioning with runway translation now uses runway position data instead of start position data. This fixes incorrect positionings
+  in addons sceneries that have runway start positions set at the holding point instead of the runway itself.
+- Fixed F/O ADF2 needle incorrect in EFIS mode
+- Fixed a problem where VNAV failed to command lower airspeed for a speed restriction during descent
+- MCP speed cannot exceed VMO/MMO limit
+- Autothrottle will engage in MCP_SPD if armed and speed enters into meneuvre limit
+- LNAV improvements for DME arcs
+- Fixed a problem where ProSim CDU could hang in CRZ page
+- Added missing heading arrow in EFIS RMI
+
+
+September 27 2012  Release version 1.18
+=======================================
+- Modified white dashed route now drawn on top of magenta active route
+- New flap timing added. To use these, make sure your flap handle controls the new "flap" switch in the throttle/MCP tab.
+- FSUIPC IO method improved to remove limits on arguments
+- "Control via ProSim737 configuration" option is now always enabled in ProSim MCP
+- Fixed ADF not tunable through CDU
+- Fixed a problem with CPFlight MCP where the aircraft refused to turn with HDG SEL
+- Autobrake now disconnects after manual brake input
+- ProSim MCP now detects unregistered FSUIPC versions
+- VOR/LOC mode will now allow some time between loss of signal and disconnect
+- Autopilot can be engaged on the ground
+- Electric loads tuned
+- EICAS colors tuned
+- Added option to ProSim MCP to override autopilot with yoke force
+- Autopilot engagement inhibited when yoke is not in neutral position
+- Window heat internal logic improved
+- Fixed ILS frontcourse in CDU should show magnetic heading
+- MAP and VOR/APP modes now have individual orientation configurations (heading up/track up)
+- Improved EGT during start
+- Fixed N2 reading increases while engine starter in ground position with no pneumatic power
+- Flap and gear now depend on hydraulics
+- Added more logging for switch changes
+- Runway in ND is now drawn in correct length
+- Some VNAV improvements
+- Added support for FDS G2 based MCP's
+- Fixed Localiser and G/S failflag in EFIS mode only appearing in captain side
+- Added CDU MESSAGE RECALL page
+- Added "VERIFY POSITION" message
+- Added "INSUFFICIENT FUEL" message
+- Added "USING RSV FUEL" message
+
+
+August 30 2012  Release version 1.17
+====================================
+- Fixed missing HDG and VERT flags when IRS is off
+- Internal optimisations in ProSim Display
+- Reshaped altitude prediction indicator
+- Added single cue flight director option
+- Added yaw damper gauge
+- Added wet compass
+- PFD pitch lines tuned to be a bit wider and close together
+- Added carrier option for groundspeed display below speed tape
+- N1 drawn in red only when N1 exceeds 100% and N1 limit
+- Inactive route from dashed magenta to dashed white
+
+- Added fix for CockpitSonic throttle to prevent reverser input from changing throttle when throttle > 10%
+- Added "AC Power" gate
+- Improvements to VNAV leg speeds
+! Changed to Flight Illusion instruments:
+! Yaw damper gauge is nolonger handled automatically, please configure using the "gauges" tab
+! Standby airspeed gauge is nolonger handled automatically, please configure using the "gauges" tab
+- Fixed a problem where along track waypoints were misplaced away from the track
+- Leg course calculation now uses the leg point as calculation point instead of the origin point, resulting in better course calculation
+- Fix for origin airport elevation being shown as ground alt in altitude tape after landing
+- Fixed a problem with database building where empty airport information was included
+- Added encoder support to generic driver
+- Removed unusable "bright" gates for indicators that cannot be bright
+- New engine startup model
+
+- LEGS <wpt><rad>/<dist> format now allows <rad> with decimal point again (eg SPL130.3/10.0)
+- Extended direct-to with intercept option legs to 500 NM
+- Landing weight now settable in APPROACH REF page
+- Runway entries in legs page renamed to RWxxx and selectable in FIX page
+- Added <INDEX link on CDU MAINT NAV/COM page
+- Better handling of FMC messages and CDU input during FMC messages
+- Direct-to intercept course prompt on LSKR6 now stays until EXEC or ERASE
+- Added refuelling option to CDU ground services
+- Reformatted columns in CDU PROG page to fix overlapping text in 2nd and 3rd column
+- Only first active VNAV restriction is colored in LEGS page
+- Added "SELECT ACTIVE WPT/LEG" message
+- Added "STEEP DES AFTER" message
+- Added "THRUST REQUIRED" message
+- Added "RW/APP CRS ERROR" message
+- Added "UNABLE xxxKTS AT yyyy" message
+- Added "CUTBACK DISARMED" message
+- "APPRCH VREF NOT SELECTED" now only during VNAV
+
+- Better processing of mousewheel in ProSim MCP
+- Autopilot now drops active modes when NAV received is retuned during VOR/LOC G/S operation
+
+July 26 2012  Release version 1.16
+==================================
+- Increased width of magenta line
+- Ground power available light working even if battery switch is off
+- Added "speedbrake extended in air" and "speedbrake extended" gate
+- Added CDU EXEC light to ProSim737
+- ProSim modules handle read only config files
+- Added gates for each flap position
+- Fixed looping audio during test in ProSim Audio
+- Fixed a problem in the autothrottle where it was unable to reach the N1 limit during FMC_SPD/MCP_SPD mode
+- Added support for ICS display dimmers
+- VNAV improved to prevent switching from CLB to CRZ mode before reaching cruise altitude
+- Added vertical bars to ground alt indicator in PFD Alt tape 
+- EICAS REV indication now in amber while reversers not locked in position
+- Red gear lights also turn on when below 800 feet AGL with idle thrust and gear is not locked
+- APU low pressure light now always on when APU switch is not in the OFF position and APU oil pressure low
+- Fuel cutoff switches are now enforced by ProSim whenever possible, to stop incorrect starting of engines
+
+July 19 2012  Release version 1.15
+==================================
+- Added "ground gate" to signal ground
+- Added support for phidgets motor control card
+- Added trim motor value to indicate direction of trim motor
+- Fixed CDU text on right side not affected by screen layout tuning
+- Fixed LNAV disconnects during holding
+- LNAV direct to with intercept leg extended to 100 NM
+- <waypoint><bearing>/<distance> entry format changed to fixed 3 positions for bearing, making it possible to enter RW001120/10 to get a 120 bearing 10 NM point from RW001
+- Improvements to ProSim audio: Audio addons can now auto fade in/out or be constructed from three individual sounds (fade in/normal audio/fade out)
+- ProSim Audio now allows selection of audio card
+- Added "Braking" gate to signal usage of brakes
+- !! CPFlight MIP board has three switches inversed: GPWS Flap inhibit, GPWS terrain inhibit, GPWS gear inhibit
+  !! ProSim now inverts those switches to make them correct again
+  !! Users of the CPFlight MIP board must physically rotate the switches 180 degree for correct working of the switches from this release of ProSim
+- VNAV is more responsive when switching from ARM to FMC_SPD
+- Fixed a bug when VNAV climb took speed restrictions from the missed approach leg
+- Terrain detailed doubled and new terrain graphics added as option
+- DESCEND NOW> needs EXEC to activate
+- CDU "INT CRS" field has higher precedence over "STEP>" field
+- Changed numerical output quantities:
+  Cabin altitude: Was thousands of feet, now reported in feet
+  Pressure differential: Was in whole PSI, now in 1/100 PSI
+- Added GPWS INOP light and GPWS SYS TEST support for ICS MIP hardware
+- Added NAV STATUS page
+- Added option to start minimized to ProSim737
+- Added option to select startup condition to ProSim737
+- Fixed oil pressure drawn in red while on the ground with engines shut down
+
+July 5 2012  Release version 1.14
+=================================
+- Added analog clocks
+- Added GoFlight driver with support for GFDIO, GFRP48, GFP8 and GFT8 boards
+- Added Runway Extension option to CDU
+- Added Phidgets "Advanced" configuration screen with voltage control for LED64 board
+- Generic serial port driver now support writing analog elements
+- Generic serial port driver extended with support for TCP communication
+  !! Output format of reports is now changed. Instead of <item><value>, the driver now sends <item>=<value>.
+  !! Make sure you parse the new '=' when reading from the generic driver
+- Added Flight Illusion wet compass support for ID 105
+  !!! In previous release, 105 was clock number 2. In this release clock number 2 should be renumbered to 204. Clock 2 may also remain its inital ID of 104.
+  !!! If you use multiple clocks please make sure they are using id's 104 or 204
+- Aircraft symbol in ND PLAN mode now drawn towards aircraft track instead of mag heading
+- Autopilot now compensates for required acceleration during LVL CHANGE to better match target airspeed
+- Fixed a bug in VNAV where VNAV PTH could depart from indicated path after making a change in the legs page
+- Added support for VRInsight CDU II
+- Added support for VRInsight Overhead panel
+- Added new Localiser and Glideslope failures
+- OpenCockpits MCP now switches off displays on loss of power
+- Added support for Gradient Path display in legs page
+- Added "line setup mode" option to ProSim CDU to tune individual screen layouts
+- ProSim MCP software panel now reflects MCP power state
+- Fixes for "UNABLE CRZ ALT" appearing incorrectly
+- Fixed a bug with importing gauge data
+
+June 14 2012  Release version 1.13
+==================================
+- Flight Illusion flap gauge now handled as generic gauge which can be calibrated
+- Automatic update system added
+- Fuel load in instructor station is now limited to capacity
+- Fixed FPV on ground
+- Fixed software CDU power state not being updated correctly when power changes
+- Fixed trim control not working
+- Emergency exit light switch now has 3 states
+- Reworked Speed Trim, Mach trim and Auto slat operating conditions
+- Added ability to add legs in the <Leg>/<distance> format to enter along track waypoints
+- Temporary waypoints are now accessible as regular waypoints in the FMS
+- REF NAV DATA page now allows creation of temporary waypoints
+- Added NAV SUMMARY CDU Page
+
+May 31 2012  Release version 1.12
+=================================
+- Added clocks to ProSim Display and ProSim737
+- Added photorealistic flap gauge
+- Added groundpower control in CDU
+- IRS switches move to OFF for Cold & Dark quickstart
+- Fuel cutoff switches move to OFF for Cold & Dark quickstart
+- Better synchronisation for fuel cutoff switches
+- ProSim Panel COM radio frequencies now change with .025 increments
+- Added radio TFR buttons to ProSim737
+- Time can now be selected from Local time/UTC/FS Time
+- Added Combined Heading + Bank sel switch to Prosim737
+- ND now shows recent track behind the aircraft
+- LNAV/VNAV improvements
+- Departure ICAO that appears in scratchpad on RTE page now comes from POS INIT page
+- Added aileron and rudder trim switches and gauges
+- Fixed in bug causing SIOC script generation to fail
+- Fixed runway heading not taking magnetic variation into account, causing LNAV not armable on ground
+- Added "Unable crz altitude" CDU message
+
+May 17 2012  Release version 1.11
+=================================
+- V2 + 15 bug is now drawn solid
+- Moving control panel switch transfers QNH/minimums from active to inactive EFIS
+- Fixed pressurisation bringing cabin alt above 8000 ft
+- ND range rings now also visible when TERR on
+- Flight alt encoder now uses 100 feet increment
+- Optimum alt in CDU CRZ page nog calculated based on route
+- Fixed incorrect display of G/S in VSD
+- Added remote computer shutdown via instructor station
+- Fixed crash in Web Access menu option when webserver failed to start
+- Indicator finder dialog now flashes found indicator on completion
+- Fixed cockpitsonic transponder initially showing "0" instead of "0000"
+- A/T RETARD mode now activated when A/T mode is in MCP_SPD and radio altitude < 37 feet
+- Added Pause and Flight freeze switches and toggles
+- Added inputs for radio frequencies
+
+May 11 2012  Release version 1.10
+=================================
+- Rising runway only visible when localiser is received
+- VREF display in PFD now in format flap/speed
+- Improved configuration screen responsiveness and layout
+- Autoconfiguration added for switches and indicators
+- Added numerical output for standby radio frequencies
+- Added support for FDS ELEC panel
+- Stability improvement for CockpitSonic CDU's
+
+May 03 2012  Release version 1.09
+=================================
+- Fixed FMS transitioning to cruise mode upon flightplan change
+- Fixed incorrect brake temperatures
+- Increased response time of ICS overhead panel
+- Extended flight illusion driver to support MIP instruments
+- Added numerical outputs for radio frequencies
+- Fixed right throttle occasionally hanging in idle power during N1 climb
+- Improved autothrottle to prevent throttle from jumping to idle in flight
+- ILS data now comes from database export whenever possible, so frontcourse data in CDU matches scenery
+- Added groundservice menu to MAINT CDU page for pushback
+- FPV accuracy improved
+- Smoother calculation of aircraft track
+- CWS roll criteria for wings-level hold updated
+- Revised logic for A/T disconnect solenoid
+- Added support for fractional ADF frequencies in CockpitSonic ADF radios
+- Missed Approach phase added to VNAV
+- Flight Illusion clocks now keep synchronised with FS time when FS time is active ProSim time
+- Fixed Flight Illusion clocks showing incorrect time after 18:00
+
+April 12 2012  Release version 1.08
+===================================
+- LNAV drawing improvement
+- ANP/RNP display removed from ND when VSD is on
+- Added support for encoders to drive EFIS Range and Mode selectors
+- Added support for encoders for EFIS Baro and Minimums
+- Updated Phidgets libraries
+- Added brake pressure gauge to ProSim737
+- Brake temperature modeled
+- Added brake temperature monitor
+- Autobrake now holds fixed deceleration
+
+March 29 2012  Release version 1.07
+===================================
+- Fixed double handling of rotary input
+- ND Display system changed from mercator to stereographic projection
+- PoKeys ethernet driver network detection improved and no longer drops devices
+- Fixed Dim/Bright switch positions reversed in ProSim Panel
+- Added "Bright" gates for indicators that can be in "bright" mode
+- CDU LEGS STEP> prompt synchronises with active LEGS page
+- Autopilot stabalized for up to 4x simulation rate
+- Fixed ND crash occasionally occuring en PLAN mode
+- Master Caution/Sixpack should light during light test
+- Fixed APP with G/S armed drops G/S when alt hold is pressed
+- When ALT hold is pressed within 100 feet of MCP selected altitude, MCP will now do an MCP alt hold instead of a baro alt hold
+- Added support for Simworld overhead panel
+
+March 13 2012  Release version 1.06
+===================================
+Warning: As of 1.06, the FLT option of the starter switch is added. The GRD options, will therfore
+nolonger be called "GRD/FLT", but "GRD". This will remove any configuration you have from the switch
+position. Please reconfigure the engine starter switches. EHID and ICS hardware need no configuration
+adjustment.
+
+- Upper EICAS compact mode only when lower DU unavailable
+- Speedbug is now allowed to be placed in yellow and red zones again, but autoflight
+  system will not enter this speed region
+- Fixed IE8 incompatiblities in IE8
+- Added better logging to ProSim Panel
+- Fixed VSD missing one zero in altitude labels above 10000 feet
+- Fixed font changing buttons not clickable in ProSim CDU configuration screen
+- Added Reverser light logic
+- Tuned cabin altitude target altitudes
+- Revised logic for switching between takeoff flap markers/landing flap markers in speed tape
+- Added engine start FLT option
+- Added cross bleed indication
+- Fixed origin ICAO not showing up correctly in scratchpad in some hardware CDU's
+
+February 27 2012  Release version 1.05
+======================================
+- Added ENG FAIL display in EICAS
+- Fixed missing SIOC variables in configuration screen
+- Fixed IRS not booting correctly when IRS switched is moved to ALIGN from OFF
+- Analog inputs now convert to correct range when nessecary
+- Added pedestal to ProSim Panel
+
+February 16 2012  Release version 1.04
+======================================
+- Added standby attitude indicator
+- Added new photorealistic standby RMI and standby Alt/speed indicators
+- Added SIOC variable for MCP backlight to ProSim MCP
+- Added overspeed warning
+- Tuned IRS booting time
+- Upper EICAS now in compact mode when lower eicas is not showing engine info
+- Fixed a crash when saving audio addon information
+- Origin ICAO is automatically filled in on scratchpad when RTE origin is empty in RTE page
+- ProSim MCP will force CPFlight MCP back to IAS 340 when a higher speed is selected
+- Added driver for FDS cards
+
+February 2 2012  Release version 1.03
+=====================================
+- MCP speed window warnings disabled below 26 ft RA
+- Added EFIS Weather button variables for SIOC
+- Set default autopilot tuning to 70% on heading stability for jetstream flight model.
+  If you use the jetstream flight model, use heading stability = 70 for optimal performance.
+- Added TCAS range rings option to ND
+- Range rings now enabled when weather EFIS option is enabled
+- Added encoder support for Phidget Interface kit
+- EICAS N1 Limit now reads "MAN" when override is active
+- Fixed Vertical Deviation Scale on ND appearing under weather radar
+- Added numerical outputs of IRS display
+- Added switches for N1 SET and SPD REF rotary encoders
+- Updated all web based jscript libraries
+- Redesign of vertical speed indicator in the PFD
+- Terrain not displayed when IRS is not aligned
+- Centermode of ND should not draw compass when IRS is not aligned
+- Autofailure option moved to Cockpit Setup
+- VHF1 and VHF2 vol can now be controlled separately
+
+January 19 2012  Release version 1.02
+=====================================
+- Added MIP SPD REF and N1 SET buttons
+- Added VSpeeds to FMS XML feed
+- Fixed continuous audio stopping after 10 minutes in ProSim Audio
+- Fixed "ERASE" no longer showing in LEGS CDU page when a mod is pending
+- Fixed "INTC CRS" header not appearing on LSK 6R in CDU
+- Added Flashing A and B as a SIOC variable to MCP SIOC script
+- Added ProSim737 encoder support to SIOC driver
+- Fixed an issue in the CDU EHID driver and web CDU causing the CDU's to become unresponsive
+- Fixed an issue where ProSim737 disconnected from FSUIPC repeatedly
+- Weather radar beta release enabled
+
+January 12 2012  Release version 1.01
+=====================================
+- Fixed rudder display in lower EICAS
+- Reworked N1 prediction
+- Fixed reversal of cooling tanks for hydraulics
+- Fixed incorrect display of DME larger than 100NM in ND
+- Bus transfer to the side of an active autopilot now caused the autopilot to drop off
+- Speebrake Extended indicator only lights up in flight below 800 ft AGL or flaps > 10
+- Removed deprecated "Project Magenta Offsets" checkbox in configuration screen
+- RNP/ANP system implemented
+- MCP Speed window now shows "A" for alpha floor and "B" for overspeed
+- Fixed glideslope of ND "APP" mode being drawn under terrain display
+- Fixed heading in CDU LEGS page sometimes appearing below 0 degrees
+- Added weather radar controls for future release of weather radar
+
+December 30 2011  Release version 1.00
+======================================
+- LNAV fixes
+- Added TFC and CTR buttons emulation for GoFlight EFIS
+- Improved calculation of T/C and T/D
+- T/C, T/D and E/D are now displayed in PROG page
+- T/C is now displayed on CLB page
+- Removed "port" input box from the configuration screen of all ProSim modules, because it is confusing and
+  currently always 8082
+- Added new IOElement "Encoder", currently only supported by PoKeys hardware
+- Reworked the Intercept-course logic of the CDU Legs page
+- Corrected working of LE Devices leds on aft overhead panel
+- Fixed light test causing parking brake disengage
+- Missed approach now shown in cyan on ND
+- IRS switch must now be in "Normal" position for MCP CMD function to be available
+- Tuning of ND screen
+- VSD placed lower on the ND screen
+- Cleanup and improvement of ProSim Audio
+- Up arrow in ND Plan mode on Windows XP fixed
+- Improved EngineN1 prediction arcs
+- Added map source annunication in ND of ProSim Display
+- Added FMC switch
+
+December 6
+==========
+- Fixed static displays
+
+December 4
+==========
+- Bank indicator in PFD turns amber when bank is over 35 degrees in efis layout
+- CRZ page now puts MCP alt in scratchpad when it changes
+- Added cruise descent and cruise climb
+- VNAV CDU pages will now automatically change when VNAV active mode changes
+- VNAV fixes
+- Added native support for GoFlight MCP and EFIS in ProSim MCP
+- Fixed incorrect drawing of horizontal lines in Web CDU and CockpitSonic CDU
+- Audio selector panel now automatically updates when FS updates
+
+November 24
+===========
+- Added static image loading to ProSim Display
+- Reformatting of CDU FIX Page
+- Added display of V1 speed on the top of the speedtape when the V1 speed is out of view
+- Added display of VREF speed on the bottom of the speedtabe when VREF speed is out of view
+- Fixed problem with CDU POS page when the time was set to FS Time and ProSim was not linked to FS
+- Bank indicator in PFD turns amber when bank is over 35 degrees
+- Added IMBAL message to fuel indicators
+- Fixed FMS not entering CLB mode after takeoff when N1 is pressed
+- Added A/T disconnect solenoid gate
+- Reworked EICAS screens
+- Improved working and display of FIX page and items in ND
+- Web CDU reworked by Jesper
+- Fixed waypoints not appearing in VSD, even while in swath path
+
+November 10 2011
+================
+- Corrected copy of items into scratchpad gives strange characters in ProSim CDU
+- ILS idents now selectable as waypoints in CDU pages
+- Fixed DATA fields in the ND blending together
+- Fixed terrain drawn over vertical deviation scale in ND
+- Fixed radio minimums sometimes obscured by localizer scale in PFD
+- Added option to remove Windows frame from ProSim MCP
+
+October 27 2011
+===============
+- Fixed displays sometimes not updating when setting new EFIS mode
+- Fixed EFIS mode RMI ADF 2 needle not working
+- Reworked CDU column layout
+- Added first color items in CDU
+- Tuning of yaw damper timing
+- Improved shutdown of Engravity CDU
+
+October 20 2011
+===============
+- Added terrain button to SIOC scripts
+- Fixed VSD not enabling when saved to the default profile
+- Added support for CockpitSonic CDU
+- Added support for CockpitSonic radios
+- Master power of the indicators now not only dependant on standby power
+- Added TCAS horizontal and TCAS vertical switches
+- Fixed electric hydraulic pump unavailable after fire handle pull
+- Tuning of PFD/ND items
+
+October 13 2011
+===============
+- Default reduction height to 1500 feet AGL
+- Fixed flight director staying in 15 degrees pitch in TO/GA mode
+- Added terrain display
+- Added first release of VSD (Vertical situation display)
+- New fonts and colors in ProSim Display
+- Added option in ProSim Display to lock screen positions.
+- Fixed TRAFFIC message in ND centered mode appearing in the center, instead of to the right
+- Fixed "SELECT DESIRED XXX" page in CDU using too many characters for the display
+
+September 29 2011
+=================
+- Thrust reduction after takeoff is now automatic at reduction height
+- TOGA after takeoff remains until pitch mode change or CMD engagement
+- Correct VSpeed calculation based on flaps and runway condition
+- Added fuel pressure model for more realistic behavior of low pressure lights
+- PFD center square is now black in the center
+- Added QRH ON/OFF option to Takeoff Ref page 1
+- Added "Servicing" tab to instructor station with refueling option and groundpower option
+
+September 22 2011
+=================
+- Show flap maneuvre speed 1 until flaps up
+- Lower DU activates in SEI mode on engine problem
+- Flight alt panel now has 500 feet increments instead of 50 feet
+- During takeoff, TOGA pitch mode remains active longer
+- Added upper MIP to ProSim Panel
+- Added amber flashing of autopilot A/P status indicator
+- Added support for PoKeys 56U
+- ProSim CDU now has an embedded default font
+- Fixed a bug where no legs appeared when SID was selected before runway
+
+September 15 2011
+=================
+
+------------------------------------------------------------------------------------------------------------
+Note: From this release on, ProSim CDU uses only monospaced fonts. Because the font setting is stored in the 
+ProSim CDU configuration, a manual action is needed to activate the new font. Please go to the configuration
+screen of ProSim CDU and press the "Reset to default" option under the font selection buttons to set the new
+default monospaced font.
+------------------------------------------------------------------------------------------------------------
+
+- VNAV will no longer command speeds under the flap limit
+- Pressurisation panel changes: Land alt range now -1000 to 14000 and flight alt -1000 to 42000
+- Added FMC Message "APPRCH VREF NOT SELECTED"
+- Added TAKEOF REF 2 page
+- Multiple minus keys in CDU should change to "+"
+- Legs page now has correct layout of distance column in the center
+- VREF can now also be set by double selecting an entry from the APPROACH REF page
+- Changed default fonts to all monospace for ProSim CDU
+- ProSim MCP SIOC script changed to inhibit the display of the mach dot in the IAS window when the window is blanked
+- Added comments to startpositions.xml on extraction to indicate the source of the data
+- Various fixes in VNAV where the current altitude was calculated from the real altitude instead of the QNH corrected indicated altitude
+- Removed fire bell inhibit beween V1 and 400 feet RA
+- Embedded the graphics of ProSim modules into the executables for easier handling
+
+September 9 2011
+================
+- Tuned the autopilot to better intercept the next leg with less overshoot
+- More LNAV corrections to prevent incorrect drawing
+- LNAV now calculates own bank angle and is no longer affected by the bank angle selector
+- Fixed a bug where VNAV did not engange the throttle to maintain speed
+- Added Flight Freeze option and added [On] and [Off] indicators in the CDU MAINT page for Pause and Flight Freeze
+- Fixed TCAS ND messages "TCAS FAIL"/"TCAS OFF" to better refer to the state of the TCAS system
+- Added LNAV engagement criteria
+- Direct-to LNAV track no longer calculated continously
+
+September 1 2011
+================
+- Fixed crash in VNAV calculation
+- LNAV route calculation fixes
+- Added support for CockpitSonic EHID Fire panel and EHID lower MIP
+- Changed color of "M" meters symbol to blue in PFD.
+- Added digital readout of VNAV altitude deviation in ND vertical track indicator
+
+August 26 2011
+==============
+- Duplicate element name caused Flight Illusion driver to halt initialisation, fixed
+
+August 25 2011
+==============
+- Added failure boxes for the DEU boot process, so it can be skipped
+- Added Elevator trim gauge
+- LNAV drawing fixes
+- Improved PoKeys data polling to reduce latency in switch detection
+- VNAV improvements
+- Fixed UP speed bug in PFD speed tape not visible with flaps 5
+- Fixed problem in TekWorx FDS CDU driver and added installer for the driver
+- Fixed missing range markers and turn prediction in ND Center mode
+- Added "Cabin Altitude", "Speed brake do not arm", "Stab out of trim", "Anti skid inop", "Takeoff config" indicator
+- Suction feed for the APU is now available from the center tank
+
+August 17 2011
+==============
+- Fixed reversed right fuel pump aft/fwd lights in ProSim Panel
+- Fixed a driver issue with the PoKeys driver that could cause the initialisation to freeze
+- LNAV fixes
+- Revised values for the trim indicator
+- Reworked pressurisation controllers logic
+- Fixed efis "POS" key in software MCP working as the DATA key
+- Fixed issues with ProSim737 hanging/crashing on updating MCP
+
+August 14 2011
+==============
+- Fixed VOR/ADF color reveral of EFIS RMI instrument
+- Added APU fuel usage
+- Added autoreset of window overheat situation
+- Speedup of ProSim737 configuration screen
+- Added overhead IRS switch and logic
+- ELEC panel items will now be experted as "-1" to signal that the field should be blank
+- Added OpenCockpits overhead panel SIOC script and ProSim737 configuration import script
+- Added minimums and radio alt readout in EFIS layout
+- Added support for CockpitSonic EHID Sixpacks and ASA panels
+- Added DEU modeling and DEU Source selector switch
+- CPFlight Radios now keep synchronized with FS frequencies
+- Fixed Phidgets Analog inputs not providing full output range
+- Added extra numerical output elements for MCP values
+- QNH amber indication on PFD now uses transition altitude or level depending on flight phase
+- MCP should not add 20 kts to IAS after takeoff when one engine is inop
+- Added support for PoKeys hardware
+- Fixed groundpower remaining on even while other source is selected
+- LNAV fixes
+- Fixed CRZ CDU page showing ACT CRZ during descent
+- Added option in ProSim CDU to hide mouse
+- Controlling ground power through the XML interface will now disregard the state of the anti collision light
+- Added option for verbose logging of hardware IO
+- More realistic behavior of starter logic and start switch solenoids
+- Improved realism of power requirements for pressurisation controllers
+- TR3 transfer relay is now inhibited when bus transfer switch is set to off, allowing DC bus 2 to be manually depowered
+- Added option for Side by Side EICAS display
+
+July 14 2011
+============
+- LNAV drawing and calculating fixes
+- Added spoiler gauge for setting the spoiler with a servo
+- Connected ISIS instrument to battery bus
+- ProsimDisplay now draws route over trackline
+- LNAV mode now reverts to CWS R instead of HDG SEL at end of route
+- Pressurisation system will now use indicated altitude instead of real altitude for off scheduled descent checks
+- Added airline code to XML aircraft export
+- Revised hydraulic cooling model that calculates cooling based on fuel amount and temperature
+- Added a frameless RMI standby instrument
+- Added 80kts gate
+
+June 29 2011
+============
+- Fixed an issue preventing correct localiser capture
+- Optimized transition to G/S mode
+- Fixed a problem with repeating audio sounds with [internal audio] mode of Prosim737
+- Improved ProsimMCP user interface and added new graphics
+- Improved low level RS232 drivers for better stability
+- Added static upper EICAS normal and EFIS screens to ProsimDisplay
+- Added ISIS standby instrument
+- Added database status labels in "Software" box of the main Prosim737 window
+- ASA lights not on during light test
+- Fixed problem in autopilot aileron control
+
+June 16 2011
+============
+- Added forward/aft overhead combination to ProsimPanel
+- Added support for engravity ICS starter switches
+- Added option to reset FMS after landing
+- Added gates for V1, VR and V2
+- Better filtering in DEP/ARR pages based on selected runway
+- Fixed a problem with entering frequencies in the CDU when more than 2 digits are present after the decimal
+- Fixed a problem where not all waypoints could be used in the FIX page
+- Fixed ProminPanel LCD displays not updating
+- Added EFIS style EICAS to EFIS layout
+- EFIS layout: DME is now shown in VOR/APP mode and missing glideslope display is back in APP mode
+- Fixed various layout items in EICAS display
+- Engravity ICS fixes
+
+June 9 2011
+===========
+- Added option to ProsimCDU to use keyboard lights
+- Speed improvement in ProsimPanel
+- Added clickspot cursor changes to ProsimPanel
+- CDU messages will clear on all CDUs after the first delete
+- VNAV now uses VREF + CDU wind correction field to calculate landing speed
+- Added pitch limit indicator to PFD
+- Added aft overhead panel to ProsimPanel
+
+June 2 2011
+===========
+- Made indicators on ProsimPanel clickable to test light
+- Fixed cabin alt gauge in ProsimPanel
+- EICAS predicted N1 arcs only when EEC is active
+- MCP speed may not go below 100KTS
+- Added = key to use as - on ProsimCDU, remapped FIX page to ';' instead of '='
+- Fixed missing VNAV labels
+- Fixed DECEL label not appearing
+- Fixed direct-to entry in RTE page failing when airway entry exists on the previous line
+- Corrected position of OVERHEAT and ON light in ProsimPanel
+
+
+May 26 2011
+===========
+- Added No Smoking sign gate
+- Added Seatbelt sign gate
+- Fixed several wrong switches in the ICS panel driver
+- Introducing ProsimPanel module
+- Added EFIS layout option
+- Fixed Prosim not accepting negative values from SIOC
+
+May 13 2011
+===========
+- N1 button only allowed if pitch mode is FMC_SPD
+- Improved hydraulics temperature modeling
+- Standby yaw damper implemented
+- New logging system for all Prosim programs keeps the last 5 log files with a maximum size of 1MB each
+- New virtualisation system in ProsimDisplay for future new panel options
+- DU selector for display switching added
+- Added various gates for panel lighting
+- Added CDU page to tune NAV, COM and ADF frequencies
+- Fixed issue in ProsimAudio causing weird DirectX memory protection errors
+- New artwork by Jesper Giørtz-Behrens
+
+May 5 2011
+==========
+- Autopilot no longer disconnects below 350 feet RA
+- Changed leading edge slats to extend up to flap position 5
+- Added option for ProsimCDU to stay op top
+- Default ASP audio options of FS enabled on startup
+- Fixed ADF 2 needle not appearing if ADF 1 not active
+- Added precalculated Vspeed in front of input field on TAKEOFF REF page when available
+- Fixed scroll bar missing in ProsimAudio
+- Added option for ProsimDisplay to disable the title bar
+- Added gates for autopilot pitch cmd/cws and roll cmd/cws
+- Added option to ProsimCDU for switching off the CDU when no power is available
+- Revised yaw damper logic
+- Revised hydraulics logic
+- Removed duplicate "Filter bypass" indicators
+
+April 21 2011
+=============
+- Fixed incorrect display of T/C and T/D data for direct-to entries
+- Added support for CPFlight rudder trim panel (needs further tuning)
+- Added Audio Selector panel (ASP)
+- Added filter to the list of airports displayed in the ND. Please rebuild the scenery database to use this feature
+- Added support for Phidgets Analog card
+- Added "groundPower" XML query for accessing the ground power state
+- Fixed backlighting of Flight Illusion gauges only activating when gauges moves
+- ProsimCDU now checks correct registering of Tekworx.dll file for FDS CDU's
+- Added three zone temperature selectors and the air temp selector and added temperature modeling
+- Fixed Approach REF page always showing destination ICAO code even when runway was selected from departure airport
+- Updated Phidgets libraries
+
+April 7 2011
+============
+- Replaced the two switches "Window heat ovht" and "Window heat pwr" with one switch "Window heat test"
+  !! Please update your configuration and set the three positions of the new switch to the positions of the old switches
+- LNAV fixes to prevent aircraft circling 
+- Gates added for automatically switching off Yaw damper and Wing Anti ice
+- Drivers now communicate states more clearly to the Prosim737 main display "Software" box
+- Added support for EEC buttons
+- Added support for EHID (cockpitsonic) overhead panels
+- Added throttle servo outputs
+- Added EICAS Start valve open, Filter bypass and Low oil pressure as indicators for older style cockpits
+- Corrected the display of direct-to track to a waypoint
+- Reworked ProsimAudio network code for better reliability
+
+March 24 2011
+=============
+- Fixed VORLOC for ILS using wrong frontcourse
+- Added XML interface for working with failures
+- Check for SIOC variable range in configuration screen added
+- Thrustmode of ProsimMCP exported for Revolution Simproducts throttle
+- Added indicators for leading edge devices (aft overhead panel)
+- Support for Engravity ICS
+- Moved ProsimDisplay network connected to buffered mode instead of streaming mode, decreasing overal latency
+
+March 18 2011
+=============
+- Fixed overheat ENG2 light on CPFlight Fire panel
+- No longer setting MCP speed to current speed when moving to V/S mode and an A/T speed mode is active
+- Fixed a crash in the ND of ProsimDisplay while entering a DME only station in the FIX page
+- Cargo fire panel test sequence improved
+- Added MCP Bank limit to Prosim737 configuration
+- Added MCP values with inc/dec switches to Prosim737 configuration
+- Fixed threading crash in webserver
+- GPWS SYS test switch handled from CPFlight MIP board will correctly initiate the GPWS test after 10 seconds
+- F/O displays and lower EICAS connected to DC BUS 2
+- VORLOC for ILS rewritten
+- Added support for CPFlight hardware directly connected to PC instead of through MCP
+- Moved ProsimAudio to DirectAudio, allowing multiple sounds to play simultaneously
+- XML entries added to ProsimDisplay configuration.xml to change colors
+- Fixed FCC1 master and FCC2 master lights not being sent to SIOC in ProsimMCP
+- Removed "Don't sink" message after touchdown.
+
+February 23 2011
+================
+- ProsimCDU can now be displayed without a border
+- ProsimDisplay allows dragging of windows with the mouse and resizing with the scrollwheel
+- ProsimDisplay now opens captain PFD and ND by default when no configuration was found
+- Fixed ProsimDisplay showing landing altitude at destination in alt tape for the departure runway instead of the landing runway
+  after a flaps up takeoff
+- Trim indicator can now also be shown on the lower EICAS screen with the CockpitSetup tab of the instructor station
+- Company routes may have an origin ICAO as the first field and/or a destination ICAO as the last field
+- Speedbrake autodeploy gate added
+- Added configuration item to ProsimMCP to set the communication rate with CPFlight hardware
+- Added support for CPFlight fire handle unlocking
+- Added MCP bank angle limit variable for SIOC scripts
+- Cargo fire panel added (including support for CPFlight cargo fire panel)
+
+February 17 2011
+================
+- Connecting ground power will disconnect previously connected source
+- Fix for pressurization problem
+- Architecture changes based on feedback to make displays smoother
+- Added amber warnings to new layout fuel gauge
+- Added analog inputs for pressurisation panel Flight Alt/Land Alt
+- Added company route system
+- Added heading stability tuning parameter to ProsimMCP
+- Fixed a problem preventing Prosim737 from communicating correctly with 2 simultaneous IOCP connections
+
+February 10 2011
+================
+- Fixed a problem caused by deleting VNAV data from a landing runway leg
+- Added the ability to connect custom audio to internal aircraft events
+- Changed the layout of ProsimAudio
+- Various gates added for usage by addon audio events
+- Fixed pressurisation not working without hardware support
+- Fixed alt intervention button not working through SIOC
+- Redesigned driver architecture and moved the driver selection to its own tab in the configuration screen
+- Massive speed improvements in Prosim737
+- Reduced network dependancy of ProsimDisplay to minimize latency
+- Added new style fuel gauges as cockpit option
+- LNAV autopilot fixes
+- Added transition altitude table for automatic entry of transition altitudes
+
+February 3 2011
+===============
+- Added option to disable yoke input on autopilot CMD
+- Added option to set font colors for ProsimCDU
+- Added FD1 and FD2 MCP light to SIOC interface for ProsimMCP
+- Fixed ADF2 data
+- Cabin altitude calculations tuned and fixed
+- Fixed incorrect culture setting in ProsimDisplay
+- Added the ability to use one analog input to control multiple switches
+- Added 8 generic linked user inputs/outputs
+- Added range rings as an option to the CockpitSetup tab
+- Fixed the FPV to be stationary on the ground
+- Updates GPWS audio files
+- Improved Prosim737 startup time
+- Fixed LNAV drawing a turn towards the wrong direction in some occasions
+- Added system to add custom audio files
+- Added option to switch between the call "Approaching minimums" and "Plus 100"
+- ProsimCDU is now compatible with Project Magenta key layout
+- FMS now autosequences waypoints when LNAV is not engaged
+- ProsimCDU now accepts lat/lon inputs on LEGS page
+- ProsimCDU fix page now accepts simultaneous entry of radial and distance
+- Fixed PhidgetLed64 not working for gate outputs
+- Enroute fuel usage calculation tuned
+- Added XML data export for FMS route data
+
+January 20 2011
+===============
+- Added MSG and FAIL lights to SIOC output for ProsimCDU
+- Added FDS/Tekworx CDU support
+- Made the multicore Prosimdisplay optimisations optional
+- Data on RTE page and LEGS page are now synchronized
+- Missing DECEL leg back
+- Fixed VNAV data of FIX INFO points
+- Fixed takeoff legs sometimes showing VNAV cruise data instead of climb data
+
+January 13 2011
+===============
+- Added starter pushback solenoid gates
+- Added FIX page
+- Added heading up/track up selection in Cockpit Setup
+- Added default baro mode selection in Cockpit Setup
+- Added option to show debugging info in ProsimDisplay title bar
+- Added options for tuning performance of ProsimDisplay
+- AFDS V/S mode now based on aerodynamic calculation instead of feedback loop, greatly increasing reliability and response
+- AFDS G/S mode rewritten for better glideslope tracking
+- Fixed INTC CRS not showing in LEGS page
+- Fixed MCP alt not being captured in VNAV
+- Added support for Pim van Vrijaldenhoven's pressurisation panel
+- Added Off scheduled descent indicator
+- Fixed a crash in Prosim737 because of incorrect TCAS data
+- Changed ProsimDisplay architecture to split drawing and calculation of data for enhanced performance
+- Added an option to disable doubleclick resizing in ProsimCDU
+
+January 6 2011
+==============
+- Added PROG pages 1 and 2
+- Added RTE DATA page
+- Added wind model
+- Fixed LNAV turning in opposite direction
+- Added starter switch solenoid gates
+- Fixed CPFlight A/T disconnecting on light test
+- Added fuel calculations
+
+December 29 2010
+================
+- Automatic engagement of autothrottle function after arming
+- STAR speed restriction no longer affecting SID
+- Fixed C/O not occuring in VNAV climb
+- Autopilot can nolonger operate without hydraulic power in associated system
+- Legs page can now show cruise speeds in Mach instead of IAS where applicable
+- Corrected VNAV speeds in descent
+- DECEL leg added in descent
+- Individual parts of electric panel added as numeric outputs
+- Added the ability to change the fonts of ProsimCDU
+- Fixed a problem in reading FS9 BGL files causing incorrect start positions to appear
+
+December 22 2010
+================
+- Added VNAV descent logic and page
+- Added vertical track display to ND
+- Added outer/middle/inner signals as gates
+- Fixed abeam points option in legs page stills showing after MOD erase
+- Now allowing ICAO codes as waypoints
+- Fixed ProsimDisplay hanging in "not responding" mode on reposition to runway
+- Added MCP alt intervention button support
+- Added VNAV ground arming
+
+
+December 9 2010
+===============
+- A/P and A/T disengage lights on MIP now always flash on A/P and A/T disconnect
+- Mach entry of speed in CRZ page fixed
+- More filtering to prevent duplicate waypoints in Legs page
+- Updated phidgets libraries for newest release from www.phidgets.com
+- Added EFIS DATA button support
+- Added Rising Runway option to PFD
+- Fixed window heating power sources and overheat logic
+- Fixed default states of SIOC connected switches not activating without physically moving the switch
+
+December 3 2010
+===============
+- fixed a problem with the SIOC stub script generating incorrect labels for switches
+- Reduced load on FSUIPC variable IO
+- Fixed a problem in the configuration screens not accepting IP addresses as input
+- Added CG/TRIM fields to TAKEOFF REF CDU page
+- Added VNAV Cruise logic and page
+- Added support for speed intervention on MCP
+- Added Flap gauge for hardware support
+- Added test button to ProsimAudio
+
+November 19 2010
+===============
+- Fixed ND Display showing 360 degrees
+- Fixed AP/AT disconnect lights occasionally not working
+- VNAV climb logic
+- better mapping between throttle position and predicted N1
+- separate minimums logic for captain and F/O
+
+November 11 2010
+===============
+- Added an option to ProsimMCP to disable the power management, which causes the MCP to fail for some users
+- ProsimCDU is now fully controllable by keyboard
+- Direct-to entries in RTE page no longer causes route discontinuities
+- QNH setting for Alt Hold is taken from either captain or F/O side, depending on which FCC is master
+
+November 4 2010
+===============
+- Added "Start minimized" option to ProsimAudio
+- Fix for autopilot sometimes diving down due to excess CPU load
+- Fixes for Prosim737 restarting with some SIDs/STARs
+- Fixes in webserver causing a crash in Prosim737
+- Added fuel rate/used/reset switch
+- Support for CPFlight Fire panel
+- Preliminary support for Engravity ICS (not functional yet)
+- Better support for exiting a holding
+- Courselines in ND are now optional via the cockpitsetup tab in the instructor station
+- Altitude Acquisition/Deviation sound is now optional via the cockpitsetup tab in the instructor station
+- An option to ProsimMCP has been added to allow it to relocate all SIOC variables by a fixed number
+- FSUIPC input in Prosim737 now allows toggling of bits to be used as an input signal
+- Option for importing partial configurations in Prosim737 with vendor supplied files
+
+October 23 2010
+===============
+- Fix for missing waypoints and other data in ND
+
+October 21 2010
+===============
+- Added flap gauge
+- Added standby RMI gauge
+- Added MCP switches and indicators to Prosim737 for configuration of arbitrary hardware to control MCP
+- Added stall test switches
+- Added ASA FMC light functionality
+- Added FSBUS support for switches and indicators
+- EFIS STA function now shows NDB's too
+- EFIS WPT function now shows all waypoints
+- REF NAV DATA CDU page now uses "select direct wpt" logic for entry in NAVAID line
+- Speed improvements in ProsimDisplay
+- Added protocol checks to all Prosim modules, preventing startup of incompatible versions
+- Heading bug dashed line disappears after 10 sec in LNAV or VORLOC
+- Tuned down vertical speed mode to prevent oscillation.
+- DELETE on a route discontinuity is now allowed to remove discontinuity
+- Added backcourse localiser hold function
+- Prosim MCP SIOC script handles C/O mach values in correct range
+- Range Rings in ND zoomed mode only when TFC is on
+- Improved timing for communicating to CPFlight BUS to correct hanging lights
+- Load monitoring in ProsimDisplay will now show the "EXCESS DATA" flag when smooth operation of the displays is compromised due to
+  excessive load.
+
+October 7 2010
+==============
+- Connected MCP to battery bus
+- Added aileron tuning to autopilot.
+- Added abeam points to LEGS page.
+- Added support for holdings to FMS.
+- Added support for OpenCockpits throttle quadrant.
+- Corrected behaviour of heading hold when turning more than 180 degrees.
+
+September 23 2010
+=================
+- Added TCAS resolution advisories in audio and PFD
+- Now drawing localiser and glideslope diamonds correctly behind the scale, instead of on top of them
+- Fixed Captain ND APP Display not showing glideslope
+- Added "Start APU" to quickstart in instructor station
+- Added parking brake indicator and switch
+- Added fuel cutoff switches
+- Fixed SIOC F/O EFIS TFC switch
+- Placed true scrolling style wheels in the QNH windows of the standby alt/speed gauge
+- Fixed draining of all tanks while one engine is out
+- Added electric busses to failure page
+
+September 18 2010
+=================
+- Rewrote low level CPFlight driver to allow better timing.
+- Added option to remove frame from standby instruments.
+
+September 16 2010
+==================
+- Added analog inputs to Prosim737, connected to joystick axes, FSUIPC or SIOC
+- Added options to dim screens
+- Added FUEL CONFIG warning in EICAS
+- Now reading Speedbrakes Armed state from FS instead of only from throttle
+- Fixed display of flap maneuvre speeds on takeoff
+- Fixed land alt/origin alt usage
+- Added Speed/Alt Standby instrument to ProsimDisplay
+- Tuned down gauge respositioning speed in ProsimDisplay to allow better positioning of screens.
+- Fixed continuous enumeration of directinput devices, causing overload and slowdown on CPFlight bus.
+- TA Only indicator in all TCAS level 0 situations
+
+February 26 2010
+================
+- Added FSUIPC input support and precise bit/value support for FSUIPC input and output.
+- Added cruise alt/land alt numerical outputs. These still needs work for correct values.
+- Rounded fuel temperature value to decrease the amount of updates.
+- Added Flight Illusion Fuel temperature/Cabin temperature.
+- Fixed problem in bleedair ducts not getting to 0 PSI.
+- Added larger nullzone for flaps handle, which caused ram door full open to flicker.
+- Added support for navigraph database.
+- Added Flight Management Computers.
+- Moved ProsimRemoting to WCF standards for external communications.
+
+February 02 2010
+================
+- Fixed IOC connector message in IO Modules box to reflect state of connection.
+- Fixed unhandled exception in webserver HTTP 404 handler.
+- Added ProsimRemoting dll for future expansions.
+
+January 26 2010
+===============
+- Fixed correct functioning of ground switch with only one wire.
+
+January 24 2010
+===============
+- Added splash screen.
+- Added Help menu with web access option to show all current web access URL's.
+- Modified Ground power switch to a three position switch with a center position.
+- Added support for multiple outputs for numerical IO Elements.

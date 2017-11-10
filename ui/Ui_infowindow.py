@@ -50,8 +50,8 @@ class Ui_infoWindow(object):
         spacerItem1 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
         self.iw_label_1 = QtWidgets.QLabel(infoWindow)
-        self.iw_label_1.setMinimumSize(QtCore.QSize(341, 120))
-        self.iw_label_1.setMaximumSize(QtCore.QSize(341, 16777215))
+        self.iw_label_1.setMinimumSize(QtCore.QSize(0, 120)) #341
+        self.iw_label_1.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)

@@ -379,15 +379,21 @@ QToolButton:flat {
                 </item>
                 <item row="0" column="1">
                  <widget class="QLineEdit" name="home_ln_1">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
                   <property name="minimumSize">
                    <size>
-                    <width>600</width>
+                    <width>400</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>600</width>
+                    <width>800</width>
                     <height>27</height>
                    </size>
                   </property>
@@ -418,6 +424,9 @@ QToolButton:flat {
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Preferred</enum>
+                  </property>
                   <property name="sizeHint" stdset="0">
                    <size>
                     <width>40</width>
@@ -428,6 +437,12 @@ QToolButton:flat {
                 </item>
                 <item row="2" column="0">
                  <widget class="QLabel" name="home_lb_2">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -451,7 +466,7 @@ QToolButton:flat {
                    </font>
                   </property>
                   <property name="text">
-                   <string>Prosim737 backups location:</string>
+                   <string>Prosim737 backups' location:</string>
                   </property>
                  </widget>
                 </item>
@@ -533,6 +548,12 @@ QToolButton:flat {
                 </item>
                 <item row="1" column="0" colspan="2">
                  <widget class="QCheckBox" name="home_ck_1">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -564,6 +585,9 @@ QToolButton:flat {
                  <spacer name="horizontalSpacer_2">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Preferred</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -619,15 +643,21 @@ QToolButton:flat {
                 </item>
                 <item row="2" column="1">
                  <widget class="QLineEdit" name="home_ln_2">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
                   <property name="minimumSize">
                    <size>
-                    <width>600</width>
+                    <width>400</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>600</width>
+                    <width>800</width>
                     <height>27</height>
                    </size>
                   </property>
@@ -731,6 +761,12 @@ QToolButton:flat {
                 </item>
                 <item row="0" column="0">
                  <widget class="QLabel" name="home_lb_1">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -754,7 +790,7 @@ QToolButton:flat {
                    </font>
                   </property>
                   <property name="text">
-                   <string>Prosim737 updates location:</string>
+                   <string>Prosim737 updates' location:</string>
                   </property>
                  </widget>
                 </item>
@@ -796,6 +832,12 @@ QToolButton:flat {
                   <property name="enabled">
                    <bool>false</bool>
                   </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
                   <property name="minimumSize">
                    <size>
                     <width>150</width>
@@ -804,7 +846,7 @@ QToolButton:flat {
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>150</width>
+                    <width>300</width>
                     <height>35</height>
                    </size>
                   </property>
@@ -870,6 +912,12 @@ QToolButton:pressed {
                   <property name="enabled">
                    <bool>false</bool>
                   </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
                   <property name="minimumSize">
                    <size>
                     <width>150</width>
@@ -878,7 +926,7 @@ QToolButton:pressed {
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>150</width>
+                    <width>300</width>
                     <height>35</height>
                    </size>
                   </property>
@@ -1236,6 +1284,12 @@ QToolButton:flat {
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="minimumSize">
                      <size>
                       <width>150</width>
@@ -1244,7 +1298,7 @@ QToolButton:flat {
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>150</width>
+                      <width>300</width>
                       <height>35</height>
                      </size>
                     </property>
@@ -1310,6 +1364,12 @@ QToolButton:pressed {
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="minimumSize">
                      <size>
                       <width>150</width>
@@ -1318,7 +1378,7 @@ QToolButton:pressed {
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>150</width>
+                      <width>300</width>
                       <height>35</height>
                      </size>
                     </property>
@@ -1394,6 +1454,12 @@ QToolButton:pressed {
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="minimumSize">
                      <size>
                       <width>150</width>
@@ -1402,7 +1468,7 @@ QToolButton:pressed {
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>150</width>
+                      <width>300</width>
                       <height>35</height>
                      </size>
                     </property>
@@ -1833,6 +1899,12 @@ QScrollBar::right-arrow:horizontal:pressed {
                  <layout class="QHBoxLayout" name="horizontalLayout_4">
                   <item>
                    <widget class="QLabel" name="server_lb_1">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -1862,15 +1934,21 @@ QScrollBar::right-arrow:horizontal:pressed {
                   </item>
                   <item>
                    <widget class="QLineEdit" name="server_ln_1">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="minimumSize">
                      <size>
-                      <width>600</width>
+                      <width>400</width>
                       <height>27</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>600</width>
+                      <width>800</width>
                       <height>27</height>
                      </size>
                     </property>
@@ -2010,19 +2088,6 @@ QToolButton:flat {
                     </property>
                    </widget>
                   </item>
-                  <item>
-                   <spacer name="horizontalSpacer_12">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
                  </layout>
                 </item>
                </layout>
@@ -2130,6 +2195,9 @@ QToolButton:pressed {
              <spacer name="horizontalSpacer_16">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Preferred</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -2399,13 +2467,13 @@ QScrollBar::right-arrow:horizontal:pressed {
                    <widget class="QLineEdit" name="mcp_ln_1">
                     <property name="minimumSize">
                      <size>
-                      <width>600</width>
+                      <width>400</width>
                       <height>27</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>600</width>
+                      <width>800</width>
                       <height>27</height>
                      </size>
                     </property>
@@ -2545,19 +2613,6 @@ QToolButton:flat {
                     </property>
                    </widget>
                   </item>
-                  <item>
-                   <spacer name="horizontalSpacer_17">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
                  </layout>
                 </item>
                </layout>
@@ -2665,6 +2720,9 @@ QToolButton:pressed {
              <spacer name="horizontalSpacer_21">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Preferred</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -2934,13 +2992,13 @@ QScrollBar::right-arrow:horizontal:pressed {
                    <widget class="QLineEdit" name="cdu_ln_1">
                     <property name="minimumSize">
                      <size>
-                      <width>600</width>
+                      <width>400</width>
                       <height>27</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>600</width>
+                      <width>800</width>
                       <height>27</height>
                      </size>
                     </property>
@@ -3080,19 +3138,6 @@ QToolButton:flat {
                     </property>
                    </widget>
                   </item>
-                  <item>
-                   <spacer name="horizontalSpacer_22">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
                  </layout>
                 </item>
                </layout>
@@ -3200,6 +3245,9 @@ QToolButton:pressed {
              <spacer name="horizontalSpacer_35">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Preferred</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -3469,13 +3517,13 @@ QScrollBar::right-arrow:horizontal:pressed {
                    <widget class="QLineEdit" name="display_ln_1">
                     <property name="minimumSize">
                      <size>
-                      <width>600</width>
+                      <width>400</width>
                       <height>27</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>600</width>
+                      <width>800</width>
                       <height>27</height>
                      </size>
                     </property>
@@ -3615,19 +3663,6 @@ QToolButton:flat {
                     </property>
                    </widget>
                   </item>
-                  <item>
-                   <spacer name="horizontalSpacer_25">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
                  </layout>
                 </item>
                </layout>
@@ -3735,6 +3770,9 @@ QToolButton:pressed {
              <spacer name="horizontalSpacer_37">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Preferred</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -4004,13 +4042,13 @@ QScrollBar::right-arrow:horizontal:pressed {
                    <widget class="QLineEdit" name="panel_ln_1">
                     <property name="minimumSize">
                      <size>
-                      <width>600</width>
+                      <width>400</width>
                       <height>27</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>600</width>
+                      <width>800</width>
                       <height>27</height>
                      </size>
                     </property>
@@ -4150,19 +4188,6 @@ QToolButton:flat {
                     </property>
                    </widget>
                   </item>
-                  <item>
-                   <spacer name="horizontalSpacer_28">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
                  </layout>
                 </item>
                </layout>
@@ -4270,6 +4295,9 @@ QToolButton:pressed {
              <spacer name="horizontalSpacer_39">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Preferred</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -4539,13 +4567,13 @@ QScrollBar::right-arrow:horizontal:pressed {
                    <widget class="QLineEdit" name="audio_ln_1">
                     <property name="minimumSize">
                      <size>
-                      <width>600</width>
+                      <width>400</width>
                       <height>27</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>600</width>
+                      <width>800</width>
                       <height>27</height>
                      </size>
                     </property>
@@ -4685,19 +4713,6 @@ QToolButton:flat {
                     </property>
                    </widget>
                   </item>
-                  <item>
-                   <spacer name="horizontalSpacer_31">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
                  </layout>
                 </item>
                </layout>
@@ -4805,6 +4820,9 @@ QToolButton:pressed {
              <spacer name="horizontalSpacer_41">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Preferred</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -5330,7 +5348,7 @@ QToolButton:flat {
     <string>Save...</string>
    </property>
    <property name="toolTip">
-    <string>Save Prosim Updater options in default xml file</string>
+    <string>Save Prosim737 Updater options in default xml file</string>
    </property>
    <property name="font">
     <font>
@@ -5352,7 +5370,7 @@ QToolButton:flat {
     <string>Open...</string>
    </property>
    <property name="toolTip">
-    <string>Open an xml file containing Prosim Updater options</string>
+    <string>Open an xml file containing Prosim737 Updater options</string>
    </property>
    <property name="font">
     <font>
@@ -5372,6 +5390,9 @@ QToolButton:flat {
    </property>
    <property name="text">
     <string>Exit...</string>
+   </property>
+   <property name="toolTip">
+    <string>Exit Prosim737 Updater</string>
    </property>
    <property name="font">
     <font>
@@ -5479,7 +5500,7 @@ QToolButton:flat {
      <normaloff>icons/prosim_update_off_icon.svg</normaloff>icons/prosim_update_off_icon.svg</iconset>
    </property>
    <property name="text">
-    <string>Update</string>
+    <string>Update...</string>
    </property>
    <property name="toolTip">
     <string>No update available !</string>

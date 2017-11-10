@@ -1,0 +1,6 @@
+The translation system of Prosim737 Updater is based on a text file for each language. In each file, a single line is used for the translation of an object and each line is composed of an item followed by a "=" and a translation.
+An item can be the name of an object to be translated (ex: home_lb_1 is the name of a QLabel), the name of an object which will display translated text (ex: info_bt_1 is the name of a button which once clicked will popup translated text) or a context (ex: Download-canceled is not an object but a context during which the download of something has been canceled by a user).
+"=" is mandatory after an item and before the translation.
+The translation can be simple text (ex: I am a simple translation), a text with a context (ex: I am a simple translation based on %s) or a list of text for object with multiple status, in that case, all texts have to be separated by a "|" (ex: Save...|Click to save your document).
+It is possible to add comments to a language file. Just put ### at the beginning of the line and it will be skipped by Prosim737Updater. Empty lines are also skipped.
+All items contained in the english.txt file have to be present in other language files. The disposition of all elements is not important: all elements are loaded into a dictionary by Prosim737 Updater.

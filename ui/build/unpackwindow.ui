@@ -52,7 +52,7 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="QLabel" name="dw_label_2">
+          <widget class="QLabel" name="uw_label_3">
            <property name="minimumSize">
             <size>
              <width>50</width>
@@ -110,7 +110,7 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QLabel" name="dw_label_1">
+          <widget class="QLabel" name="uw_label_1">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -176,7 +176,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QProgressBar" name="progressBar">
+          <widget class="QProgressBar" name="uw_progressBar">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -222,7 +222,7 @@
             </spacer>
            </item>
            <item>
-            <widget class="QLabel" name="label">
+            <widget class="QLabel" name="uw_label_2">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -296,7 +296,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QToolButton" name="dw_downloadButton">
+        <widget class="QToolButton" name="uw_downloadButton">
          <property name="minimumSize">
           <size>
            <width>190</width>
@@ -305,7 +305,7 @@
          </property>
          <property name="maximumSize">
           <size>
-           <width>190</width>
+           <width>230</width>
            <height>27</height>
           </size>
          </property>
@@ -363,7 +363,7 @@ QToolButton:pressed {
         </spacer>
        </item>
        <item>
-        <widget class="QToolButton" name="dw_cancelButton">
+        <widget class="QToolButton" name="uw_cancelButton">
          <property name="minimumSize">
           <size>
            <width>90</width>
@@ -372,7 +372,7 @@ QToolButton:pressed {
          </property>
          <property name="maximumSize">
           <size>
-           <width>90</width>
+           <width>110</width>
            <height>27</height>
           </size>
          </property>
@@ -430,7 +430,7 @@ QToolButton:pressed {
         </spacer>
        </item>
        <item>
-        <widget class="QToolButton" name="dw_quitButton">
+        <widget class="QToolButton" name="uw_quitButton">
          <property name="minimumSize">
           <size>
            <width>90</width>
@@ -439,7 +439,7 @@ QToolButton:pressed {
          </property>
          <property name="maximumSize">
           <size>
-           <width>90</width>
+           <width>110</width>
            <height>27</height>
           </size>
          </property>

@@ -18,15 +18,17 @@ from ui.Ui_presavewindow import Ui_presaveWindow
 from ui.Ui_optionwindow import Ui_optionWindow
 from functions.thread_functions import DownloadFile, UnpackFile, InstallFile, ZipProsim
 from functions.thread_functions import CheckProsimPath, CheckProsimProcesses
+from functions.utilities import translate_elements
 from ui._version import _updater_version, _eclipse_version, _py_version, _qt_version
 from PyQt5 import QtWidgets, QtCore, QtGui
 
 
 class MyInfo(QtWidgets.QDialog, Ui_infoWindow):
-    def __init__(self, infoText):
+    def __init__(self, infoText, config_dict, text_translations):
         logging.debug('window_functions.py - MyInfo - __init__')
         QtWidgets.QWidget.__init__(self)
         self.setupUi(self)
+        self.setWindowTitle(text_translations['MyInfo'][config_dict['OPTIONS'].get('language')])
         self.iw_label_1.setText(infoText)
         self.iw_okButton.clicked.connect(self.closeWindow)
         
@@ -36,10 +38,14 @@ class MyInfo(QtWidgets.QDialog, Ui_infoWindow):
         
         
 class MyDownload(QtWidgets.QDialog, Ui_downloadWindow):
-    def __init__(self, url_name, prosim_path, prosim_credentials, kill, relaunch):
+    def __init__(self, url_name, prosim_path, prosim_credentials, kill, relaunch, config_dict, text_translations):
         logging.debug('window_functions.py - MyDownload - __init__')
         QtWidgets.QWidget.__init__(self)
         self.setupUi(self)
+        self.config_dict = config_dict
+        self.text_translations = text_translations
+        translate_elements(self, self, self.config_dict['OPTIONS'].get('language'), self.text_translations)
+        self.setWindowTitle(self.text_translations['MyDownload'][self.config_dict['OPTIONS'].get('language')])
         self.dw_cancelButton.setEnabled(False)
         self.label.setText('')
         self.url_name = url_name
@@ -55,7 +61,7 @@ class MyDownload(QtWidgets.QDialog, Ui_downloadWindow):
     
     def check_prosim_path(self):
         logging.debug('window_functions.py - MyDownload  - check_prosim_path')
-        self.label.setText('Check Prosim737 paths...')
+        self.label.setText(self.text_translations['Check-path'][self.config_dict['OPTIONS'].get('language')])
         self.dw_quitButton.setEnabled(False)
         self.dw_cancelButton.setEnabled(False)
         self.dw_downloadButton.setEnabled(False)
@@ -71,7 +77,8 @@ class MyDownload(QtWidgets.QDialog, Ui_downloadWindow):
             self.dw_quitButton.setEnabled(True)
             self.dw_cancelButton.setEnabled(False)
             self.dw_downloadButton.setEnabled(True)
-            self.pathWindow = MyPath(val)
+            self.pathWindow = MyPath(val, self.config_dict, self.text_translations, 
+                                     self.text_translations['Path-missing'][self.config_dict['OPTIONS'].get('language')])
             x1, y1, w1, h1 = self.geometry().getRect()
             _, _, w2, h2 = self.pathWindow.geometry().getRect()
             x2 = x1 + w1/2 - w2/2
@@ -81,7 +88,7 @@ class MyDownload(QtWidgets.QDialog, Ui_downloadWindow):
             self.pathWindow.setGeometry(x2, y2, 600, self.pathWindow.sizeHint().height())
             self.pathWindow.exec_()
         else:
-            self.label.setText('Check Prosim737 processes...')
+            self.label.setText(self.text_translations['Check-process'][self.config_dict['OPTIONS'].get('language')])
             self.dw_quitButton.setEnabled(False)
             self.dw_cancelButton.setEnabled(False)
             self.dw_downloadButton.setEnabled(False)
@@ -102,9 +109,8 @@ class MyDownload(QtWidgets.QDialog, Ui_downloadWindow):
         self.dw_cancelButton.setEnabled(False)
         self.dw_downloadButton.setEnabled(True)
         self.thread.stop()
-        text = ['The following computers in the credentials are not linked to an installation path:',
-                'Please, make sure to correct your credentials or the networked installation paths.']
-        self.pathWindow = MyPath(val, text)
+        self.pathWindow = MyPath(val, self.config_dict, self.text_translations, 
+                                 self.text_translations['Path-credential-not-match'][self.config_dict['OPTIONS'].get('language')])
         x1, y1, w1, h1 = self.geometry().getRect()
         _, _, w2, h2 = self.pathWindow.geometry().getRect()
         x2 = x1 + w1/2 - w2/2
@@ -123,9 +129,12 @@ class MyDownload(QtWidgets.QDialog, Ui_downloadWindow):
             self.dw_quitButton.setEnabled(True)
             self.dw_cancelButton.setEnabled(False)
             self.dw_downloadButton.setEnabled(True)
-            text = ['The following processes are still running:',
-                    'Please, make sure to stop them before installing Prosim737.']
-            self.pathWindow = MyPath(val, text)
+            text = None
+            if not ' - ' in val[0]:
+                text = self.text_translations['Process-Exception'][self.config_dict['OPTIONS'].get('language')]
+            else:
+                text = self.text_translations['Process-running'][self.config_dict['OPTIONS'].get('language')]
+            self.pathWindow = MyPath(val, self.config_dict, self.text_translations, text)
             x1, y1, w1, h1 = self.geometry().getRect()
             _, _, w2, h2 = self.pathWindow.geometry().getRect()
             x2 = x1 + w1/2 - w2/2
@@ -140,8 +149,8 @@ class MyDownload(QtWidgets.QDialog, Ui_downloadWindow):
             self.dw_quitButton.setEnabled(False)
             self.dw_cancelButton.setEnabled(True)
             self.dw_downloadButton.setEnabled(False)
-            self.label.setText('Downloading ' + self.filename + '...')
-            self.thread = DownloadFile(self.url_name)
+            self.label.setText(self.text_translations['Download-light'][self.config_dict['OPTIONS'].get('language')] % self.filename)
+            self.thread = DownloadFile(self.url_name, self.config_dict, self.text_translations)
             self.thread.download_update.connect(self.update_progress_bar)
             self.thread.download_done.connect(self.unzip_update)
             self.thread.download_failed.connect(self.download_failed)
@@ -161,13 +170,13 @@ class MyDownload(QtWidgets.QDialog, Ui_downloadWindow):
         self.dw_quitButton.setEnabled(False)
         self.dw_cancelButton.setEnabled(True)
         self.dw_downloadButton.setEnabled(False)
-        self.label.setText('Unpacking update...')
+        self.label.setText(self.text_translations['Unpacking-light'][self.config_dict['OPTIONS'].get('language')])
         self.thread.download_update.disconnect(self.update_progress_bar)
         self.thread.stop()
         self.update_progress_bar(0)
         zip_name = tempfile.gettempdir() + '\prosim_update_package.zip'
         unpack_folder = tempfile.gettempdir() + '\prosim_update_package'
-        self.thread = UnpackFile(zip_name, unpack_folder)
+        self.thread = UnpackFile(zip_name, unpack_folder, self.config_dict, self.text_translations)
         self.thread.unpack_update.connect(self.update_progress_bar)
         self.thread.unpack_done.connect(self.install_update)
         self.thread.start()
@@ -181,9 +190,9 @@ class MyDownload(QtWidgets.QDialog, Ui_downloadWindow):
         self.thread.unpack_update.disconnect(self.update_progress_bar)
         self.thread.stop()
         self.update_progress_bar(0)
-        self.label.setText('Installing update...')
+        self.label.setText(self.text_translations['Install-light'][self.config_dict['OPTIONS'].get('language')])
         unpack_folder = tempfile.gettempdir() + '\prosim_update_package\\'
-        self.thread = InstallFile(unpack_folder, self.prosim_path)
+        self.thread = InstallFile(unpack_folder, self.config_dict, self.text_translations, self.prosim_path)
         self.thread.install_update.connect(self.update_progress_bar)
         self.thread.install_done.connect(self.relaunch_prosim_processes)
         self.thread.install_failed.connect(self.install_failed)
@@ -224,12 +233,12 @@ class MyDownload(QtWidgets.QDialog, Ui_downloadWindow):
         self.thread.download_failed.disconnect(self.download_failed)
         self.thread.cancel_download()
         self.cancel = True
-        self.update_progress_bar([0, 'Download canceled'])
+        self.update_progress_bar([0, self.text_translations['Download-canceled'][self.config_dict['OPTIONS'].get('language')]])
         self.end_process()
         
     def download_failed(self):
         logging.debug('window_functions.py - MyDownload - download_failed')
-        self.update_progress_bar([0, 'Download failed'])
+        self.update_progress_bar([0, self.text_translations['Download-failed'][self.config_dict['OPTIONS'].get('language')]])
         self.cancel = True
         self.end_process()
     
@@ -239,7 +248,7 @@ class MyDownload(QtWidgets.QDialog, Ui_downloadWindow):
         self.thread.unpack_done.disconnect(self.install_update)
         self.thread.cancel_unzipping()
         self.cancel = True
-        self.update_progress_bar([0, 'Unpacking canceled'])
+        self.update_progress_bar([0, self.text_translations['Unpacking-canceled'][self.config_dict['OPTIONS'].get('language')]])
         self.end_process()
     
     def install_failed(self):
@@ -247,7 +256,7 @@ class MyDownload(QtWidgets.QDialog, Ui_downloadWindow):
         self.thread.install_update.disconnect(self.update_progress_bar)
         self.thread.install_done.disconnect(self.relaunch_prosim_processes)
         self.cancel = True
-        self.update_progress_bar([0, 'Installation failed. Please check Prosim737 processes or share permissions.'])
+        self.update_progress_bar([0, self.text_translations['Install-failed'][self.config_dict['OPTIONS'].get('language')]])
         self.end_process()
     
     def closeEvent(self, event):
@@ -268,35 +277,39 @@ class MyDownload(QtWidgets.QDialog, Ui_downloadWindow):
 
 
 class MyUnpack(QtWidgets.QDialog, Ui_unpackWindow):
-    def __init__(self, prosim_path, prosim_credentials, kill, relaunch):
+    def __init__(self, prosim_path, prosim_credentials, kill, relaunch, config_dict, text_translations):
         logging.debug('window_functions.py - MyUnpack  - __init__')
         QtWidgets.QWidget.__init__(self)
         self.setupUi(self)
-        self.dw_cancelButton.setEnabled(False)
-        self.label.setText('')
+        self.config_dict = config_dict
+        self.text_translations = text_translations
+        translate_elements(self, self, self.config_dict['OPTIONS'].get('language'), self.text_translations)
+        self.setWindowTitle(self.text_translations['MyUnpack'][self.config_dict['OPTIONS'].get('language')])
+        self.uw_cancelButton.setEnabled(False)
+        self.uw_label_2.setText('')
         self.prosim_path = prosim_path
         self.prosim_credentials = prosim_credentials
         self.kill = kill
         self.relaunch = relaunch
         self.relaunch_processes = []
-        self.dw_quitButton.clicked.connect(self.close)
-        self.dw_cancelButton.clicked.connect(self.cancel_unzipping)
-        self.dw_downloadButton.clicked.connect(self.check_prosim_path)
+        self.uw_quitButton.clicked.connect(self.close)
+        self.uw_cancelButton.clicked.connect(self.cancel_unzipping)
+        self.uw_downloadButton.clicked.connect(self.check_prosim_path)
         self.cancel = False
     
     def update_progress_bar(self, val):
         if isinstance(val, list):
-            self.progressBar.setValue(val[0])
-            self.label.setText(val[1])
+            self.uw_progressBar.setValue(val[0])
+            self.uw_label_2.setText(val[1])
         else:
-            self.progressBar.setValue(val)
+            self.uw_progressBar.setValue(val)
     
     def check_prosim_path(self):
         logging.debug('window_functions.py - MyUnpack  - check_prosim_path')
-        self.label.setText('Check Prosim737 paths...')
-        self.dw_quitButton.setEnabled(False)
-        self.dw_cancelButton.setEnabled(False)
-        self.dw_downloadButton.setEnabled(False)
+        self.uw_label_2.setText(self.text_translations['Check-path'][self.config_dict['OPTIONS'].get('language')])
+        self.uw_quitButton.setEnabled(False)
+        self.uw_cancelButton.setEnabled(False)
+        self.uw_downloadButton.setEnabled(False)
         self.thread = CheckProsimPath(self.prosim_path)
         self.thread.check_done.connect(self.check_prosim_processes)
         self.thread.start()
@@ -305,26 +318,25 @@ class MyUnpack(QtWidgets.QDialog, Ui_unpackWindow):
         logging.debug('window_functions.py - MyUnpack  - check_prosim_processes')
         self.thread.stop()
         if val:
-            self.label.setText('')
-            self.dw_quitButton.setEnabled(True)
-            self.dw_cancelButton.setEnabled(False)
-            self.dw_downloadButton.setEnabled(True)
-            self.pathWindow = MyPath(val)
+            self.uw_label_2.setText('')
+            self.uw_quitButton.setEnabled(True)
+            self.uw_cancelButton.setEnabled(False)
+            self.uw_downloadButton.setEnabled(True)
+            self.pathWindow = MyPath(val, self.config_dict, self.text_translations, 
+                                     self.text_translations['Path-missing'][self.config_dict['OPTIONS'].get('language')])
             x1, y1, w1, h1 = self.geometry().getRect()
             _, _, w2, h2 = self.pathWindow.geometry().getRect()
             x2 = x1 + w1/2 - w2/2
             y2 = y1 + h1/2 - h2/2
-            '''self.pathWindow.iw_label_1.setMaximumSize(QtCore.QSize(16777215, 27))
-            self.pathWindow.iw_label_3.setMaximumSize(QtCore.QSize(16777215, 16777215))'''
             self.pathWindow.setMinimumSize(QtCore.QSize(600, self.pathWindow.sizeHint().height()))
             self.pathWindow.setMaximumSize(QtCore.QSize(600, self.pathWindow.sizeHint().height()))
             self.pathWindow.setGeometry(x2, y2, 600, self.pathWindow.sizeHint().height())
             self.pathWindow.exec_()
         else:
-            self.label.setText('Check Prosim737 processes...')
-            self.dw_quitButton.setEnabled(False)
-            self.dw_cancelButton.setEnabled(False)
-            self.dw_downloadButton.setEnabled(False)
+            self.uw_label_2.setText(self.text_translations['Check-process'][self.config_dict['OPTIONS'].get('language')])
+            self.uw_quitButton.setEnabled(False)
+            self.uw_cancelButton.setEnabled(False)
+            self.uw_downloadButton.setEnabled(False)
             self.thread = CheckProsimProcesses(self.prosim_path, self.prosim_credentials, self.kill, self.relaunch)
             #self.thread.check_relaunch.connect(self.prepare_relaunch_processes)
             self.thread.check_done.connect(self.unzip_update)
@@ -337,14 +349,13 @@ class MyUnpack(QtWidgets.QDialog, Ui_unpackWindow):
     
     def computer_path_not_match(self, val):
         logging.debug('window_functions.py - MyUnpack - computer_path_not_match')
-        self.label.setText('')
-        self.dw_quitButton.setEnabled(True)
-        self.dw_cancelButton.setEnabled(False)
-        self.dw_downloadButton.setEnabled(True)
+        self.uw_label_2.setText('')
+        self.uw_quitButton.setEnabled(True)
+        self.uw_cancelButton.setEnabled(False)
+        self.uw_downloadButton.setEnabled(True)
         self.thread.stop()
-        text = ['The following computers in the credentials are not linked to an installation path:',
-                'Please, make sure to correct your credentials or the different installation paths.']
-        self.pathWindow = MyPath(val, text)
+        self.pathWindow = MyPath(val, self.config_dict, self.text_translations, 
+                                 self.text_translations['Path-credential-not-match'][self.config_dict['OPTIONS'].get('language')])
         x1, y1, w1, h1 = self.geometry().getRect()
         _, _, w2, h2 = self.pathWindow.geometry().getRect()
         x2 = x1 + w1/2 - w2/2
@@ -359,18 +370,16 @@ class MyUnpack(QtWidgets.QDialog, Ui_unpackWindow):
     def unzip_update(self, val):
         logging.debug('window_functions.py - MyUnpack  - unzip_update')
         if val:
-            self.label.setText('')
-            self.dw_quitButton.setEnabled(True)
-            self.dw_cancelButton.setEnabled(False)
-            self.dw_downloadButton.setEnabled(True)
+            self.uw_label_2.setText('')
+            self.uw_quitButton.setEnabled(True)
+            self.uw_cancelButton.setEnabled(False)
+            self.uw_downloadButton.setEnabled(True)
             text = None
             if not ' - ' in val[0]:
-                text = ['The following computers are not reachable:',
-                        'Please, make sure that your credentials are correct before trying to install an update.']
+                text = self.text_translations['Process-Exception'][self.config_dict['OPTIONS'].get('language')]
             else:
-                text = ['The following processes are still running:',
-                        'Please, make sure to stop them before installing Prosim737.']
-            self.pathWindow = MyPath(val, text)
+                text = self.text_translations['Process-running'][self.config_dict['OPTIONS'].get('language')]
+            self.pathWindow = MyPath(val, self.config_dict, self.text_translations, text)
             x1, y1, w1, h1 = self.geometry().getRect()
             _, _, w2, h2 = self.pathWindow.geometry().getRect()
             x2 = x1 + w1/2 - w2/2
@@ -381,29 +390,29 @@ class MyUnpack(QtWidgets.QDialog, Ui_unpackWindow):
             self.pathWindow.exec_()
         else:
             self.cancel = False
-            self.dw_quitButton.setEnabled(False)
-            self.dw_cancelButton.setEnabled(True)
-            self.dw_downloadButton.setEnabled(False)
-            self.label.setText('Unpacking update...')
+            self.uw_quitButton.setEnabled(False)
+            self.uw_cancelButton.setEnabled(True)
+            self.uw_downloadButton.setEnabled(False)
+            self.uw_label_2.setText(self.text_translations['Unpacking-light'][self.config_dict['OPTIONS'].get('language')])
             self.update_progress_bar(0)
             zip_name = tempfile.gettempdir() + '\prosim_update_package.zip'
             unpack_folder = tempfile.gettempdir() + '\prosim_update_package'
-            self.thread = UnpackFile(zip_name, unpack_folder)
+            self.thread = UnpackFile(zip_name, unpack_folder, self.config_dict, self.text_translations)
             self.thread.unpack_update.connect(self.update_progress_bar)
             self.thread.unpack_done.connect(self.install_update)
             self.thread.start()
     
     def install_update(self):
         logging.debug('window_functions.py - MyUnpack  - install_update')
-        self.dw_quitButton.setEnabled(False)
-        self.dw_cancelButton.setEnabled(False)
-        self.dw_downloadButton.setEnabled(False)
+        self.uw_quitButton.setEnabled(False)
+        self.uw_cancelButton.setEnabled(False)
+        self.uw_downloadButton.setEnabled(False)
         self.thread.unpack_update.disconnect(self.update_progress_bar)
         self.thread.stop()
         self.update_progress_bar(0)
-        self.label.setText('Installing update...')
+        self.uw_label_2.setText(self.text_translations['Install-light'][self.config_dict['OPTIONS'].get('language')])
         unpack_folder = tempfile.gettempdir() + '\prosim_update_package\\'
-        self.thread = InstallFile(unpack_folder, self.prosim_path)
+        self.thread = InstallFile(unpack_folder, self.config_dict, self.text_translations, self.prosim_path)
         self.thread.install_update.connect(self.update_progress_bar)
         self.thread.install_done.connect(self.relaunch_prosim_processes)
         self.thread.install_failed.connect(self.install_failed)
@@ -431,17 +440,17 @@ class MyUnpack(QtWidgets.QDialog, Ui_unpackWindow):
     
     def end_process(self):
         logging.debug('window_functions.py - MyUnpack  - end_process')
-        self.dw_quitButton.setEnabled(True)
-        self.dw_cancelButton.setEnabled(False)
-        self.dw_downloadButton.setEnabled(True)
+        self.uw_quitButton.setEnabled(True)
+        self.uw_cancelButton.setEnabled(False)
+        self.uw_downloadButton.setEnabled(True)
         if not self.cancel:
-            self.update_progress_bar([100, 'Job finished !'])
+            self.update_progress_bar([100, self.text_translations['Install-finished'][self.config_dict['OPTIONS'].get('language')]])
     
     def cancel_unzipping(self):
         logging.debug('window_functions.py - MyUnpack  - cancel_unzipping')
         self.thread.cancel_unzipping()
         self.cancel = True
-        self.update_progress_bar([0, 'Unpacking canceled'])
+        self.update_progress_bar([0, self.text_translations['Unpacking-canceled'][self.config_dict['OPTIONS'].get('language')]])
         self.end_process()
         
     def install_failed(self):
@@ -449,7 +458,7 @@ class MyUnpack(QtWidgets.QDialog, Ui_unpackWindow):
         self.thread.install_update.disconnect(self.update_progress_bar)
         self.thread.install_done.disconnect(self.relaunch_prosim_processes)
         self.cancel = True
-        self.update_progress_bar([0, 'Installation failed. Please check Prosim737 processes or share permissions.'])
+        self.update_progress_bar([0, self.text_translations['Install-failed'][self.config_dict['OPTIONS'].get('language')]])
         self.end_process()
     
     def closeEvent(self, event):
@@ -470,26 +479,30 @@ class MyUnpack(QtWidgets.QDialog, Ui_unpackWindow):
 
 
 class MyStore(QtWidgets.QDialog, Ui_storeWindow):
-    def __init__(self, url_name, update_file):
+    def __init__(self, url_name, update_file, config_dict, text_translations):
         logging.debug('window_functions.py - MyStore - __init__')
         QtWidgets.QWidget.__init__(self)
         self.setupUi(self)
+        self.config_dict = config_dict
+        self.text_translations = text_translations
+        translate_elements(self, self, self.config_dict['OPTIONS'].get('language'), self.text_translations)
+        self.setWindowTitle(self.text_translations['MyStore'][self.config_dict['OPTIONS'].get('language')])
         self.update_file = update_file
         self.url_name = url_name
-        self.button.clicked.connect(self.cancel_download)
+        self.sw_button.clicked.connect(self.cancel_download)
         self.cancel = False
         self.download_update()
     
     def update_progress_bar(self, val):
         if isinstance(val, list):
             self.progressBar.setValue(val[0])
-            self.label.setText(val[1])
+            self.sw_label.setText(val[1])
         else:
             self.progressBar.setValue(val)
     
     def download_update(self):
         logging.debug('window_functions.py - MyStore - download_update')
-        self.thread = DownloadFile(self.url_name, self.update_file)
+        self.thread = DownloadFile(self.url_name, self.config_dict, self.text_translations, self.update_file)
         self.thread.download_update.connect(self.update_progress_bar)
         self.thread.download_done.connect(self.close)
         self.thread.download_failed.connect(self.download_failed)
@@ -505,9 +518,9 @@ class MyStore(QtWidgets.QDialog, Ui_storeWindow):
     def download_failed(self):
         logging.debug('window_functions.py - MyStore - download_failed')
         self.update_progress_bar(0)
-        self.label.setText('Download failed')
+        self.sw_label.setText(self.text_translations['Download-failed'][self.config_dict['OPTIONS'].get('language')])
         self.cancel = True
-        self.button.setText('Quit')
+        self.button.setText(self.text_translations['Download-failed-label'][self.config_dict['OPTIONS'].get('language')])
         
     def closeEvent(self, event):
         logging.debug('window_functions.py - MyStore - closeEvent')
@@ -518,10 +531,13 @@ class MyStore(QtWidgets.QDialog, Ui_storeWindow):
         
         
 class MyCompress(QtWidgets.QDialog, Ui_compressWindow):
-    def __init__(self, backup_directory, prosim_path, credentials):
+    def __init__(self, backup_directory, prosim_path, credentials, config_dict, text_translations):
         logging.debug('window_functions.py - MyCompress - __init__')
         QtWidgets.QWidget.__init__(self)
         self.setupUi(self)
+        self.config_dict = config_dict
+        self.text_translations = text_translations
+        self.setWindowTitle(self.text_translations['MyCompress'][self.config_dict['OPTIONS'].get('language')])
         self.backup_directory = backup_directory
         self.prosim_path = prosim_path
         self.credentials = credentials
@@ -529,7 +545,7 @@ class MyCompress(QtWidgets.QDialog, Ui_compressWindow):
         
     def check_prosim_path(self):
         logging.debug('window_functions.py - MyCompress  - check_prosim_path')
-        self.label.setText('Check Prosim737 paths...')
+        self.label.setText(self.text_translations['Check-path'][self.config_dict['OPTIONS'].get('language')])
         self.thread = CheckProsimPath(self.prosim_path)
         self.thread.check_done.connect(self.compress_directories)
         self.thread.start()
@@ -545,9 +561,8 @@ class MyCompress(QtWidgets.QDialog, Ui_compressWindow):
         logging.debug('window_functions.py - MyCompress - compress directories')
         if val:
             self.label.setText('')
-            text = ['Prosim737 Updater can\'t find the following folders:',
-                    'Please, make sure that they exist before compressing Prosim737 directories.']
-            self.pathWindow = MyPath(val, text)
+            self.pathWindow = MyPath(val, self.config_dict, self.text_translations, 
+                                     self.text_translations['Path-missing'][self.config_dict['OPTIONS'].get('language')])
             x1, y1, w1, h1 = self.geometry().getRect()
             _, _, w2, h2 = self.pathWindow.geometry().getRect()
             x2 = x1 + w1/2 - w2/2
@@ -558,7 +573,7 @@ class MyCompress(QtWidgets.QDialog, Ui_compressWindow):
             self.pathWindow.exec_()
             self.close()
         else:
-            self.thread = ZipProsim(self.backup_directory, self.prosim_path, self.credentials)
+            self.thread = ZipProsim(self.backup_directory, self.prosim_path, self.credentials, self.config_dict, self.text_translations)
             self.thread.zip_update.connect(self.update_progress_bar)
             self.thread.zip_done.connect(self.closeWindow)
             self.thread.start()
@@ -571,10 +586,14 @@ class MyCompress(QtWidgets.QDialog, Ui_compressWindow):
 
 
 class MyRestore(QtWidgets.QDialog, Ui_restoreWindow):
-    def __init__(self, backup_folder, kill, relaunch):
+    def __init__(self, backup_folder, kill, relaunch, config_dict, text_translations):
         logging.debug('window_functions.py - MyRestore - __init__')
         QtWidgets.QWidget.__init__(self)
         self.setupUi(self)
+        self.text_translations = text_translations
+        self.config_dict = config_dict
+        translate_elements(self, self, self.config_dict['OPTIONS'].get('language'), self.text_translations)
+        self.setWindowTitle(text_translations['MyRestore'][config_dict['OPTIONS'].get('language')])
         self.label.setText('')
         self.backup_folder = backup_folder
         self.prosim_credentials = {}
@@ -589,6 +608,7 @@ class MyRestore(QtWidgets.QDialog, Ui_restoreWindow):
         self.progressBar.setEnabled(False)
         self.progressBar.setVisible(False)
         self.listWidget.itemClicked.connect(self.select_list_item)
+        self.listWidget.itemDoubleClicked.connect(self.show_backup_information)
         self.list_backups()
         
     def update_progress_bar(self, val):
@@ -617,6 +637,31 @@ class MyRestore(QtWidgets.QDialog, Ui_restoreWindow):
         self.rw_restoreButton.setEnabled(True)
         self.rw_deleteButton.setEnabled(True)
     
+    def show_backup_information(self, val):
+        logging.debug('window_functions.py - MyRestore - show_backup_information - val ' + str(val.objectName()))
+        xml_file = zipfile.ZipFile(self.backup_folder + '\\' + val.text()).read('backup_options.xml')
+        backup_folders = self.read_backup_xml(xml_file)
+        infoText = self.text_translations['Restore-info'][self.config_dict['OPTIONS'].get('language')]
+        infoText += '<ul>'
+        text_len = 0
+        for key, val in backup_folders.items():
+            tmp = '<li>' + key + '.zip -> ' + val + '</li>'
+            if len(tmp) > text_len:
+                text_len = len(tmp)
+            infoText += tmp
+        if text_len < 45:
+            text_len = 45
+        infoText += '</ul>'
+        self.infoWindow = MyInfo(infoText, self.config_dict, self.text_translations)
+        x1, y1, w1, h1 = self.geometry().getRect()
+        _, _, w2, h2 = self.infoWindow.geometry().getRect()
+        x2 = x1 + w1/2 - w2/2
+        y2 = y1 + h1/2 - h2/2
+        self.infoWindow.setGeometry(x2, y2, w2, h2)
+        self.infoWindow.setMinimumSize(QtCore.QSize(text_len * 10, len(backup_folders) * 27 + 3 * 27))
+        self.infoWindow.setMaximumSize(QtCore.QSize(text_len * 10, len(backup_folders) * 27 + 3 * 27))
+        self.infoWindow.exec_()
+    
     def delete_backup(self):
         file_name = self.listWidget.currentItem().text()
         logging.debug('window_functions.py - MyRestore - delete backup - file_name' + str(file_name))
@@ -628,8 +673,8 @@ class MyRestore(QtWidgets.QDialog, Ui_restoreWindow):
     
     def check_prosim_path(self):
         logging.debug('window_functions.py - MyRestore - check_prosim_path')
-        self.rw_cancelButton.setText('Cancel')
-        self.label.setText('Check Prosim737 paths...')
+        self.rw_cancelButton.setText(self.text_translations['Restore-cancel-button'][self.config_dict['OPTIONS'].get('language')])
+        self.label.setText(self.text_translations['Check-path'][self.config_dict['OPTIONS'].get('language')])
         self.rw_restoreButton.setEnabled(False)
         self.rw_deleteButton.setEnabled(False)
         self.rw_cancelButton.setEnabled(False)
@@ -647,10 +692,8 @@ class MyRestore(QtWidgets.QDialog, Ui_restoreWindow):
             self.rw_restoreButton.setEnabled(True)
             self.rw_deleteButton.setEnabled(True)
             self.rw_cancelButton.setEnabled(True)
-            self.rw_cancelButton.setText('Quit')
-            text = ['Prosim737 Updater can\'t find the following folders:',
-                    'Please, make sure that they exist before restoring a backup of Prosim737.']
-            self.pathWindow = MyPath(val, text)
+            self.rw_cancelButton.setText(self.text_translations['Restore-quit-button'][self.config_dict['OPTIONS'].get('language')])
+            self.pathWindow = MyPath(val, self.text_translations['Path-missing'][self.config_dict['OPTIONS'].get('language')])
             x1, y1, w1, h1 = self.geometry().getRect()
             _, _, w2, h2 = self.pathWindow.geometry().getRect()
             x2 = x1 + w1/2 - w2/2
@@ -662,7 +705,7 @@ class MyRestore(QtWidgets.QDialog, Ui_restoreWindow):
             self.pathWindow.setGeometry(x2, y2, 600, self.pathWindow.sizeHint().height())
             self.pathWindow.exec_()
         else:
-            self.label.setText('Check Prosim737 processes...')
+            self.label.setText(self.text_translations['Check-process'][self.config_dict['OPTIONS'].get('language')])
             self.rw_restoreButton.setEnabled(False)
             self.rw_deleteButton.setEnabled(False)
             self.rw_cancelButton.setEnabled(False)
@@ -682,11 +725,9 @@ class MyRestore(QtWidgets.QDialog, Ui_restoreWindow):
         self.rw_restoreButton.setEnabled(True)
         self.rw_deleteButton.setEnabled(True)
         self.rw_cancelButton.setEnabled(True)
-        self.rw_cancelButton.setText('Quit')
+        self.rw_cancelButton.setText(self.text_translations['Restore-quit-button'][self.config_dict['OPTIONS'].get('language')])
         self.thread.stop()
-        text = ['The following computers in the credentials are not linked to an installation path:',
-                'Please, make sure to correct your credentials or the different installation paths.']
-        self.pathWindow = MyPath(val, text)
+        self.pathWindow = MyPath(val, self.text_translations['Path-credential-not-match'][self.config_dict['OPTIONS'].get('language')])
         x1, y1, w1, h1 = self.geometry().getRect()
         _, _, w2, h2 = self.pathWindow.geometry().getRect()
         x2 = x1 + w1/2 - w2/2
@@ -705,10 +746,8 @@ class MyRestore(QtWidgets.QDialog, Ui_restoreWindow):
             self.rw_restoreButton.setEnabled(True)
             self.rw_deleteButton.setEnabled(True)
             self.rw_cancelButton.setEnabled(True)
-            self.rw_cancelButton.setText('Quit')
-            text = ['The following processes are still running:',
-                    'Please, make sure to stop them before installing Prosim737.']
-            self.pathWindow = MyPath(val, text)
+            self.rw_cancelButton.setText(self.text_translations['Restore-quit-button'][self.config_dict['OPTIONS'].get('language')])
+            self.pathWindow = MyPath(val, self.text_translations['Process-running'][self.config_dict['OPTIONS'].get('language')])
             x1, y1, w1, h1 = self.geometry().getRect()
             _, _, w2, h2 = self.pathWindow.geometry().getRect()
             x2 = x1 + w1/2 - w2/2
@@ -723,13 +762,13 @@ class MyRestore(QtWidgets.QDialog, Ui_restoreWindow):
             self.rw_restoreButton.setEnabled(False)
             self.rw_deleteButton.setEnabled(False)
             self.rw_cancelButton.setEnabled(True)
-            self.label.setText('Unpacking backup...')
+            self.label.setText(self.text_translations['Unpacking-light'][self.config_dict['OPTIONS'].get('language')])
             self.progressBar.setEnabled(True)
             self.progressBar.setVisible(True)
             temp_path = tempfile.gettempdir()
             copyfile(self.backup_folder + '\\' + self.listWidget.currentItem().text(), temp_path + '\prosim_update_package.zip')
             unpack_folder = temp_path + '\prosim_update_package'
-            self.thread = UnpackFile(temp_path + '\prosim_update_package.zip', unpack_folder, True)
+            self.thread = UnpackFile(temp_path + '\prosim_update_package.zip', unpack_folder, self.config_dict, self.text_translations, True)
             self.thread.unpack_update.connect(self.update_progress_bar)
             self.thread.unpack_done.connect(self.install_backup)
             self.thread.start()
@@ -742,9 +781,9 @@ class MyRestore(QtWidgets.QDialog, Ui_restoreWindow):
         self.thread.unpack_update.disconnect(self.update_progress_bar)
         self.thread.stop()
         self.update_progress_bar(0)
-        self.label.setText('Installing backup...')
+        self.label.setText(self.text_translations['Install-light'][self.config_dict['OPTIONS'].get('language')])
         unpack_folder = tempfile.gettempdir() + '\prosim_update_package\\'
-        self.thread = InstallFile(unpack_folder, self.backup_folders, backup=True)
+        self.thread = InstallFile(unpack_folder, self.config_dict, self.text_translations, self.backup_folders, backup=True)
         self.thread.install_update.connect(self.update_progress_bar)
         self.thread.install_done.connect(self.relaunch_prosim_processes)
         self.thread.install_failed.connect(self.install_failed)
@@ -774,18 +813,18 @@ class MyRestore(QtWidgets.QDialog, Ui_restoreWindow):
         logging.debug('window_functions.py - MyRestore - end_process')
         self.rw_cancelButton.clicked.connect(self.close)
         self.rw_cancelButton.clicked.disconnect(self.cancel_unzipping)
-        self.rw_cancelButton.setText('Quit')
+        self.rw_cancelButton.setText(self.text_translations['Restore-quit-button'][self.config_dict['OPTIONS'].get('language')])
         self.rw_restoreButton.setEnabled(True)
         self.rw_deleteButton.setEnabled(True)
         self.rw_cancelButton.setEnabled(True)
         if not self.cancel:
-            self.update_progress_bar([100, 'Job finished !'])
+            self.update_progress_bar([100, self.text_translations['Install-finished'][self.config_dict['OPTIONS'].get('language')]])
     
     def cancel_unzipping(self):
         logging.debug('window_functions.py - MyRestore  - cancel_unzipping')
         self.thread.cancel_unzipping()
         self.cancel = True
-        self.update_progress_bar([0, 'Unpacking canceled'])
+        self.update_progress_bar([0, self.text_translations['Unpacking-canceled'][self.config_dict['OPTIONS'].get('language')]])
         self.end_process()
     
     def install_failed(self):
@@ -793,7 +832,7 @@ class MyRestore(QtWidgets.QDialog, Ui_restoreWindow):
         self.thread.install_update.disconnect(self.update_progress_bar)
         self.thread.install_done.disconnect(self.relaunch_prosim_processes)
         self.cancel = True
-        self.update_progress_bar([0, 'Installation failed. Please check Prosim737 processes or share permissions.'])
+        self.update_progress_bar([0, self.text_translations['Install-failed'][self.config_dict['OPTIONS'].get('language')]])
         self.end_process()
     
     def read_backup_xml(self, xml_file):
@@ -843,10 +882,11 @@ class MyRestore(QtWidgets.QDialog, Ui_restoreWindow):
 
 
 class MyPath(QtWidgets.QDialog, Ui_pathWindow):
-    def __init__(self, wrong_path, text=None):
+    def __init__(self, wrong_path, config_dict, text_translations, text=None):
         logging.debug('window_functions.py - MyPath - __init__')
         QtWidgets.QWidget.__init__(self)
         self.setupUi(self)
+        self.setWindowTitle(text_translations['MyPath'][config_dict['OPTIONS'].get('language')])
         self.wrong_path = wrong_path
         self.iw_okButton.clicked.connect(self.closeWindow)
         if text:
@@ -887,10 +927,14 @@ class MyPath(QtWidgets.QDialog, Ui_pathWindow):
 
 
 class MyUpdate(QtWidgets.QDialog, Ui_storeWindow):
-    def __init__(self, url, folder):
+    def __init__(self, url, folder, config_dict, text_translations):
         logging.debug('window_functions.py - MyStore - __init__')
         QtWidgets.QWidget.__init__(self)
         self.setupUi(self)
+        self.config_dict = config_dict
+        self.text_translations = text_translations
+        translate_elements(self, self, self.config_dict['OPTIONS'].get('language'), self.text_translations)
+        self.setWindowTitle(self.text_translations['MyStore'][self.config_dict.get('OPTIONS', 'language')])
         self.temp_folder = folder
         self.url = url
         self.update_file = self.temp_folder + '\\' + self.url[self.url.rfind('/')+1:]
@@ -923,7 +967,7 @@ class MyUpdate(QtWidgets.QDialog, Ui_storeWindow):
     def download_failed(self):
         logging.debug('window_functions.py - MyStore - download_failed')
         self.update_progress_bar(0)
-        self.label.setText('Download failed')
+        self.label.setText(self.text_translations['Download-failed'][self.config_dict.get('OPTIONS', 'language')])
         self.cancel_download()
         
     def closeEvent(self, event):
@@ -935,14 +979,12 @@ class MyUpdate(QtWidgets.QDialog, Ui_storeWindow):
 
 
 class MyAbout(QtWidgets.QDialog, Ui_aboutWindow):
-    def __init__(self):
+    def __init__(self, config_dict, translations):
         logging.debug('window_functions.py - MyAbout - __init__')
         QtWidgets.QWidget.__init__(self)
         self.setupUi(self)
-        about_text = ('The Prosim737 Updater v' + _updater_version + ' was developed by Olivier Henry,'
-                      + ' using Eclipse ' + _eclipse_version + ', Python ' + _py_version + ' and PyQt '
-                      + _qt_version + '. Its purpose is to help people to update easily and quickly an'
-                      + ' installation of Prosim737 across few computers.')
+        self.setWindowTitle(translations['MyAbout'][config_dict.get('OPTIONS', 'language')])
+        about_text = translations[self.aw_label_1.objectName()][config_dict.get('OPTIONS', 'language')] % (_updater_version, _eclipse_version, _py_version, _qt_version)
         self.aw_label_1.setText(about_text)
         self.aw_okButton.clicked.connect(self.closeWindow)
 
@@ -965,15 +1007,17 @@ class MyLog(QtWidgets.QDialog, Ui_Changelog):
         
         
 class MyWarning(QtWidgets.QDialog, Ui_presaveWindow):
-    def __init__(self, string):
+    def __init__(self, string, config_dict, text_translations):
         logging.debug('window_functions.py - MyWarning - __init__')
         QtWidgets.QWidget.__init__(self)
         self.setupUi(self)
+        translate_elements(self, self, config_dict['OPTIONS'].get('language'), text_translations)
+        self.setWindowTitle(text_translations['MyWarning'][config_dict['OPTIONS'].get('language')])
         self.iw_cancelButton.setFocus(True)
         all_buttons = self.findChildren(QtWidgets.QToolButton)
         for widget in all_buttons:
             widget.clicked.connect(self.closeWindow)
-        self.iw_nosaveButton.setText(string + " without saving")
+        self.iw_nosaveButton.setText(text_translations['iw_nosaveButton'][config_dict['OPTIONS'].get('language')] % string)
 
     def closeWindow(self):
         logging.debug('window_functions.py - MyWarning - closeWindow - self.sender().objectName() ' + self.sender().objectName())
@@ -982,13 +1026,18 @@ class MyWarning(QtWidgets.QDialog, Ui_presaveWindow):
 
 
 class MyOptions(QtWidgets.QDialog, Ui_optionWindow):
-    def __init__(self, config_dict):
+    def __init__(self, config_dict, text_translations, language_list):
         logging.debug('window_functions.py - MyOptions - __init__')
         QtWidgets.QWidget.__init__(self)
         self.setupUi(self)
-        itemDelegate = QtWidgets.QStyledItemDelegate()
-        self.ow_comboBox.setItemDelegate(itemDelegate)
         self.config_dict = config_dict
+        self.text_translations = text_translations
+        translate_elements(self, self, self.config_dict['OPTIONS'].get('language'), self.text_translations)
+        self.setWindowTitle(text_translations['MyOptions'][config_dict['OPTIONS'].get('language')])
+        itemDelegate = QtWidgets.QStyledItemDelegate()
+        self.ow_comboBox_1.setItemDelegate(itemDelegate)
+        self.ow_comboBox_2.setItemDelegate(itemDelegate)
+        self.language_list = language_list
         self.ow_okButton.clicked.connect(self.save_and_close)
         self.ow_cancelButton.clicked.connect(self.close_window)
         #self.ow_checkBox_2.stateChanged.connect(self.activate_checkbox)
@@ -997,33 +1046,28 @@ class MyOptions(QtWidgets.QDialog, Ui_optionWindow):
         self.ow_infoButton_2.clicked.connect(self.info_button)
         self.ow_infoButton_3.clicked.connect(self.info_button)
         self.ow_infoButton_4.clicked.connect(self.info_button)
+        self.ow_infoButton_5.clicked.connect(self.info_button)
         self.cancel = True
-        self.button_information = {'ow_infoButton_1':('<html><head/><body><p align=\"justify\">You can change here the '
-                                                      + 'verbose level of the logging system. If an issue is noticed, '
-                                                      + 'it is a good idea to change the level to DEBUG and send the '
-                                                      + 'log file to the developer.</p></body></html>'),
-                                   'ow_infoButton_2':('<html><head/><body><p align=\"justify\">The path where to save '
-                                                      + 'the log file, for those who appreciate to keep all their logs'
-                                                      + ' at the same place. A reboot of the software '
-                                                      + 'is necessary if the location of the log file is changed.</p><'
-                                                      + '/body></html>'),
-                                   'ow_infoButton_3':('<html><head/><body><p align=\"justify\">Activate this option to'
-                                                      + ' allow Prosim737 Updater to check for an update online.</p>'
-                                                      + '</body></html>'),
-                                   'ow_infoButton_4':('<html><head/><body><p align=\"justify\">Activate those options '
-                                                      + 'to allow Prosim737 Updater to terminate all Prosim737 processes'
-                                                      + ' and relaunch them once the update installation is finished. <b>Relaunch not'
-                                                      + ' implemented yet.</b></p></body></html>')}
+        self.populate_language_combobox()
         self.read_config_dict()
+    
+    def populate_language_combobox(self):
+        language_list = []
+        for _, value in self.language_list.items():
+            language_list.append(value)
+        language_list = sorted(language_list)
+        self.ow_comboBox_2.addItems(language_list)
     
     def read_config_dict(self):
         logging.debug('window_functions.py - MyOptions - read_config_dict')
         log_level = self.config_dict.get('LOG', 'level')
         log_path = self.config_dict.get('LOG', 'path')
+        language = self.config_dict.get('OPTIONS', 'language')
         check_update = self.config_dict['OPTIONS'].getboolean('check_update')
         terminate_processes = self.config_dict['OPTIONS'].getboolean('terminate_processes')
         relaunch_processes = self.config_dict['OPTIONS'].getboolean('relaunch_processes')
-        self.ow_comboBox.setCurrentIndex(self.ow_comboBox.findText(log_level))
+        self.ow_comboBox_2.setCurrentIndex(self.ow_comboBox_2.findText(self.language_list[language]))
+        self.ow_comboBox_1.setCurrentIndex(self.ow_comboBox_1.findText(log_level))
         self.ow_lineEdit.setText(log_path)
         self.ow_checkBox_1.setChecked(check_update)
         self.ow_checkBox_2.setChecked(terminate_processes)
@@ -1047,8 +1091,13 @@ class MyOptions(QtWidgets.QDialog, Ui_optionWindow):
     def save_and_close(self):
         logging.debug('window_functions.py - MyOptions - save_and_close')
         self.cancel = False
-        self.config_dict.set('LOG', 'level', str(self.ow_comboBox.currentText()))
+        language = ''
+        for key, value in self.language_list.items():
+            if value == self.ow_comboBox_2.currentText():
+                language = key
+        self.config_dict.set('LOG', 'level', str(self.ow_comboBox_1.currentText()))
         self.config_dict.set('LOG', 'path', str(self.ow_lineEdit.text()))
+        self.config_dict.set('OPTIONS', 'language', language)
         self.config_dict.set('OPTIONS', 'check_update', str(self.ow_checkBox_1.isChecked()))
         self.config_dict.set('OPTIONS', 'terminate_processes', str(self.ow_checkBox_2.isChecked()))
         self.config_dict.set('OPTIONS', 'relaunch_processes', str(self.ow_checkBox_3.isChecked()))
@@ -1056,12 +1105,12 @@ class MyOptions(QtWidgets.QDialog, Ui_optionWindow):
     
     def info_button(self):
         logging.debug('window_functions.py - MyOptions - info_button - self.sender().objectName() ' + self.sender().objectName())
-        infoText = self.button_information[self.sender().objectName()]
+        infoText = self.text_translations[self.sender().objectName()][self.config_dict['OPTIONS'].get('language')]
         x = QtGui.QCursor.pos().x()
         y = QtGui.QCursor.pos().y()
         x = x - 175
         y = y + 50
-        self.infoWindow = MyInfo(infoText)
+        self.infoWindow = MyInfo(infoText, self.config_dict, self.text_translations)
         self.infoWindow.setMinimumSize(QtCore.QSize(450, self.infoWindow.sizeHint().height()))
         self.infoWindow.setMaximumSize(QtCore.QSize(450, self.infoWindow.sizeHint().height()))
         self.infoWindow.setGeometry(x, y, 450, self.infoWindow.sizeHint().height())

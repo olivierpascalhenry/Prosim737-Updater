@@ -1,0 +1,157 @@
+### main window ###
+home_lb_1=Prosim737 updates' location:
+home_lb_2=Prosim737 backups' location:
+home_lb_3=List of Prosim737 updates, available locally:
+home_lb_4=List of Prosim737 updates, available online:
+server_lb_1=Prosim737 Server location:
+mcp_lb_1=Prosim737 MCP location:
+cdu_lb_1=Prosim737 CDU location:
+display_lb_1=Prosim737 Display location:
+panel_lb_1=Prosim737 Panel location:
+audio_lb_1=Prosim737 Audio location:
+credentials_lb_1=<html><head/><body><p align="justify">Before installing an update or restoring a backup, Prosim737 Updater can check if an instance of a Prosim737 module is currently running on the local or a remote computer. It is intended to avoid the update of a file if a process is still running and using it. To access the processes list on a remote computer, Prosim737 Updater needs to pass the credentials corresponding to the user logged in the remote computer. You can enter here the remote <span style=" font-weight:600; color:#0000c8;">full computer name</span> or the remote <span style=" font-weight:600; color:#0000c8;">local IP address</span> (the one which is used in a module update path), the <span style=" font-weight:600; color:#0000c8;">username</span> and <span style=" font-weight:600; color:#0000c8;">password</span>.</p><p align="center"><span style=" font-weight:600; color:#c80000;">All credentials are stored in the xml file dedicated to options and in the backup files. They can be read by someone who has access to the xml file and/or to the backups. No credentials are stored in the log file.</span></p><p align="justify">The use of that function is not mandatory and if no credentials are entered, Prosim737 Updater will not check processes.</p></body></html>
+user_lb=Prosim737 %s location:
+home_ck_1=Check for Prosim737 updates online ?
+home_create_backup=Create a backup
+home_restore_backup=Restore a backup
+home_changelog=Changelog
+home_update=Update
+credentials=Add new credentials
+audio_new_location=Add a new location
+panel_new_location=Add a new location
+display_new_location=Add a new location
+cdu_new_location=Add a new location
+mcp_new_location=Add a new location
+server_new_location=Add a new location
+info_bt_1=<html><head/><body><p align="justify">Add here the folder in which all Prosim737 updates are stored. That folder will be used to store an update donwloaded from the Official Prosim737 website if the user click the <b><font size='4'>&laquo;</font></b> button.</p></body></html>
+info_bt_2=<html><head/><body><p align="justify">Add here the folder which will welcome all Prosim737 backups.</p></body></html>
+info_bt_3=<html><head/><body><p align="justify">By clicking on <b>Create a backup</b>, a backup with a time stamp will be created in the backup folder. Click on <b>Restore a backup</b> to display a list of all backups available in the backup folder and have the possibility to restore one of them.</p></body></html>
+info_bt_4=<html><head/><body><p align="justify">Once a file is selected, click on <b>Update</b> to install the corresponding update. if an update file has been selected from the online repository, it will be downloaded and installed at the same time.</p><p align="justify">To store an online update locally, just click on the <b><font size='4'> &laquo;</font></b> button. The update will be downloaded and stored, but not installed.</p></p><p align="justify">Click on <b>Changelog</b> to display the changelog from Prosim737 website.</p></body></html>
+info_bt_5=<html><head/><body><p align="justify">Add here the folder in which ProsimServer is installed. It is possible to add multiple folders.</p><p>Examples:<ul><li>C:\Simulator\Prosim737</li><li>\\COMPUTER\Simulator\Prosim737</li></ul></p></body></html>
+info_bt_6=<html><head/><body><p align="justify">Add here the folder in which ProsimMCP is installed. It is possible to add multiple folders.</p><p>Examples:<ul><li>C:\Simulator\ProsimMCP</li><li>\\COMPUTER\Simulator\ProsimMCP</li></ul></p></body></html>
+info_bt_7=<html><head/><body><p align="justify">Add here the folder in which ProsimCDU is installed. It is possible to add multiple folders.</p><p>Examples:<ul><li>C:\Simulator\ProsimCDU</li><li>\\COMPUTER\Simulator\ProsimCDU</li></ul></p></body></html>
+info_bt_8=<html><head/><body><p align="justify">Add here the folder in which ProsimDisplay is installed. It is possible to add multiple folders.</p><p>Examples:<ul><li>C:\Simulator\ProsimDisplay</li><li>\\COMPUTER\Simulator\ProsimDisplay</li></ul></p></body></html>
+info_bt_9=<html><head/><body><p align="justify">Add here the folder in which ProsimPanel is installed. It is possible to add multiple folders.</p><p>Examples:<ul><li>C:\Simulator\ProsimPanel</li><li>\\COMPUTER\Simulator\ProsimPanel</li></ul></p></body></html>
+info_bt_10=<html><head/><body><p align="justify">Add here the folder in which ProsimAudio is installed. It is possible to add multiple folders.</p><p>Examples:<ul><li>C:\Simulator\ProsimAudio</li><li>\\COMPUTER\Simulator\ProsimAudio</li></ul></p></body></html>
+info_bt_11=<html><head/><body><p align="justify">If one or more Prosim737 modules are installed on one or more remote computers, Prosim737 Updater can check running processes and terminate them before installing an update. It can be performed only if it has an access to remote computers. You can enter here credentials to provide the access to Prosim737 Updater.</p><p>Computer name / IP address: write the name / IP of the remote computer ; it should be the same as the one displayed in the paths entered in the different sections (COMPUTER for \\COMPUTER\Prosim737, or 192.168.1.12 for \\ 192.168.1.12\Prosim737.</p><p>Password and Username: the usual Windows password and username used to login.</p></body></html>
+actionSave=Save...|Save Prosim737 Updater options in default xml file
+actionOpen=Open...|Open an xml file containing Prosim737 Updater options
+actionExit=Exit...|Exit Prosim737 Updater
+actionAbout=Prosim737 Updater...|About Prosim737 Updater
+actionChangelog=Changelog...|Read the changelog
+actionUpdate=Update...|No update available !
+actionOptions=Options...|Click to modify Prosim737 Updater options
+tabWidgetPage1=Home
+tabWidgetPage8=Credentials
+Prosim737-updater-no-update=No update available !
+Prosim737-updater-new-update=A new update is available for Prosim737 Updater ! Click here to install it automatically.
+cred_lb_1_list=Computer name / IP address:
+cred_lb_2_list=Username:
+cred_lb_3_list=Password:
+
+### options window ###
+MyOptions=Options
+ow_label_3=Language:
+ow_label_1=Logging level:
+ow_label_2=Path of the logging file:
+ow_checkBox_1=Check Prosim737 Updater updates on GitHub
+ow_checkBox_2=Terminate automatically Prosim737 processes to update Prosim737 modules
+ow_checkBox_3=Relaunch automatically Prosim737 processes after the update of Prosim737 modules
+ow_infoButton_1=<html><head/><body><p align="justify">You can change here the verbose level of the logging system. If an issue is noticed, it is a good idea to change the level to DEBUG and send the log file to the developer.</p></body></html>
+ow_infoButton_2=<html><head/><body><p align="justify">The path where to save the log file, for those who appreciate to keep all their logs at the same place. A reboot of the software is necessary if the location of the log file is changed.</p></body></html>
+ow_infoButton_3=<html><head/><body><p align="justify">Activate this option to allow Prosim737 Updater to check for an update online.</p></body></html>
+ow_infoButton_4=<html><head/><body><p align="justify">Activate those options to allow Prosim737 Updater to terminate all Prosim737 processes and relaunch them once the update installation is finished. <b>Relaunch not implemented yet.</b></p></body></html>
+ow_infoButton_5=<html><head/><body><p align="justify">It is possible to change the language in Prosim737 Updater. Just select the language in the list and click on OK to apply the new language.</p></body></html>
+
+### about window ###
+MyAbout=About Prosim737 Updater
+aw_label_1=The Prosim737 Updater v%s was developed by Olivier Henry, using Eclipse %s, Python %s and PyQt %s. Its purpose is to help people to update easily and quickly an installation of Prosim737 across few computers.
+
+### restore window ###
+MyRestore=Restore Prosim737 backup
+rw_label_1=You will find here a list of all Prosim737 backups. After selecting one of them, you can restore it or delete it. Double click on a backup to display information.
+rw_restoreButton=Restore
+rw_deleteButton=Delete
+rw_cancelButton=Quit
+Restore-quit-button=Quit
+Restore-cancel-button=Cancel
+
+### restore info window ###
+Restore-info=Here are the archives currently in the backup and the paths where they have to be restored:
+
+### download & install window ###
+MyDownload=Update download and install
+dw_label_1=<html><head/><body><p>Click on the <span style=" font-weight:600; font-style:italic; color:#000000;">Download and Install</span> button to start downloading the package. Installation process will start automatically once the package is downloaded.</p><p>A Prosim737 package is around 45 MB. Depending on your connection, it can take some time and the GUI may appear to be unresponsive.</p><p align="center"><span style=" font-style:italic; color:#c80000;">The download and unzipping can be canceled, but once the installation is started, the process can't be stopped until installation is complete.</span></p></body></html>
+dw_downloadButton=Download and install
+dw_cancelButton=Cancel
+dw_quitButton=Quit
+
+### unpack & install window ###
+MyUnpack=Unpack and install
+uw_label_1=<html><head/><body><p align="justify">Click on the <span style=" font-weight:600; font-style:italic; color:#000000;">Unpack and install</span> button to start unpacking the package. Installation process will start automatically once the package is extracted.</p><p align="center"><span style=" font-style:italic; color:#c80000;">Unpacking can be canceled, but once the installation is started, the process can\'t be stopped until installation is complete.</span></p></body></html>
+uw_downloadButton=Unpack and install
+uw_cancelButton=Cancel
+uw_quitButton=Quit
+
+### info window ###
+MyInfo=Information
+
+### log window ###
+MyLog=Changelog
+
+### update window ###
+MyUpdate=Download
+
+### compress window ###
+MyCompress=Compressing Prosim737 installation
+
+### store window ###
+MyStore=Download
+sw_button=Cancel
+
+### issue window ###
+MyPath=Warning
+Path-credential-not-match=The following computers in the credentials are not linked to an installation path:|Please, make sure to correct your credentials or the networked installation paths.
+Path-missing=Prosim737 Updater can't find the following folders:|Please, make sure that they exist before updating Prosim737.
+Process-running=The following processes are still running:|Please, make sure to stop them before installing Prosim737.
+Process-exception=The following computers are not reachable:|Please, make sure that your credentials are correct before trying to install an update.
+
+### warning window ###
+MyWarning=Warning
+iw_label_1=<html><head/><body><p align="justify">The actual document has been modified. Changes will be lost if the document is not saved.<br/></p><p><span style=" font-weight:600;">Do you want to save your changes ?</span></p></body></html>
+iw_nosaveButton-text-open=Open
+iw_nosaveButton-text-close=Quit
+iw_nosaveButton=%s without saving
+iw_cancelButton=Cancel
+iw_saveButton=Save
+
+### language not found window ###
+Language-not-found=Prosim737 Updater can't find the following language: %s. English has been automatically loaded. Please, go to the options window, select a language and confirm by clicking on <b>Ok</b>.
+
+### download thread ###
+Download-complete=Downloading %s at %s
+Download-light=Downloading %s...
+Download-canceled=Download canceled
+Download-failed=Download failed
+Download-failed-label=Quit
+
+### install thread ###
+Install-light=Installing update...
+Install-complete=Installing %s to %s
+Install-failed=Installation failed. Please check Prosim737 processes or share permissions.
+Install-finished=Job finished !
+Restore-complete=Restoring backup to %s
+
+### unpacking thread ###
+Unpacking-light=Unpacking update...
+Unpacking-complete=Unpacking %s
+Unpacking-canceled=Unpacking canceled
+
+### check path thread ###
+Check-path=Check Prosim737 paths...
+
+### check process thread ###
+Check-process=Check Prosim737 processes...
+
+### compress thread ###
+Compressing-complete=Compressing %s

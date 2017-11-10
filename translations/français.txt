@@ -1,0 +1,116 @@
+home_lb_1=Emplacement des mises à jour de Prosim737 :
+home_lb_2=Emplacement des sauvegardes de Prosim737 :
+home_lb_3=Mises à jour disponibles sur ce pc :
+home_lb_4=Mises à jour disponibles sur le site officiel :
+server_lb_1=Emplacement du module ProsimServer :
+mcp_lb_1=Emplacement du module ProsimMCP :
+cdu_lb_1=Emplacement du module ProsimCDU :
+display_lb_1=Emplacement du module ProsimDisplay :
+panel_lb_1=Emplacement du module ProsimPanel :
+audio_lb_1=Emplacement du module ProsimAudio :
+credentials_lb_1=<html><head/><body><p align="justify">Avant d'installer une mise à jour ou de restaurer une sauvegarde, Prosim737 Updater peut vérifier si une instance d'un module de Prosim737 est en cours d'exécution sur ce pc ou un pc distant. Le but de cette procédure est d'éviter la mise à jour d'un fichier si celui-ci est déjà utilisé. Pour accéder aux processus à distance, Prosim737 Updater envoie une commande contenant les identifiants de l'utilisateur enregistré sur le pc distant. Vous pouvez entrer dans cette section le <span style="font-weight:600; color:#0000c8;">nom complet</span> ou l'<span style=" font-weight:600; color:#0000c8;">adresse IP</span> du pc distant, qui doit correspondre au nom ou à l'adresse IP affiché(e) dans les différents chemins/partages réseaux renseignés dans Prosim737 Updater, ainsi que le <span style=" font-weight:600; color:#0000c8;">nom d'utilisateur</span> et le <span style=" font-weight:600; color:#0000c8;">mot de passe</span>.</p><p align="center"><span style=" font-weight:600; color:#c80000;">Tous les identifiants sont stockés dans le fichier xml dédiés aux options de mise à jour et dans le fichier xml dédiés aux sauvegardes de Prosim737. Ils peuvent être récupérés par une personne ayant un accès physique à ces fichiers xml. Aucun identifiant n'est stocké dans le fichier de log.</span></p><p align="justify">L'utilisation de cette fonction n'est pas obligatoire et si aucun identifiant n'est renseigné, Prosim737 Updater ne vérifiera tout simplement pas les processus sur un pc distant.</p></body></html>
+user_lb=Emplacement du module Prosim%s :
+aw_label_1=Prosim737 Updater v%s a été développé par Olivier Henry, grâce à Eclipse %s, à partir de Python %s et de PyQt %s. Le but est de proposer une solution simple aux utilisateurs pour mettre à jour leur installation de Prosim737 sur plusieurs ordinateurs.
+ow_label_3=Langage:
+ow_label_1=Niveau de log:
+ow_label_2=Chemin du fichier de log:
+iw_label_1=<html><head/><body><p align="justify">Le document actuel a été modifié. Toute modification sera perdue si le document n'est pas sauvegardé.<br/></p><p><span style=" font-weight:600;">Voulez-vous sauvegarder vos modifications ?</span></p></body></html>
+rw_label_1=Vous trouverez ici une liste de toutes les sauvegardes de Prosim737. Après avoir sélectionné l'une d'entre elles, il est possible de la restaurer ou de la supprimer. Vous pouvez afficher les informations associées à une sauvegarde en double cliquant dessus.
+home_ck_1=Vérifier les mises à jour de Prosim737 en ligne ?
+ow_checkBox_1=Vérifier les mises à jour de Prosim737 Updater sur Github
+ow_checkBox_2=Stopper automatiquement les modules de Prosim737 avant mise à jour
+ow_checkBox_3=Relancer automatiquement les modules de Prosim737 après mise à jour
+home_create_backup=Créer une sauvegarde
+home_restore_backup=Restaurer une sauvegarde
+home_changelog=Changelog
+home_update=Mettre à jour
+credentials=Ajouter des identifiants
+audio_new_location=Ajouter un emplacement
+panel_new_location=Ajouter un emplacement
+display_new_location=Ajouter un emplacement
+cdu_new_location=Ajouter un emplacement
+mcp_new_location=Ajouter un emplacement
+server_new_location=Ajouter un emplacement
+info_bt_1=<html><head/><body><p align="justify">Ajouter ici le dossier dans lequel les mises à jour de Prosim737 sont stockées. Ce dossier est aussi utilisé pour stocker toute mise à jour téléchargée depuis le site officiel de Prosim737 si l'utilisateur clique sur <b><font size='4'>&laquo;</font></b>.</p></body></html>
+info_bt_2=<html><head/><body><p align="justify">Ajouter ici le dossier qui accueillera les sauvegardes de Prosim737.</p></body></html>
+info_bt_3=<html><head/><body><p align="justify">En cliquant sur <b>Créer une sauvegarde</b>, une sauvegarde avec un horodatage sera créé dans le dossier de sauvegarde. Cliquez sur <b>Restaurer une sauvegarde</b> pour affichier une liste des sauvegardes disponibles dans le dossier de sauvegarde et avoir la possibilité de restaurer l'une d'entre elles.</p></body></html>
+info_bt_4=<html><head/><body><p align="justify">Une fois un fichier sélectionné, cliquez sur <b>Mettre à jour</b> pour installer la mise à jour correspondante. Si un fichier a été sélectionné à partir de la liste des mises à jour disponibles en ligne, le fichier sera d'abord téléchargé avant d'être installé.</p><p align="justify">Pour stocker une mise à jour sur ce pc, cliquez sur <b><font size='4'>&laquo;</font></b> après avoir sélectionné un fichier. Celui-ci sera téléchargé et stocké, mais pas installé.</p></p><p align="justify">Cliquez sur <b>Changelog</b> pour affichier le dernier changelog en ligne de Prosim737.</p></body></html>
+info_bt_5=<html><head/><body><p align="justify">Entrez ici le chemin du dossier dans lequel est installé ProsimServer. Il est possible d'entrer plus d'un chemin en cliquant sur <b>Ajouter un emplacement</b>.</p><p>Exemples :<ul><li>C:\Simulator\Prosim737</li><li>\\COMPUTER\Simulator\Prosim737</li></ul></p></body></html>
+info_bt_6=<html><head/><body><p align="justify">Entrez ici le chemin du dossier dans lequel est installé ProsimMCP. Il est possible d'entrer plus d'un chemin en cliquant sur <b>Ajouter un emplacement</b>.</p><p>Exemples :<ul><li>C:\Simulator\ProsimMCP</li><li>\\COMPUTER\Simulator\ProsimMCP</li></ul></p></body></html>
+info_bt_7=<html><head/><body><p align="justify">Entrez ici le chemin du dossier dans lequel est installé ProsimCDU. Il est possible d'entrer plus d'un chemin en cliquant sur <b>Ajouter un emplacement</b>.</p><p>Exemples :<ul><li>C:\Simulator\ProsimCDU</li><li>\\COMPUTER\Simulator\ProsimCDU</li></ul></p></body></html>
+info_bt_8=<html><head/><body><p align="justify">Entrez ici le chemin du dossier dans lequel est installé ProsimDisplay. Il est possible d'entrer plus d'un chemin en cliquant sur <b>Ajouter un emplacement</b>.</p><p>Exemples :<ul><li>C:\Simulator\ProsimDisplay</li><li>\\COMPUTER\Simulator\ProsimDisplay</li></ul></p></body></html>
+info_bt_9=<html><head/><body><p align="justify">Entrez ici le chemin du dossier dans lequel est installé ProsimPanel. Il est possible d'entrer plus d'un chemin en cliquant sur <b>Ajouter un emplacement</b>.</p><p>Exemples :<ul><li>C:\Simulator\ProsimPanel</li><li>\\COMPUTER\Simulator\ProsimPanel</li></ul></p></body></html>
+info_bt_10=<html><head/><body><p align="justify">Entrez ici le chemin du dossier dans lequel est installé ProsimAudio. Il est possible d'entrer plus d'un chemin en cliquant sur <b>Ajouter un emplacement</b>.</p><p>Exemples :<ul><li>C:\Simulator\ProsimAudio</li><li>\\COMPUTER\Simulator\ProsimAudio</li></ul></p></body></html>
+info_bt_11=<html><head/><body><p align="justify">Si un ou plusieurs modules sont installés sur un ou plusieurs pcs distants, Prosim737 Updater peut vérifier les processus et les stopper avant d'installer une mise à jour. Cela peut être effectuer seulement si le logiciel a accés au pc distant. Pour cela les identifiants doivent être entrés ici.</p><p>Nom de l'ordinateur / Adresse IP : Entrez ici le nom ou l'adresse IP du pc distant, qui doit être le même que celui renseignés dans les chemins des différentes sections de Prosim737 Updater (COMPUTER pour \\COMPUTER\Prosim737, ou 192.168.1.12 pour \\ 192.168.1.12\Prosim737)</p><p>Nom d'utilisateur et Mot de passe : ce sont les identifiants de l'utilisateur principale pour se logger sur le pc distant.</p></body></html>
+ow_infoButton_1=<html><head/><body><p align="justify">Le niveau de log peut-être changé ici. Si un problème apparait, changerzle niveau de log vers DEBUG et envoyez ensuite le fichier de log au développeur.</p></body></html>
+ow_infoButton_2=<html><head/><body><p align="justify">Il est possible de changer le répertoire dans lequel sera sauvegardé le fichier de log, pour ceux qui apprécient de conserver tous leurs fichiers de log à la même place. Un redémarrage du logiciel est nécessaire pour que cette option soit prise en compte.</p></body></html>
+ow_infoButton_3=<html><head/><body><p align="justify">Pour autoriser Prosim737 Updater à vérifier ses mises à jour en ligne, cette option doit être activée.</p></body></html>
+ow_infoButton_4=<html><head/><body><p align="justify">Prosim737 Updater peut stopper et redémarrer automatiquement les processus de Prosim737 si ces options sont activées. <b>Le redémarrage des processus n'a pas encore été implémenté.</b></p></body></html>
+ow_infoButton_5=<html><head/><body><p align="justify">Dans Prosim737 Updater, il est possible de changer la langue. Choisissez la langue dans la liste et cliquez sur OK pour appliquer la nouvelle langue au logiciel.</p></body></html>
+iw_nosaveButton-text-open=Ouvrir
+iw_nosaveButton-text-close=Quitter
+iw_nosaveButton=%s sans sauvegarder
+iw_cancelButton=Annuler
+iw_saveButton=Sauvegarder
+rw_restoreButton=Restaurer
+rw_deleteButton=Supprimer
+rw_cancelButton=Quitter
+actionSave=Sauvegarder ...|Sauvegarde les options de mises à jour de Prosim737 Updater dans le fichier xml par défaut
+actionOpen=Ouvrir ...|Ouvre un fichier xml contenant les options de mise à jour de Prosim737 Updater
+actionExit=Quitter ...|Quitter Prosim737 Updater
+actionAbout=Prosim737 Updater ...|A propos de Prosim737 Updater
+actionChangelog=Changelog ...|Lire le changelog
+actionUpdate=Mise à jour ...|Pas de nouvelle mise à jour !
+actionOptions=Options ...|Cliquer pour modifier les options de Prosim737 Updater
+tabWidgetPage1=Accueil
+tabWidgetPage8=Identifiants
+MyAbout=A propos de Prosim737 Updater
+MyInfo=Information
+MyOptions=Options
+MyWarning=Attention
+MyLog=Changelog
+MyUpdate=Téléchargement
+MyPath=Attention
+MyRestore=Restauration d'une sauvegarde
+MyCompress=Compression des dossiers d'installation
+MyStore=Téléchargement
+MyUnpack=Installation de la mise à jour
+MyDownload=Téléchargement de la mise à jour et installation
+uw_label_1=<html><head/><body><p>Cliquez sur <span style=" font-weight:600; font-style:italic; color:#000000;">Décompresser et installer</span> pour commencer la décompression de la mise à jour. Le processus d'installation commencera automatiquement peu après.</p><p align="center"><span style=" font-style:italic; color:#c80000;">La décompression peut être annulée, mais une fois l'installation lancée, ce processus ne peut être arrêté avant complète installation.</span></p></body></html>
+uw_downloadButton=Décompresser et installer
+uw_cancelButton=Annuler
+uw_quitButton=Quitter
+dw_label_1=<html><head/><body><p>Cliquez sur <span style=" font-weight:600; font-style:italic; color:#000000;">Téléchargement et installation</span> pour commencer le téléchargement de la mise à jour. L'installation commencera automatiquement à la fin du téléchargement.</p><p>Une mise à jour de Prosim737 pèse à peu près 45 MB. Un certain temps, dépendant de la connexion internet, est nécessaire au téléchargement et l'inferface graphique peut sembler inutilisable.</p><p align="center"><span style=" font-style:italic; color:#c80000;">Il est possible d'annuler le téléchargement et la décompression de la mise à jour, mais une fois que l'installation a commencé, il n'est plus possible d'interrompre le processus.</span></p></body></html>
+dw_downloadButton=Téléchargement et installation
+dw_cancelButton=Annuler
+dw_quitButton=Quitter
+sw_button=Annuler
+Download-complete=Téléchargement de %s à %s
+Download-light=Téléchargement de %s ...
+Download-canceled=Téléchargement annulé
+Download-failed=Téléchargement échoué
+Download-failed-label=Quitter
+Unpacking-light=Décompression de la mise à jour...
+Unpacking-complete=Décompression de %s
+Unpacking-canceled=Décompression annulé
+Install-light=Installation de la mise à jour...
+Install-complete=Installation de %s vers %s
+Install-failed=Installation échoué. Veuillez vérifier les processus de Prosim737 et/ou les permissions sur les dossiers partagés.
+Install-finished=Travail terminé !
+Compressing-complete=Compression de %s
+Restore-complete=Restauration de la sauvegarde vers %s
+Restore-info=Voici les fichiers compressés présents dans la sauvegarde et les chemins où ils doivent être restaurés:
+Check-path=Vérification des chemins de Prosim737...
+Check-process=Vérification des processus de Prosim737...
+Path-credential-not-match=Les ordinateurs suivants dans la partie Identifiants ne sont pas lié à un chemin d'installation:|Veuillez vérifier et corriger les identifiants et/ou les chemins d'installation.
+Path-missing=Prosim737 Updater ne trouve pas les répertoires suivants:|Veuillez vérifier qu'ils existent avant de mettre à jour Prosim737.
+Process-running=Les processus suivants sont toujours en cours d'exécution:|Veuillez les arrêter avant de mettre à jour Prosim737.
+Process-exception=Les ordinateurs suivants ne sont pas contactables:|Veuillez vérifier que les identifiants sont corrects avant de mettre à jour Prosim737.
+Prosim737-updater-no-update=Pas de nouvelle mise à jour !
+Prosim737-updater-new-update=Une nouvelle mise à jour est disponible pour Prosim737 Updater ! Cliquez ici pour l'installer automatiquement.
+Restore-quit-button=Quitter
+Restore-cancel-button=Annuler
+Language-not-found=Prosim737 Updater ne peut pas trouver le language suivant: %s. L'Anglais a été automatiquement chargé. Veuillez définir une nouvelle langue dans la fenêtre des options, et cliquer sur <b>Ok</b> pour confirmer.
+cred_lb_1_list=Nom de l'ordinateur / Adresse IP:
+cred_lb_2_list=Nom d'utilisateur:
+cred_lb_3_list=Mot de passe:

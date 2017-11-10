@@ -21,19 +21,23 @@ class DownloadFile(Qt.QThread):
     download_update = QtCore.pyqtSignal(list)
     download_done = QtCore.pyqtSignal()
     download_failed = QtCore.pyqtSignal()
-    def __init__(self, url_name, update_file=None):
+    def __init__(self, url_name, config_dict, translations, update_file=None):
         Qt.QThread.__init__(self)
         logging.debug('thread_functions.py - DownloadFile - __init__ - url_name ' + str(url_name)
                       + ' ; update_file ' + str(update_file))
         self.url_name = url_name
         self.update_file = update_file
+        self.config_dict = config_dict
+        self.translations = translations
         self.cancel = False
         
     def run(self):
         logging.debug('thread_functions.py - DownloadFile - run - download started')
         if not self.update_file:
             self.update_file = tempfile.gettempdir() + '\prosim_update_package.zip'
-        self.download_update.emit([0, 'Downloading ' + self.url_name[self.url_name.rfind("/")+1:] + '...'])
+        text_light = self.translations['Download-light'][self.config_dict['OPTIONS'].get('language')]
+        text_complete = self.translations['Download-complete'][self.config_dict['OPTIONS'].get('language')]
+        self.download_update.emit([0, text_light % self.url_name[self.url_name.rfind("/")+1:]])
         opened_file = open(self.update_file, 'wb')
         try:
             opened_url = urlopen(self.url_name, timeout=10)
@@ -51,8 +55,7 @@ class DownloadFile(Qt.QThread):
                 fileSize += len(buffer)
                 opened_file.write(buffer)
                 download_speed = size(fileSize/(time.clock() - start), system=alternative) + '/s'
-                self.download_update.emit([round(fileSize * 100 / totalFileSize), 'Downloading ' 
-                                           + self.url_name[self.url_name.rfind("/")+1:] + ' at ' + download_speed])
+                self.download_update.emit([round(fileSize * 100 / totalFileSize), text_complete % (self.url_name[self.url_name.rfind("/")+1:], download_speed)])
             opened_file.close()
             if not self.cancel:
                 logging.debug('thread_functions.py - DownloadFile - run - download finished')
@@ -77,13 +80,15 @@ class DownloadFile(Qt.QThread):
 class UnpackFile(Qt.QThread):
     unpack_update = QtCore.pyqtSignal(list)
     unpack_done = QtCore.pyqtSignal()
-    def __init__(self, in_file, target_name, backup=False):
+    def __init__(self, in_file, target_name, config_dict, text_translations, backup=False):
         logging.debug('thread_functions.py - UnpackFile - __init__ - in_file ' + str(in_file) + ' ; target_name '
                       + str(target_name) + ' ; backup ' + str(backup))
         Qt.QThread.__init__(self)
         self.backup = backup
         self.in_file = in_file
         self.target_name = target_name
+        self.config_dict = config_dict
+        self.text_translations = text_translations
         self.prosim_list = ['ProSim737', 'ProSimAudio', 'ProSimCDU',
                             'ProSimDisplay', 'ProSimMCP', 'ProSimPanel']
         self.cancel = False
@@ -116,7 +121,7 @@ class UnpackFile(Qt.QThread):
         
     def unpack(self, in_file, target_name):
         logging.debug('thread_functions.py - UnpackFile - unpack - started')
-        self.unpack_update.emit([0, 'Unpacking ' + os.path.basename(in_file) + '...'])
+        self.unpack_update.emit([0, self.text_translations['Unpacking-complete'][self.config_dict['OPTIONS'].get('language')] % os.path.basename(in_file)])
         zf = zipfile.ZipFile(in_file, 'r')
         uncompress_size = sum((file.file_size for file in zf.infolist()))
         extracted_size = 0
@@ -130,7 +135,7 @@ class UnpackFile(Qt.QThread):
                 folder = os.path.basename(os.path.normpath(target_name))
             else:
                 folder = file.filename[:file.filename.find('/')]
-            self.unpack_update.emit([percentage, 'Unpacking ' + folder + '...'])
+            self.unpack_update.emit([percentage, self.text_translations['Unpacking-complete'][self.config_dict['OPTIONS'].get('language')] % folder])
             zf.extract(file, target_name)
         logging.debug('thread_functions.py - UnpackFile - unpack - finished')
     
@@ -147,27 +152,29 @@ class InstallFile(Qt.QThread):
     install_update = QtCore.pyqtSignal(list)
     install_done = QtCore.pyqtSignal()
     install_failed = QtCore.pyqtSignal()
-    def __init__(self, directory, prosim_path=None, backup=False):
+    def __init__(self, directory, config_dict, text_translations, prosim_path=None, backup=False):
         logging.debug('thread_functions.py - InstallFile - __init__ - directory ' + str(directory) + ' ; prosim_path '
                       + str(prosim_path) + ' ; backup ' + str(backup))
         Qt.QThread.__init__(self)
         self.backup = backup
         self.directory = directory
         self.prosim_path = prosim_path
+        self.config_dict = config_dict
+        self.text_translations = text_translations
 
     def run(self):
         logging.debug('thread_functions.py - InstallFile - run')
         if self.backup:
-            #prosim_directories = self.read_backup_xml(self.directory + '\\backup_options.xml')
             prosim_directories = self.prosim_path
             for key in prosim_directories:
                 prosim_folder = self.directory + '\\' + key
                 num_files = self.count_files(prosim_folder)
                 try:
                     num_copied = 0
+                    text = self.text_translations['Restore-complete'][self.config_dict['OPTIONS'].get('language')]
                     for path, _, filenames in os.walk(prosim_folder):
                         percentage = int(round((num_copied/float(num_files))*100))
-                        self.install_update.emit([percentage, 'Restoring backup to ' + str(key) + '...'])
+                        self.install_update.emit([percentage, text % str(key)])
                         for file in filenames:
                             source_file = os.path.join(path, file)
                             destFile = os.path.join(path.replace(prosim_folder, prosim_directories[key]), file)
@@ -176,7 +183,7 @@ class InstallFile(Qt.QThread):
                             copy(source_file, destFile)
                             num_copied += 1
                             percentage = int(round((num_copied/float(num_files))*100))
-                            self.install_update.emit([percentage, 'Restoring backup to ' + str(key) + '...'])
+                            self.install_update.emit([percentage, text % str(key)])
                 except PermissionError:
                     logging.exception('thread_functions.py - InstallFile - run - installation failed')
                     self.install_failed.emit()
@@ -184,6 +191,7 @@ class InstallFile(Qt.QThread):
         else:
             prosim_list = ['ProSim737', 'ProSimMCP', 'ProSimCDU', 
                             'ProSimDisplay', 'ProSimPanel', 'ProSimAudio']
+            text = self.text_translations['Install-complete'][self.config_dict['OPTIONS'].get('language')]
             for folder in prosim_list:
                 try:
                     prosim_target = self.prosim_path[folder]
@@ -194,8 +202,7 @@ class InstallFile(Qt.QThread):
                             for path, _, filenames in os.walk(self.directory + folder):
                                 for file in filenames:
                                     percentage = int(round((num_copied/float(num_files))*100))
-                                    self.install_update.emit([percentage, 'Installing ' + str(folder) + ' to '
-                                                              + str(os.path.basename(os.path.normpath(dest))) + '...'])
+                                    self.install_update.emit([percentage, text % (str(folder), str(os.path.basename(os.path.normpath(dest))))])
                                     source_file = os.path.join(path, file)
                                     dest_file = os.path.join(path.replace(self.directory + folder, dest), file)
                                     if not os.path.isdir(os.path.dirname(dest_file)):
@@ -203,8 +210,7 @@ class InstallFile(Qt.QThread):
                                     copy(source_file, dest_file)
                                     num_copied += 1
                                     percentage = int(round((num_copied/float(num_files))*100))
-                                    self.install_update.emit([percentage, 'Installing ' + str(folder) + ' to '
-                                                              + str(os.path.basename(os.path.normpath(dest))) + '...'])
+                                    self.install_update.emit([percentage, text % (str(folder), str(os.path.basename(os.path.normpath(dest))))])
                     except PermissionError:
                         logging.exception('thread_functions.py - InstallFile - run - installation failed')
                         self.install_failed.emit()
@@ -255,10 +261,12 @@ class InstallFile(Qt.QThread):
 class ZipProsim(Qt.QThread):
     zip_update = QtCore.pyqtSignal(list)
     zip_done = QtCore.pyqtSignal()
-    def __init__(self, directory, prosim_path, credentials):
+    def __init__(self, directory, prosim_path, credentials, config_dict, text_translations):
         logging.debug('thread_functions.py - ZipProsim - __init__ - directory ' + str(directory)
                       + ' ; prosim_path' + str(prosim_path))
         Qt.QThread.__init__(self)
+        self.config_dict = config_dict
+        self.text_translations = text_translations
         self.directory = directory
         self.prosim_path = prosim_path
         self.credentials = credentials
@@ -333,7 +341,8 @@ class ZipProsim(Qt.QThread):
                         folder = ziph.filename[:-4]
                     else:
                         folder = path
-                    self.zip_update.emit([percentage, 'Compressing ' + os.path.basename(os.path.normpath(folder)) + '...'])
+                    text = self.text_translations['Compressing-complete'][self.config_dict['OPTIONS'].get('language')]
+                    self.zip_update.emit([percentage, text % os.path.basename(os.path.normpath(folder))])
 
     def create_backup_xml(self, out_file_name, timestr, backup_list):
         logging.debug('thread_functions.py - ZipProsim - create_backup_xml')

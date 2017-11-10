@@ -3,18 +3,18 @@ import logging
 from shutil import copyfile
 from PyQt5 import QtWidgets, QtCore, QtGui
 from functions.window_functions import MyInfo, MyDownload, MyUnpack, MyStore, MyCompress, MyRestore, MyLog
-from functions.utilities import load_prosim_path, load_prosim_credentials, remove_tmp_package, warning_window
+from functions.utilities import load_prosim_path, load_prosim_credentials, remove_tmp_package, warning_window, translate_new_path_element
 import os
 
 
 def info_button(self):
     logging.debug('button_functions.py - info_button - self.sender().objectName() ' + self.sender().objectName())
-    infoText = self.button_information[int(self.sender().objectName()[8:]) - 1]
+    infoText = self.text_translations[self.sender().objectName()][self.config_dict['OPTIONS'].get('language')]
     x = QtGui.QCursor.pos().x()
     y = QtGui.QCursor.pos().y()
     x = x - 175
     y = y + 50
-    self.infoWindow = MyInfo(infoText)
+    self.infoWindow = MyInfo(infoText, self.config_dict, self.text_translations)
     self.infoWindow.setMinimumSize(QtCore.QSize(450, self.infoWindow.sizeHint().height()))
     self.infoWindow.setMaximumSize(QtCore.QSize(450, self.infoWindow.sizeHint().height()))
     self.infoWindow.setGeometry(x, y, 450, self.infoWindow.sizeHint().height())
@@ -75,12 +75,17 @@ def new_path(self, category=None, path=None):
     lb_object[num_object].setMinimumSize(QtCore.QSize(0, 27))
     lb_object[num_object].setMaximumSize(QtCore.QSize(16777215, 27))
     lb_object[num_object].setFont(font1)
-    lb_object[num_object].setText("Prosim737 " + self.category_name[category] + " location:")
     lb_object[num_object].setObjectName(category + "_user_lb_" + str(num_object + 1))
+    translate_new_path_element(self, lb_object[num_object], self.config_dict['OPTIONS'].get('language'), category)
     hl_object[num_object].addWidget(lb_object[num_object])
     ln_object.append(QtWidgets.QLineEdit())
-    ln_object[num_object].setMinimumSize(QtCore.QSize(600, 27))
-    ln_object[num_object].setMaximumSize(QtCore.QSize(600, 27))
+    sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+    sizePolicy.setHorizontalStretch(0)
+    sizePolicy.setVerticalStretch(0)
+    sizePolicy.setHeightForWidth(ln_object[num_object].sizePolicy().hasHeightForWidth())
+    ln_object[num_object].setSizePolicy(sizePolicy)
+    ln_object[num_object].setMinimumSize(QtCore.QSize(400, 27))
+    ln_object[num_object].setMaximumSize(QtCore.QSize(800, 27))
     ln_object[num_object].setFont(font2)
     ln_object[num_object].setStyleSheet("QLineEdit {\n"
         "    border-radius: 3px;\n"
@@ -141,7 +146,6 @@ def new_path(self, category=None, path=None):
     no_object[num_object].setAutoRaise(False)
     no_object[num_object].setObjectName(category + "_none_bt_" + str(num_object + 1))
     hl_object[num_object].addWidget(no_object[num_object])
-    hl_object[num_object].addItem(QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum))
     vl_object.addLayout(hl_object[num_object])
     bt_object[num_object].clicked.connect(lambda: self.tool_button_clicked())
     dl_object[num_object].clicked.connect(lambda: self.tool_button_clicked())
@@ -194,7 +198,7 @@ def new_credentials(self, credentials=None):
     self.cred_lb_1_list[self.cred_num].setMinimumSize(QtCore.QSize(0, 27))
     self.cred_lb_1_list[self.cred_num].setMaximumSize(QtCore.QSize(16777215, 27))
     self.cred_lb_1_list[self.cred_num].setFont(font1)
-    self.cred_lb_1_list[self.cred_num].setText("Computer name / IP address:")
+    self.cred_lb_1_list[self.cred_num].setText(self.text_translations['cred_lb_1_list'][self.config_dict['OPTIONS'].get('language')])
     self.cred_lb_1_list[self.cred_num].setObjectName("cred_lb_1_list_" + str(self.cred_num))
     self.cred_hl_2_list[self.cred_num].addWidget(self.cred_lb_1_list[self.cred_num])
     self.cred_ln_1_list.append(QtWidgets.QLineEdit())
@@ -217,7 +221,7 @@ def new_credentials(self, credentials=None):
     self.cred_lb_2_list[self.cred_num].setMinimumSize(QtCore.QSize(0, 27))
     self.cred_lb_2_list[self.cred_num].setMaximumSize(QtCore.QSize(16777215, 27))
     self.cred_lb_2_list[self.cred_num].setFont(font1)
-    self.cred_lb_2_list[self.cred_num].setText("Username:")
+    self.cred_lb_2_list[self.cred_num].setText(self.text_translations['cred_lb_2_list'][self.config_dict['OPTIONS'].get('language')])
     self.cred_lb_2_list[self.cred_num].setObjectName("cred_lb_2_list_" + str(self.cred_num))
     self.cred_hl_3_list[self.cred_num].addWidget(self.cred_lb_2_list[self.cred_num])
     self.cred_ln_2_list.append(QtWidgets.QLineEdit())
@@ -237,7 +241,7 @@ def new_credentials(self, credentials=None):
     self.cred_lb_3_list[self.cred_num].setMinimumSize(QtCore.QSize(0, 27))
     self.cred_lb_3_list[self.cred_num].setMaximumSize(QtCore.QSize(16777215, 27))
     self.cred_lb_3_list[self.cred_num].setFont(font1)
-    self.cred_lb_3_list[self.cred_num].setText("Password:")
+    self.cred_lb_3_list[self.cred_num].setText(self.text_translations['cred_lb_3_list'][self.config_dict['OPTIONS'].get('language')])
     self.cred_lb_3_list[self.cred_num].setObjectName("cred_lb_3_list_" + str(self.cred_num))
     self.cred_hl_3_list[self.cred_num].addWidget(self.cred_lb_3_list[self.cred_num])
     self.cred_ln_3_list.append(QtWidgets.QLineEdit())
@@ -385,7 +389,7 @@ def create_backup(self):
                                               self.tabWidgetPage5, self.tabWidgetPage6, self.tabWidgetPage7])
         prosim_credentials = load_prosim_credentials(self)
         if prosim_path:
-            self.compressWindow = MyCompress(self.home_ln_2.text(), prosim_path, prosim_credentials)
+            self.compressWindow = MyCompress(self.home_ln_2.text(), prosim_path, prosim_credentials, self.config_dict, self.text_translations)
             x1, y1, w1, h1 = self.geometry().getRect()
             _, _, w2, h2 = self.compressWindow.geometry().getRect()
             x2 = x1 + w1/2 - w2/2
@@ -408,7 +412,7 @@ def create_backup(self):
 def restore_backup(self, kill, relaunch):
     logging.debug('button_functions.py - restore_backup')
     remove_tmp_package(self)
-    self.restoreWindow = MyRestore(self.home_ln_2.text(), kill, relaunch)
+    self.restoreWindow = MyRestore(self.home_ln_2.text(), kill, relaunch, self.config_dict, self.text_translations)
     x1, y1, w1, h1 = self.geometry().getRect()
     _, _, w2, h2 = self.restoreWindow.geometry().getRect()
     x2 = x1 + w1/2 - w2/2
@@ -429,7 +433,7 @@ def update_prosim(self, kill, relaunch):
         remove_tmp_package(self)
         if self.selected_list_widget == 'online':
             url_name = self.update_package_path + self.update_package_name
-            self.downloadWindow = MyDownload(url_name, prosim_path, prosim_credentials, kill, relaunch)
+            self.downloadWindow = MyDownload(url_name, prosim_path, prosim_credentials, kill, relaunch, self.config_dict, self.text_translations)
             x1, y1, w1, h1 = self.geometry().getRect()
             _, _, w2, h2 = self.downloadWindow.geometry().getRect()
             x2 = x1 + w1/2 - w2/2
@@ -440,7 +444,7 @@ def update_prosim(self, kill, relaunch):
             self.downloadWindow.exec_()
         elif self.selected_list_widget == 'local':
             copyfile(self.update_package_path + self.update_package_name, tempfile.gettempdir() + '\prosim_update_package.zip')
-            self.unpackWindow = MyUnpack(prosim_path, prosim_credentials, kill, relaunch)
+            self.unpackWindow = MyUnpack(prosim_path, prosim_credentials, kill, relaunch, self.config_dict, self.text_translations)
             x1, y1, w1, h1 = self.geometry().getRect()
             _, _, w2, h2 = self.unpackWindow.geometry().getRect()
             x2 = x1 + w1/2 - w2/2
@@ -460,8 +464,8 @@ def store_update(self):
     if self.selected_list_widget == 'online':
         url_name = self.update_package_path + self.update_package_name
         update_file = self.home_ln_1.text() + '\\' + self.update_package_name
-        self.storeWindow = MyStore(url_name, update_file)
-        self.storeWindow.label.setText('Downloading ' + self.update_package_name + '...')
+        self.storeWindow = MyStore(url_name, update_file, self.config_dict, self.text_translations)
+        self.storeWindow.sw_label.setText('Downloading ' + self.update_package_name + '...')
         x1, y1, w1, h1 = self.geometry().getRect()
         _, _, w2, h2 = self.storeWindow.geometry().getRect()
         x2 = x1 + w1/2 - w2/2

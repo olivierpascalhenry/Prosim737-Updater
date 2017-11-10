@@ -94,7 +94,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="sw_label">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -164,7 +164,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QToolButton" name="button">
+        <widget class="QToolButton" name="sw_button">
          <property name="minimumSize">
           <size>
            <width>90</width>
@@ -173,7 +173,7 @@
          </property>
          <property name="maximumSize">
           <size>
-           <width>90</width>
+           <width>110</width>
            <height>27</height>
           </size>
          </property>

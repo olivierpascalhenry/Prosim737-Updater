@@ -2,6 +2,21 @@
 CHANGELOG
 =========
 
+
+November 09 2017, Release version 1.1.1
+=======================================
+  Prosim737 Updater can now use different languages. The language file is a simple text file with, for each line, the name of a component (it can be a QLabel or a context), followed by a "=" and the text. No need to update the software to add a language, it is enough to drop a language file directly in the "translations" folder, and it will be detected and loaded by Prosim737 Updater. Explanations are given in "translations/read_me.txt".
+
+  FIXED:
+	- fixed few glitches in the GUI.
+	- fixed few typos in the GUI.
+
+  ADDED:
+	- a system to translate text into another language has been added.
+	- english and french are available as default.
+	- in the restore window, by doubleclicking on a backup, information about files and paths are displayed.
+
+
 October 25 2017, Release version 1.1.0
 ======================================
   To allow the restore system to check processes on remote computers if necessary, the credentials, if they exist, are now saved in the xml file created with the backup file.

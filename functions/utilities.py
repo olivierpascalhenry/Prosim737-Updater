@@ -3,7 +3,7 @@ import tempfile
 import os
 from shutil import rmtree
 from PyQt5 import QtWidgets, QtGui, QtCore
-from functions.window_functions import MyInfo
+from ui.Ui_infowindow import Ui_infoWindow
 
 
 def load_prosim_path(self, tab_list):
@@ -61,3 +61,72 @@ def warning_window(self, text):
     self.infoWindow.setMaximumSize(QtCore.QSize(450, self.infoWindow.sizeHint().height()))
     self.infoWindow.setGeometry(x2, y2, w2, h2)
     self.infoWindow.exec_()
+    
+    
+def translate_elements(self, widget, language, text_translations):
+    logging.debug('utilities.py - translate_elements - language ' + language)
+    if isinstance(widget, QtWidgets.QTabWidget):
+        all_widgets = widget.findChildren(QtWidgets.QWidget)
+        for tab in all_widgets:
+            try:
+                widget.setTabText(widget.indexOf(tab),text_translations[tab.objectName()][language])
+            except KeyError:
+                pass
+    all_labels = widget.findChildren(QtWidgets.QLabel)
+    for label in all_labels:     
+        try:
+            label.setText(text_translations[label.objectName()][language])
+        except KeyError:
+            pass
+    all_check = widget.findChildren(QtWidgets.QCheckBox)
+    for check in all_check:
+        try:
+            check.setText(text_translations[check.objectName()][language])
+        except KeyError:
+            pass
+    all_buttons = widget.findChildren(QtWidgets.QToolButton)
+    for button in all_buttons:
+        try:
+            button.setText(text_translations[button.objectName()][language])
+        except KeyError:
+            pass
+    
+    all_actions = self.findChildren(QtWidgets.QAction)
+    for action in all_actions:
+        try:
+            action.setText(text_translations[action.objectName()][language][0])
+            action.setToolTip(text_translations[action.objectName()][language][1])
+        except KeyError:
+            pass
+    
+    
+def translate_new_path_element(self, widget, language, category):
+    logging.debug('utilities.py - translate_new_path_element - language ' + language + ' ; category ' + category)
+    widget.setText(self.text_translations['user_lb'][language] % self.category_name[category])
+
+
+def translate_all_path_credential_elements(self):
+    complete_list = [self.server_lb_list, self.mcp_lb_list, self.cdu_lb_list, self.display_lb_list, self.panel_lb_list,self.audio_lb_list]
+    module_list = ['Server', 'MCP', 'CDU', 'Display', 'Panel', 'Audio']
+    for i, sublist in enumerate(complete_list):
+        for label in sublist:
+            label.setText(self.text_translations['user_lb'][self.config_dict['OPTIONS'].get('language')] % module_list[i])
+    for label in self.cred_lb_3_list:
+        label.setText(self.text_translations['cred_lb_3_list'][self.config_dict['OPTIONS'].get('language')])
+    for label in self.cred_lb_2_list:
+        label.setText(self.text_translations['cred_lb_2_list'][self.config_dict['OPTIONS'].get('language')])
+    for label in self.cred_lb_1_list:
+        label.setText(self.text_translations['cred_lb_1_list'][self.config_dict['OPTIONS'].get('language')])
+
+
+class MyInfo(QtWidgets.QDialog, Ui_infoWindow):
+    def __init__(self, infoText):
+        logging.debug('window_functions.py - MyInfo - __init__')
+        QtWidgets.QWidget.__init__(self)
+        self.setupUi(self)
+        self.iw_label_1.setText(infoText)
+        self.iw_okButton.clicked.connect(self.closeWindow)
+        
+    def closeWindow(self):
+        logging.debug('window_functions.py - MyInfo - closeWindow')
+        self.close()

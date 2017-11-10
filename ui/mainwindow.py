@@ -11,15 +11,17 @@ from functions.button_functions import update_prosim, add_path, new_path, del_pa
 from functions.button_functions import new_credentials, del_credentials, store_update
 from functions.button_functions import display_changelog
 from functions.objects_functions import objectsInit
-from functions.window_functions import MyUpdate, MyOptions, MyWarning, MyAbout, MyLog
+from functions.window_functions import MyUpdate, MyOptions, MyWarning, MyAbout, MyLog, MyInfo
 from functions.thread_functions import CheckProsim737Online, CheckProsim737UpdaterOnline, DownloadFile
+from functions.utilities import translate_elements, translate_all_path_credential_elements
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
-    def __init__(self, path, config_dict, parent=None):
+    def __init__(self, path, config_dict, translations, parent=None):
         QtWidgets.QMainWindow.__init__(self, parent)
         self.config_dict = config_dict
         self.config_path = path
+        self.text_translations = translations
         logging.info('mainwindow.py - UI initialization ...')
         self.setupUi(self)
         objectsInit(self)
@@ -48,14 +50,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.home_ln_1.textChanged.connect(self.check_prosim737_local_updates)
         self.home_ln_2.textChanged.connect(self.update_backup_buttons_state)
         self.home_ln_1.textChanged.connect(self.update_store_button_state)
+        self.create_language_list()
+        self.check_language_config()
+        translate_elements(self, self.tabWidget, self.config_dict['OPTIONS'].get('language'), self.text_translations)
+        self.download_prosim737_changelog()
+        self.check_prosim737updater_update()
+        self.make_window_title()
         try:
             read_updater_xml(self, 'prosim_udpater_options.xml')
             self.saved = True
         except FileNotFoundError:
             logging.exception('mainwindow.py - xml file not found, no user options loaded')
-        self.download_prosim737_changelog()
-        self.check_prosim737updater_update()
-        self.make_window_title()
         logging.info('mainwindow.py - UI initialized ...')
         logging.info('*****************************************')
 
@@ -97,7 +102,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def open_document(self):
         logging.debug('mainwindow.py - open_document')
         if self.modified:
-            result = self.make_onsave_msg_box("Open")
+            result = self.make_onsave_msg_box(self.text_translations['iw_nosaveButton-text-open'][self.config_dict['OPTIONS'].get('language')])
             if result == "iw_saveButton":
                 self.save_document()
                 self.open_file()
@@ -108,7 +113,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             
     def open_about(self):
         logging.debug('mainwindow.py - open_about')
-        self.aboutWindow = MyAbout()
+        self.aboutWindow = MyAbout(self.config_dict, self.text_translations)
         x1, y1, w1, h1 = self.geometry().getRect()
         _, _, w2, h2 = self.aboutWindow.geometry().getRect()
         x2 = x1 + w1/2 - w2/2
@@ -130,7 +135,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
            
     def open_options(self):
         logging.debug('mainwindow.py - open_options')
-        self.optionWindow = MyOptions(self.config_dict)
+        language_before = self.config_dict.get('OPTIONS', 'language')
+        self.optionWindow = MyOptions(self.config_dict, self.text_translations, self.language_list)
         x1, y1, w1, h1 = self.geometry().getRect()
         _, _, w2, h2 = self.optionWindow.geometry().getRect()
         x2 = x1 + w1/2 - w2/2
@@ -139,15 +145,19 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.optionWindow.exec_()
         if not self.optionWindow.cancel:
             self.config_dict = self.optionWindow.config_dict
+            language_after = self.config_dict.get('OPTIONS', 'language')
             with open(os.path.join(self.config_path, 'prosim_updater.ini'), 'w') as config_file:
                 self.config_dict.write(config_file)
             logging.getLogger().setLevel(self.config_dict.get('LOG', 'level'))
             self.check_prosim737updater_update()
+            if language_before != language_after:
+                translate_elements(self, self.tabWidget, language_after, self.text_translations)
+                translate_all_path_credential_elements(self)
             
     def closeEvent(self, event):
         logging.debug('mainwindow.py - closeEvent')
         if self.modified:
-            result = self.make_onsave_msg_box("Close")
+            result = self.make_onsave_msg_box(self.text_translations['iw_nosaveButton-text-close'][self.config_dict['OPTIONS'].get('language')])
             if result == "iw_saveButton":
                 self.save_document()
                 event.accept()
@@ -238,16 +248,19 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def make_onsave_msg_box(self, string):
         logging.debug('mainwindow.py - make_onsave_msg_box - string ' + string)
-        self.presaveWindow = MyWarning(string)
+        self.presaveWindow = MyWarning(string, self.config_dict, self.text_translations)
         x1, y1, w1, h1 = self.geometry().getRect()
         _, _, w2, h2 = self.presaveWindow.geometry().getRect()
         x2 = x1 + w1/2 - w2/2
         y2 = y1 + h1/2 - h2/2
         self.presaveWindow.setGeometry(x2, y2, w2, h2)
-        self.presaveWindow.setMinimumSize(QtCore.QSize(450, self.presaveWindow.sizeHint().height()))
-        self.presaveWindow.setMaximumSize(QtCore.QSize(452, self.presaveWindow.sizeHint().height()))
+        self.presaveWindow.setMinimumSize(QtCore.QSize(500, self.presaveWindow.sizeHint().height()))
+        self.presaveWindow.setMaximumSize(QtCore.QSize(500, self.presaveWindow.sizeHint().height()))
         self.presaveWindow.exec_()
-        return self.presaveWindow.buttonName
+        try:
+            return self.presaveWindow.buttonName
+        except AttributeError:
+            return None
     
     def tool_button_clicked(self):
         logging.debug('mainwindow.py - tool_button_clicked - self.sender().objectName() ' + self.sender().objectName())
@@ -440,11 +453,15 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             logging.info('mainwindow.py - check_prosim737updater_update - from options, no update check')
     
     def parse_prosim737updater_update(self, val):
+        logging.debug('mainwindow.py - parse_prosim737updater_update - val ' + str(val))
         if val == 'no new version':
             self.actionUpdate.setEnabled(False)
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap("icons/prosim_update_off_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             self.actionUpdate.setIcon(icon)
+            
+            self.text_translations['Path-missing'][self.config_dict['OPTIONS'].get('language')]
+            
             self.actionUpdate.setToolTip('No update available !')
         elif 'http' in val:
             self.actionUpdate.setEnabled(True)
@@ -455,6 +472,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.link_latest_version = val
               
     def download_and_install_prosim737updater_update(self):
+        logging.debug('mainwindow.py - download_and_install_prosim737updater_update - link_latest_version ' + str(self.link_latest_version))
         if self.link_latest_version:
             temp_folder = tempfile.gettempdir()
             self.downloadWindow = MyUpdate(self.link_latest_version, temp_folder)
@@ -473,11 +491,38 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.close()
 
     def download_prosim737_changelog(self):
+        logging.debug('mainwindow.py - download_prosim737_changelog')
         url_name = 'http://download.prosim-ar.com/ProSim737beta/changelog.txt'
         changelog_path = 'documentation\prosim_changelog.txt'
-        self.thread = DownloadFile(url_name, changelog_path)
+        self.thread = DownloadFile(url_name, self.config_dict, self.text_translations, changelog_path)
         self.thread.download_done.connect(self.activate_changelog_button)
         self.thread.start()
         
     def activate_changelog_button(self):
+        logging.debug('mainwindow.py - activate_changelog_button')
         self.home_changelog.setEnabled(True)
+        
+    def create_language_list(self):
+        logging.debug('mainwindow.py - create_language_list')
+        value = next(iter(self.text_translations.values()))
+        for key, _ in value.items():
+            self.language_list[key] = key.title()
+            
+    def check_language_config(self):
+        logging.debug('mainwindow.py - check_language_config')
+        language = self.config_dict['OPTIONS'].get('language')
+        try:
+            self.language_list[language]
+        except KeyError:
+            logging.exception('mainwindow.py - check_language_config - language ' + str(language) + ' not found.')
+            self.config_dict.set('OPTIONS', 'language', 'english')
+            infoText = self.text_translations['Language-not-found'][self.config_dict['OPTIONS'].get('language')] % language
+            self.infoWindow = MyInfo(infoText, self.config_dict, self.text_translations)
+            x1, y1, w1, h1 = self.geometry().getRect()
+            _, _, w2, h2 = self.infoWindow.geometry().getRect()
+            x2 = x1 + w1/2 - w2/2
+            y2 = y1 + h1/2 - h2/2
+            self.infoWindow.setGeometry(x2, y2, w2, h2)
+            self.infoWindow.setMinimumSize(QtCore.QSize(450, self.infoWindow.sizeHint().height()))
+            self.infoWindow.setMaximumSize(QtCore.QSize(450, self.infoWindow.sizeHint().height()))
+            self.infoWindow.exec_()

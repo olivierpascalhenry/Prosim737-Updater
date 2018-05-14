@@ -1,3 +1,5 @@
+DEPRECATED: not compatible with Prosim737 v2.xx
+
 Version: Prosim737 Updater 1.1.2
 
 Project Overview:
